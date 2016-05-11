@@ -17,4 +17,4 @@ Screenshots
 
 License
 -------
-Whitebox GAT is distributed under the ![http://www.uoguelph.ca/~hydrogeo/Whitebox/gpl-3_0.txt](GNU General Public License (GPL) version 3).
+Whitebox GAT is distributed under the [GNU General Public License (GPL) version 3](http://www.uoguelph.ca/~hydrogeo/Whitebox/gpl-3_0.txt).
