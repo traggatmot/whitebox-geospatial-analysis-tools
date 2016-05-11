@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<VersionInfo>
+    <VersionName>"3.2 'Iguazu'"</VersionName>
+    <VersionNumber>"3.2.0"</VersionNumber>
+    <DownloadLocation>"http://www.uoguelph.ca/~hydrogeo/Whitebox/download.shtml"</DownloadLocation>
+    <DownloadArtifact>"http://www.uoguelph.ca/~hydrogeo/Whitebox/WhiteboxGAT.zip"</DownloadArtifact>
+    <Announcements number="17">
+        <Announcement>
+            <Date>2014-05-04</Date>
+            <Language>en</Language>
+            <Title>Whitebox 3.2.0 Has Been Released</Title>
+            <Message><![CDATA[<p>The following additions/modifications have been made:</p>
+<ul><li>Updated to Java 8. This is a major change and may result in some compatability issues.
+ It will also mean that users will have to update their versions of Java to run
+ Whitebox. Users will need to update their Java runtime to version 8 to run Whitebox.
+ Please report any issues that you encounter as a result of this upgrade using
+ Help -> Report An Error.</li>
+<li>Added a ClusterAttribute tool that performs k-means clustering on a selected 
+ group of attributes associated with a vector file.</li>
+<li>Added zoom to selection for vector layers.</li>
+<li>Added a Clip tool for vector clipping operations. I know, why has it taken this long?</li>
+<li>Added floating point line thicknesses and changed the default line thickness to 0.75.
+ This has greatly improved the cartographic output of Whitebox.</li>
+<li>Added Export Table to CSV tool.</li>
+<li>Added Hack Stream Ordering and Topological Stream Ordering tools.</li>
+<li>Added Total Length of Upstream Channels tool.</li>
+<li>Added Furtherest Upstream Channel Head Distance tool.</li>
+<li>Added the Attribute Histogram tool for create histograms based on numeric data 
+ contained in a shapefile's attribute table as well as the Attribute Scattergram tool.</li>
+<li>Vectors can now be displayed with a palette rendered based on a boolean attribute.</li>
+<li>Added palette nonlinearity for vectors with a scaled palette.</li>
+<li>Fixed the raster-to-vector polygon conversion to include polygon holes.</li>
+<li>Modified the minimum bounding box tool, and all related tools (e.g. elongation ratio,
+ long axis, short axis) to use an analytical solution for finding the MBB.</li>
+<li>Added a link to the Whitebox blog (http://whiteboxgeospatial.wordpress.com) in the help menu.</li>
+<li>Added the Vector Attribute Gridding tool, which can be used to interpolate the spatial 
+ pattern of average values of an attribute of vector features onto a raster grid. It
+ essentially can be used to answer the question, of the vector features (points, lines, 
+ or polygons) within the a local neighbourhood, what is the average value of some 
+ attribute? This can be quite handy for visualizing patterns.</li>
+<li>Added the Vector Feature Density tool, which is similar to the Vector Attribute Gridding 
+ tool but works to map the spatial pattern of feature density (how many vector features 
+ are within a local neighbourhood?).</li>
+<li>Added the ability to rotate map titles. I know this isn't a proper labelling system
+ yet, but I'm working on it. Hopefully map labels will be added this summer.</li>
+</ul><]]>
+            </Message>
+        </Announcement>
+    </Announcements>
+</VersionInfo>

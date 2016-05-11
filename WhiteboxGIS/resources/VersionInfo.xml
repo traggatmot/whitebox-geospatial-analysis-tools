@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<VersionInfo>
+    <VersionName>"3.2 'Iguazu'"</VersionName>
+    <VersionNumber>"3.2.2"</VersionNumber>
+    <DownloadLocation>"http://www.uoguelph.ca/~hydrogeo/Whitebox/download.shtml"</DownloadLocation>
+    <DownloadArtifact>"http://www.uoguelph.ca/~hydrogeo/Whitebox/WhiteboxGAT.zip"</DownloadArtifact>
+    <Announcements number="19">
+        <Announcement>
+            <Date>2015-09-10</Date>
+            <Language>en</Language>
+            <Title>Updated Whitebox GAT Website</Title>
+            <Message><![CDATA[<p>The Whitebox GAT homepage has recently had a 
+major refresh and update. You can see for yourself at:</p> 
+<p><a href="http://www.uoguelph.ca/~hydrogeo/Whitebox/index.html">http://www.uoguelph.ca/~hydrogeo/Whitebox/index.html</a>.</p>
+</ul><]]>
+            </Message>
+        </Announcement>
+    </Announcements>
+</VersionInfo>
