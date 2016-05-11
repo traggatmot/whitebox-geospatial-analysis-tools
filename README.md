@@ -6,3 +6,7 @@ Whitebox GAT is an open-source geographical information system (GIS) and remote 
 ![Whitebox GAT screenshot.](./screenshots/wgat3_2_2_ss9.png "Whitebox GAT screenshot.")
 
 ![Whitebox GAT screenshot.](./screenshots/wgat3_2_2_ss4.png "Whitebox GAT screenshot.")
+
+Getting Started
+---------------
+Compiled versions of Whitebox GAT are available from the Whitebox homepage (http://www.uoguelph.ca/~hydrogeo/Whitebox/). To work with the source code, clone the Github repository using *git* and open the individual projects in *NetBeans IDE* (https://netbeans.org/). NetBeans may complain that there are unresolved conflicts, likely that there are missing library files. Click to resolve the conflicts. You will find each of the library dependencies within the *WhiteboxGIS* project folder.
