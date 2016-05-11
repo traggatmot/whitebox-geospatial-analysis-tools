@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * Copyright (C) 2015 Dr. John Lindsay <jlindsay@uoguelph.ca>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -73,6 +73,7 @@ public class DifferenceFromMeanElevation implements ActionListener {
 			sd.addDialogFile("Input DEM file", "Input DEM:", "open", "Raster Files (*.dep), DEP", true, false)
 			sd.addDialogFile("Output file", "Output Raster File:", "save", "Raster Files (*.dep), DEP", true, false)
 			sd.addDialogDataInput("Search neighbourhood size", "Search Neighbourhood Size (cells):", "", true, false)
+            sd.addDialogDataInput("Number of significant decimal places", "Significant Decimal Places:", "2", true, true)
             
 			// resize the dialog to the standard size and display it
 			sd.setSize(800, 400)
@@ -86,7 +87,7 @@ public class DifferenceFromMeanElevation implements ActionListener {
 	@CompileStatic
 	private void execute(String[] args) {
 		try {
-			if (args.length != 3) {
+			if (args.length < 3) {
 				pluginHost.showFeedback("Incorrect number of arguments given to tool.")
 				return
 			}
@@ -95,6 +96,12 @@ public class DifferenceFromMeanElevation implements ActionListener {
 			String outputFile = args[1]
 			int neighbourhoodSize = Integer.parseInt(args[2])
 			if (neighbourhoodSize < 1) { neighbourhoodSize = 1 }
+			int numSigDecimalPlaces = 3;
+			if (args.length == 4) {
+				numSigDecimalPlaces = Integer.parseInt(args[3]);
+				if (numSigDecimalPlaces < 0) { numSigDecimalPlaces = 0; }
+				if (numSigDecimalPlaces > 8) { numSigDecimalPlaces = 8; }
+			}
 			int numCells
 			
 			// read the input image
@@ -105,18 +112,61 @@ public class DifferenceFromMeanElevation implements ActionListener {
 			double minValue = image.getMinimumValue()
 			double range = image.getMaximumValue() - minValue
 			
-			WhiteboxRaster integralImage = new WhiteboxRaster(outputFile.replace(".dep", "_temp1.dep"), "rw", 
-  		  	  inputFile, DataType.FLOAT, nodata)
-  		  	integralImage.isTemporaryFile = true
+//			WhiteboxRaster integralImage = new WhiteboxRaster(outputFile.replace(".dep", "_temp1.dep"), "rw", 
+//  		  	  inputFile, DataType.FLOAT, nodata)
+//  		  	integralImage.isTemporaryFile = true
+//
+//			WhiteboxRaster integralImageN = new WhiteboxRaster(outputFile.replace(".dep", "_temp2.dep"), "rw", 
+//  		  	  inputFile, DataType.INTEGER, nodata)
+//  		  	integralImageN.isTemporaryFile = true
+//		
+//			// calculate the integral image
+//			int progress = 0
+//			int oldProgress = -1
+//			double z, sum, sumN
+//			for (int row = 0; row < rows; row++) {
+//				sum = 0
+//				sumN = 0
+//  				for (int col = 0; col < cols; col++) {
+//  					z = image.getValue(row, col)
+//  					if (z == nodata) {
+//  						z = 0
+//  					} else {
+//  						z = (z - minValue) / range
+//  						sumN++
+//  					}
+//  					sum += z
+//  					if (row > 0) {
+//  						integralImage.setValue(row, col, sum + integralImage.getValue(row - 1, col))
+//  						integralImageN.setValue(row, col, sumN + integralImageN.getValue(row - 1, col))
+//  					} else {
+//  						integralImage.setValue(row, col, sum)
+//  						integralImageN.setValue(row, col, sumN)
+//  					}
+//  				}
+//  				progress = (int)(100f * row / rows)
+//				if (progress > oldProgress) {
+//					pluginHost.updateProgress("Loop 1 of 2:", progress)
+//					oldProgress = progress
+//				}
+//				// check to see if the user has requested a cancellation
+//				if (pluginHost.isRequestForOperationCancelSet()) {
+//					pluginHost.showFeedback("Operation cancelled")
+//					return
+//				}
+//			}
 
-			WhiteboxRaster integralImageN = new WhiteboxRaster(outputFile.replace(".dep", "_temp2.dep"), "rw", 
-  		  	  inputFile, DataType.INTEGER, nodata)
-  		  	integralImageN.isTemporaryFile = true
+			long[][] integralImage = new long[rows][cols];
+			int[][] integralImageN = new int[rows][cols];
 
 			// calculate the integral image
 			int progress = 0
 			int oldProgress = -1
-			double z, sum, sumN
+			double z
+			long sum
+			int sumN
+			double multiplier = Math.pow(10, numSigDecimalPlaces);
+			
 			for (int row = 0; row < rows; row++) {
 				sum = 0
 				sumN = 0
@@ -125,27 +175,27 @@ public class DifferenceFromMeanElevation implements ActionListener {
   					if (z == nodata) {
   						z = 0
   					} else {
-  						z = (z - minValue) / range
+  						z = (z - minValue) * multiplier
   						sumN++
   					}
-  					sum += z
+  					sum += (long)(Math.round(z))
   					if (row > 0) {
-  						integralImage.setValue(row, col, sum + integralImage.getValue(row - 1, col))
-  						integralImageN.setValue(row, col, sumN + integralImageN.getValue(row - 1, col))
+  						integralImage[row][col] = sum + integralImage[row - 1][col]
+  						integralImageN[row][col] = sumN + integralImageN[row - 1][col]
   					} else {
-  						integralImage.setValue(row, col, sum)
-  						integralImageN.setValue(row, col, sumN)
+  						integralImage[row][col] = sum
+  						integralImageN[row][col] = sumN
   					}
   				}
   				progress = (int)(100f * row / rows)
 				if (progress > oldProgress) {
 					pluginHost.updateProgress("Loop 1 of 2:", progress)
 					oldProgress = progress
-				}
-				// check to see if the user has requested a cancellation
-				if (pluginHost.isRequestForOperationCancelSet()) {
-					pluginHost.showFeedback("Operation cancelled")
-					return
+					// check to see if the user has requested a cancellation
+					if (pluginHost.isRequestForOperationCancelSet()) {
+						pluginHost.showFeedback("Operation cancelled")
+						return
+					}
 				}
 			}
 
@@ -180,20 +230,26 @@ public class DifferenceFromMeanElevation implements ActionListener {
 						if (x2 < 0) { x2 = 0 }
 						if (x2 >= cols) { x2 = cols - 1 }
 
-						a = integralImage.getValue(y1, x1)
-						b = integralImage.getValue(y1, x2)
-						c = integralImage.getValue(y2, x2)
-						d = integralImage.getValue(y2, x1)
+//						a = integralImage.getValue(y1, x1)
+//						b = integralImage.getValue(y1, x2)
+//						c = integralImage.getValue(y2, x2)
+//						d = integralImage.getValue(y2, x1)
+						a = integralImage[y1][x1]
+						b = integralImage[y1][x2]
+						c = integralImage[y2][x2]
+						d = integralImage[y2][x1]
 
-						numCells = (int)(integralImageN.getValue(y2, x2) + integralImageN.getValue(y1, x1) - integralImageN.getValue(y1, x2) - integralImageN.getValue(y2, x1))
+//						numCells = (int)(integralImageN.getValue(y2, x2) + integralImageN.getValue(y1, x1) - integralImageN.getValue(y1, x2) - integralImageN.getValue(y2, x1))
+						numCells = (int)(integralImageN[y2][x2] + integralImageN[y1][x1] - integralImageN[y1][x2] - integralImageN[y2][x1])
 
-						outValue = z - ((c + a - b - d) / numCells * range + minValue)
+						//outValue = z - ((c + a - b - d) / numCells * range + minValue)
+						outValue = z - (((c + a - b - d) / numCells) / multiplier + minValue)
 						output.setValue(row, col, outValue)
   					}
   				}
   				progress = (int)(100f * row / rows)
 				if (progress > oldProgress) {
-					pluginHost.updateProgress("Loop 2 of 4:", progress)
+					pluginHost.updateProgress("Loop 2 of 2:", progress)
 					oldProgress = progress
 					// check to see if the user has requested a cancellation
 					if (pluginHost.isRequestForOperationCancelSet()) {
@@ -203,8 +259,8 @@ public class DifferenceFromMeanElevation implements ActionListener {
 				}
 			}
 			
-			integralImage.close()
-			integralImageN.close()
+//			integralImage.close()
+//			integralImageN.close()
 			image.close()
 
 			output.flush()

@@ -77,7 +77,7 @@ public class ImportCSV implements ActionListener {
             sd.setSourceFile(scriptFile)
 			
             // add some components to the dialog
-            sd.addDialogMultiFile("Select some input CSV files", "Input CSV Files:", "Comma-separated Values Files (*.csv), CSV")
+            sd.addDialogMultiFile("Select some input CSV files", "Input CSV Files:", "Comma-separated Values Files (*.csv, *.txt), CSV, TXT")
 			sd.addDialogComboBox("First column definition", "<html>1<sup>st</sup> column definition:</html>", ["x-coordinate", "y-coordinate", "numerical attribute", "string attribute"], 0)
             sd.addDialogComboBox("Second column definition", "<html>2<sup>nd</sup> column definition:</html>", ["x-coordinate", "y-coordinate", "numerical attribute", "string attribute"], 1)
             sd.addDialogComboBox("Third column definition", "<html>3<sup>rd</sup> column definition:</html>", ["x-coordinate", "y-coordinate", "numerical attribute", "string attribute", "not present"], 4)

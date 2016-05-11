@@ -70,7 +70,7 @@ public class GroovyExamplePlugin {
 
 	// The execute function is the main part of the tool, where the actual
 	// work is completed.
-	//@CompileStatic
+	@CompileStatic
 	private void execute(String[] args) {
 		try {
 			int progress, oldProgress = -1, n, row, col, numNeighbours

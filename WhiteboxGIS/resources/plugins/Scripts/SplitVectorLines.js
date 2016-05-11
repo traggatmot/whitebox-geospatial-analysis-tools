@@ -78,7 +78,7 @@ function createDialog(args, toolName) {
 // work is completed.
 function execute(args) {
     try {
-        // declare  some variables for later
+        // declare some variables for later
         var z, zn, mean;
         var row, col;
         var i;

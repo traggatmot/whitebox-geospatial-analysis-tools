@@ -200,7 +200,7 @@ public class MergeTableWithCSV implements ActionListener {
 		}
 	}
 
-	@CompileStatic
+	//@CompileStatic
 	private void execute(String[] args) {
 		try {
 	  		int progress, oldProgress, line

@@ -1,8 +1,0 @@
-plugins.Digging
-plugins.Distributions
-plugins.DownslopeIndex_Radius
-plugins.ExtractValuesAtXYCoords
-plugins.FlowAccumMDInf
-plugins.MedianUpstreamArea
-plugins.SIDE_MDInf
-plugins.StreamHeadsMDInf

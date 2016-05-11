@@ -40,7 +40,7 @@ import groovy.time.TimeCategory
 // script to be integrated into the tool tree panel. 
 // Comment them out if you want to remove the script.
 def name = "MaximumElevationDeviation"
-def descriptiveName = "Maximum Elevation Deviation"
+def descriptiveName = "Maximum Elevation Deviation (Multiscale)"
 def description = "Calculates the max elev. dev. over a range of scales."
 def toolboxes = ["ElevResiduals"]
 
@@ -332,7 +332,7 @@ public class MaximumElevationDeviation implements ActionListener {
 			output2.addMetadataEntry("MinNeighbourHood: $minNeighbourhood MaxNeighbourhood: $actualMaxNeighbourhood Step: $neighbourhoodStep")
 			output2.addMetadataEntry("Elapsed time: $td")
 			output2.close()
-	
+
 			// display the output images
 			pluginHost.returnData(outputScaleFile)
 			pluginHost.returnData(outputMagnitudeFile)

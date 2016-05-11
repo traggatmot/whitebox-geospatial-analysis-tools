@@ -28,6 +28,7 @@ import java.beans.PropertyChangeEvent
 import java.beans.PropertyChangeListener
 import whitebox.interfaces.WhiteboxPluginHost
 import whitebox.geospatialfiles.ShapeFile
+import whitebox.geospatialfiles.ShapeFileInfo
 import whitebox.geospatialfiles.shapefile.*
 import whitebox.ui.plugin_dialog.*
 import whitebox.utilities.FileUtilities;
@@ -86,7 +87,9 @@ public class KrigingInterpolation implements ActionListener {
 			
             // add some components to the dialog
         	DialogFieldSelector dfs = sd.addDialogFieldSelector("Input file and Value field.", "Input Value Field:", false)															
-			DialogFile dfOutput = sd.addDialogFile("Output file", "Output Raster File:", "saveAs", "Whitebox Raster Files (*.dep), DEP", true, false)								
+			DialogCheckBox dcb = sd.addDialogCheckBox("Use z-values", "Use z-values", false)
+            dcb.setVisible(false)
+            DialogFile dfOutput = sd.addDialogFile("Output file", "Output Raster File:", "saveAs", "Whitebox Raster Files (*.dep), DEP", true, false)								
 			
 			//DialogCheckBox chxError = sd.addDialogCheckBox("Saves the Kriging Variance Error Map", "Save Variance Error Raster", false)												
 			DialogFile dfError = sd.addDialogFile("Error Output file", "Output Error Raster File (optional):", "saveAs", "Whitebox Raster Files (*.dep), DEP", true, true)						
@@ -136,12 +139,16 @@ public class KrigingInterpolation implements ActionListener {
 						pluginHost.showFeedback("Please specify a shapefile and attribute.")
 						return
 					}
-					if (inputData.length < 2 || inputData[1] == null || inputData[1].isEmpty()) {
-						pluginHost.showFeedback("Please specify a shapefile and attribute.")
-						return
+					if (!Boolean.parseBoolean(dcb.getValue())) {
+						if (inputData.length < 2 || inputData[1] == null || inputData[1].isEmpty()) {
+							pluginHost.showFeedback("Please specify a shapefile and attribute.")
+							return
+						}
 					}
-					if ((dfs.getValue()).length()>2) {
+					if (!Boolean.parseBoolean(dcb.getValue()) &&dfs.getValue().length()>2) {
 						k.readPointFile(inputData[0], inputData[1]);
+					} else if (Boolean.parseBoolean(dcb.getValue())) {
+						k.readPointFile(inputData[0]);
 					}
 			        
 			        k.LagSize =  (txtLagSize.getValue()).toDouble()
@@ -215,6 +222,18 @@ public class KrigingInterpolation implements ActionListener {
 						double difX = shapefile.getxMax() - shapefile.getxMin()
 						double maxL = Math.max(difX, difY)
 						txtLagSize.setValue((maxL / (txtNlag.getValue()).toDouble()).toString())
+						if (file.exists()) {
+	            			ShapeFileInfo shapefileInfo = new ShapeFileInfo(fileName)
+		            		if (shapefileInfo.getShapeType().getDimension() == ShapeTypeDimension.Z) {
+		            			dcb.setVisible(true)
+		            		} else {
+		            			dcb.setVisible(false)
+		            		}
+		            	} else {
+		            		if (dcb.isVisible()) {
+		            			dcb.setVisible(false)
+		            		}
+		            	}
             		}
             	} 
             } as PropertyChangeListener
@@ -237,36 +256,37 @@ public class KrigingInterpolation implements ActionListener {
 				pluginHost.showFeedback("Input shapefile and attribute not specified.")
 				return
 			}
-			if (inputData.length < 2 || inputData[1] == null || inputData[1].isEmpty()) {
-				pluginHost.showFeedback("Input shapefile and attribute not specified.")
-				return
-			}
+//			if (inputData.length < 2 || inputData[1] == null || inputData[1].isEmpty()) {
+//				pluginHost.showFeedback("Input shapefile and attribute not specified.")
+//				return
+//			}
 			String inputFile = inputData[0]
-			String outputFile = args[1]
+			boolean useZValues = Boolean.parseBoolean(args[1])
+			String outputFile = args[2]
 			if (outputFile == null || outputFile.isEmpty()) {
 				pluginHost.showFeedback("Output file not specified.")
 				return
 			}
-			String outputErrorFile = args[2]
-			str = args[3]
+			String outputErrorFile = args[3]
+			str = args[4]
 			if (str == null || str.isEmpty()) {
 	        	str = "not specified"
 	        }
 	        if (!str.toLowerCase().contains("not")) {
-	            cellSize = Double.parseDouble(args[3]);
+	            cellSize = Double.parseDouble(args[5]);
 	        }
-	        String baseFileHeader = args[4]
+	        String baseFileHeader = args[6]
 	        if (baseFileHeader == null || baseFileHeader.isEmpty()) {
 	        	baseFileHeader = "not specified"
 	        }
-	        int numNeighbours = Integer.parseInt(args[5])
+	        int numNeighbours = Integer.parseInt(args[7])
 			if (numNeighbours < 0) {
 				numNeighbours = 0
 			}
 			String modelType = "spherical"
-			if (args[6].toLowerCase().contains("gauss")) {
+			if (args[8].toLowerCase().contains("gauss")) {
 				modelType = "gaussian"
-			} else if (args[6].toLowerCase().contains("expon")) {
+			} else if (args[8].toLowerCase().contains("expon")) {
 				modelType = "exponential"
 			}
 			int numLags = Integer.parseInt(args[7])
