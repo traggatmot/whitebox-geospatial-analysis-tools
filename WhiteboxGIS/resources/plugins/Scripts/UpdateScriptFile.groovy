@@ -117,17 +117,22 @@ def updateScript = { scriptName ->
 	String fileContents = localFile.text
 	
 	// Figure out the name of the remote file
-	String remoteDir = "https://whitebox-geospatial-analysis-tools.googlecode.com/svn/trunk/WhiteboxGIS/resources/plugins/Scripts/"
+	//String remoteDir = "https://whitebox-geospatial-analysis-tools.googlecode.com/svn/trunk/WhiteboxGIS/resources/plugins/Scripts/"
+	String remoteDir = "https://raw.githubusercontent.com/jblindsay/whitebox-geospatial-analysis-tools/master/WhiteboxGIS/resources/plugins/Scripts"
 	String downloadArtifact = "${remoteDir}/${scriptName}"
 
 	// Download the remote file
 	//String outFileName = "/Users/johnlindsay/Documents/${scriptName}" 
 	Downloader d = new Downloader(wg, localFileName, downloadArtifact) 
+	pluginHost.showFeedback(localFileName)
+	pluginHost.showFeedback(downloadArtifact)
 	int ret = d.download(scriptName, localFileModifiedTime)
+	//pluginHost.showFeedback(downloadArtifact)
 	if (ret == 0) {
 		// see if there is a help file for this script that you can download
 		String localHelpDir = "${pluginHost.resourcesDirectory}Help${pathSep}"
-		String remoteHelpDir = "https://whitebox-geospatial-analysis-tools.googlecode.com/svn/trunk/WhiteboxGIS/resources/Help/"
+		//String remoteHelpDir = "https://whitebox-geospatial-analysis-tools.googlecode.com/svn/trunk/WhiteboxGIS/resources/Help/"
+		String remoteHelpDir = "https://raw.githubusercontent.com/jblindsay/whitebox-geospatial-analysis-tools/master/WhiteboxGIS/resources/Help/"
 	
 		String helpFileName = scriptName.substring(0, scriptName.indexOf(".")) + ".html"
 		downloadArtifact = "${remoteHelpDir}${helpFileName}"
@@ -166,10 +171,12 @@ def updateAllScripts = {
 	WhiteboxGui wg = (WhiteboxGui)(pluginHost)
 	String pathSep = File.separator
 	String scriptDir = "${pluginHost.resourcesDirectory}plugins${pathSep}Scripts${pathSep}"
-	String dir = "https://whitebox-geospatial-analysis-tools.googlecode.com/svn/trunk/WhiteboxGIS/resources/plugins/Scripts/"
+	//String dir = "https://whitebox-geospatial-analysis-tools.googlecode.com/svn/trunk/WhiteboxGIS/resources/plugins/Scripts/"
+	String dir = "https://raw.githubusercontent.com/jblindsay/whitebox-geospatial-analysis-tools/master/WhiteboxGIS/resources/plugins/Scripts/"
 
 	String localHelpDir = "${pluginHost.resourcesDirectory}Help${pathSep}"
-	String remoteHelpDir = "https://whitebox-geospatial-analysis-tools.googlecode.com/svn/trunk/WhiteboxGIS/resources/Help/"
+	//String remoteHelpDir = "https://whitebox-geospatial-analysis-tools.googlecode.com/svn/trunk/WhiteboxGIS/resources/Help/"
+	String remoteHelpDir = "https://raw.githubusercontent.com/jblindsay/whitebox-geospatial-analysis-tools/master/WhiteboxGIS/resources/Help/"
 	
 	URL url = new URL(dir)
 	HttpURLConnection connection = (HttpURLConnection) url.openConnection();
