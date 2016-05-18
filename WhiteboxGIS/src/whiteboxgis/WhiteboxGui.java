@@ -111,8 +111,8 @@ public class WhiteboxGui extends JFrame implements ThreadListener, ActionListene
     private static PluginService pluginService = null;
     private StatusBar status;
     // common variables
-    private static final String versionName = "3.2 'Iguazu'";
-    public static final String versionNumber = "3.2.3";
+    private static final String versionName = "3.3 'Glasgow'";
+    public static final String versionNumber = "3.3.0";
     public static String currentVersionNumber;
     private String skipVersionNumber = versionNumber;
     private ArrayList<PluginInfo> plugInfo = null;

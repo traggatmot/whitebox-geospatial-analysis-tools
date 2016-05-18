@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * Copyright (C) 2016 Dr. John Lindsay <jlindsay@uoguelph.ca>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,10 +33,10 @@ import groovy.transform.CompileStatic
 // The following four variables are required for this 
 // script to be integrated into the tool tree panel. 
 // Comment them out if you want to remove the script.
-def name = "ExportGeoTIFF"
-def descriptiveName = "Export GeoTIFF"
-def description = "Exports a Whitebox GAT Raster to GeoTIFF format (.tif)"
-def toolboxes = ["IOTools"]
+//def name = "ExportGeoTIFF"
+//def descriptiveName = "Export GeoTIFF"
+//def description = "Exports a Whitebox GAT Raster to GeoTIFF format (.tif)"
+//def toolboxes = ["IOTools"]
 
 public class ExportGeoTIFF implements ActionListener {
     private WhiteboxPluginHost pluginHost

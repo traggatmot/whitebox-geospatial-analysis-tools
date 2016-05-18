@@ -68,6 +68,9 @@ public class LASReader {
     private int endingPoint = -1;
     private PointRecord[] pointRecs;
     private PointRecColours[] pointColours;
+    private boolean coloursNeedReading = true;
+    private boolean pointsNeedReading = true;
+    
     //private PointWavePacket[] pointWavePagetData;
 
     // Constructors
@@ -288,11 +291,18 @@ public class LASReader {
                 return null;
             }
 
-            if (i < startingPoint || i > endingPoint) {
-                startingPoint = i;
-                endingPoint = i + bufferSize - 1;
+            if (i < startingPoint || i > endingPoint || pointsNeedReading) {
+                if (startingPoint != i) {
+                    startingPoint = i;
+                    coloursNeedReading = true;
+                }
+                if (endingPoint != (i + bufferSize - 1)) {
+                    endingPoint = i + bufferSize - 1;
+                    coloursNeedReading = true;
+                }
                 //read the points in
                 readPointRecords();
+                pointsNeedReading = false;
             }
 
             int n = i - startingPoint;
@@ -310,11 +320,18 @@ public class LASReader {
                 return null;
             }
 
-            if (i < startingPoint || i > endingPoint) {
-                startingPoint = i;
-                endingPoint = i + bufferSize - 1;
-                //read the points in
+            if (i < startingPoint || i > endingPoint || coloursNeedReading) {
+                if (startingPoint != i) {
+                    startingPoint = i;
+                    pointsNeedReading = true;
+                }
+                if (endingPoint != (i + bufferSize - 1)) {
+                    endingPoint = i + bufferSize - 1;
+                    pointsNeedReading = true;
+                }
+                //read the colour data in
                 readPointRecColours();
+                coloursNeedReading = false;
             }
 
             int n = i - startingPoint;

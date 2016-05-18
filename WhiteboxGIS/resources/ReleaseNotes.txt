@@ -20,10 +20,12 @@ greatly increased performance.
 
 RELEASE NOTES:
 
-Version 3.2.3 ()
+Version 3.3.0 (May 2016)
 -Added the Quantiles tool, which transforms a raster into quantiles. Quantiles 
  are values taken at regular intervals from the inverse of the cumulative 
  distribution function (CDF) of a random variable.
+-Altered the 'Update Script From Code Repository' function to retrieve updates 
+ from the new GitHub Whitebox repo rather than Google Code.
 
 
 Version 3.2.2 (April 12, 2015)

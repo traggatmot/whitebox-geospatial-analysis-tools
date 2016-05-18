@@ -44,6 +44,14 @@ public class PaletteImage extends JPanel {
         
     }
     
+    /**
+     * 
+     * @param width 
+     * @param height
+     * @param paletteFile
+     * @param isReversed
+     * @param orientation 
+     */
     public PaletteImage(int width, int height, String paletteFile, boolean isReversed, int orientation) {
         this.setMaximumSize(new Dimension(width, height));
         this.setPreferredSize(new Dimension(width, height));
