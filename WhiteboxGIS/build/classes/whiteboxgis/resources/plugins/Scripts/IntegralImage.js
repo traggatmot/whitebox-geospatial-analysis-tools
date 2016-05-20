@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2016 Dr. John Lindsay <jlindsay@uoguelph.ca>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ 
 /* global Java */
 
 // imports
@@ -17,7 +34,7 @@ var description = "Tranforms raster into an integral image";
 var toolboxes = ["ImageTransformations"];
 
 // Create a dialog for the tool
-function createDialog(args, toolName) {
+function createDialog(args) {
     if (args.length !== 0) {
         execute(args);
     } else {
@@ -39,12 +56,13 @@ function createDialog(args, toolName) {
         });
 
         // Create the scriptdialog object
-        sd = new ScriptDialog(pluginHost, descriptiveName, ac);
+        var sd = new ScriptDialog(pluginHost, descriptiveName, ac);
 
         // Add some components to it
         sd.addDialogFile("Input raster file", "Input Raster File:", "open", "Raster Files (*.dep), DEP", true, false);
         sd.addDialogFile("Output raster file", "Output Raster File:", "save", "Raster Files (*.dep), DEP", true, false);
-        
+//        sd.addDialogDataInput("Number of significant decimal places", "Significant Decimal Places:", "2", true, true);
+            
         // Specifying the help file will display the html help
         // file in the help pane. This file should be be located 
         // in the help directory and have the same name as the 
@@ -73,20 +91,28 @@ function execute(args) {
         var i;
 
         // read in the arguments
-        if (args.length < 2) {
+        if (args.length < 3) {
             pluginHost.showFeedback("The tool is being run without the correct number of parameters");
             return;
         }
         var inputFile = args[0];
         var outputFile = args[1];
-        
+//        var numSigDecimalPlaces = 3;
+//        if (args.length === 4) {
+//			numSigDecimalPlaces = parseInt(args[2]);
+//			if (numSigDecimalPlaces < 0) { numSigDecimalPlaces = 0; }
+//			if (numSigDecimalPlaces > 8) { numSigDecimalPlaces = 8; }
+//		}
+//
+//		var multiplier = Math.pow(10, numSigDecimalPlaces);
+			
         // setup the raster
         var input = new WhiteboxRaster(inputFile, "rw");
         var rows = input.getNumberRows();
         var rowsLessOne = rows - 1;
         var columns = input.getNumberColumns();
         var nodata = input.getNoDataValue();
-        
+//        var minValue = input.getMinimumValue();
         
         var output = new WhiteboxRaster(outputFile, "rw", inputFile, DataType.FLOAT, nodata);
         output.setPreferredPalette("spectrum.pal");
@@ -98,7 +124,7 @@ function execute(args) {
             for (col = 0; col < columns; col++) {
                 z = input.getValue(row, col);
                 if (z != nodata) {
-                	rowTotal += z;
+                	rowTotal += z //(z - minValue) * multiplier;
                 }
             	if (row > 0) {
             		z = rowTotal + output.getValue(row - 1, col);
@@ -139,5 +165,5 @@ function execute(args) {
 if (args === null) {
     pluginHost.showFeedback("The arguments array has not been set.");
 } else {
-    var sd = createDialog(args, descriptiveName);
+    var sd = createDialog(args);
 }

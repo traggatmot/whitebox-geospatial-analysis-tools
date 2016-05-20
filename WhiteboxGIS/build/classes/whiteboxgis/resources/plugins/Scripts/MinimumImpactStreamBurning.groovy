@@ -46,8 +46,8 @@ import groovy.transform.CompileStatic
 // Comment them out if you want to remove the script.
 def name = "MinimumImpactStreamBurning"
 def descriptiveName = "Minimum Impact Stream Burning"
-def description = "Burns streams into a DEM."
-def toolboxes = ["DEMPreprocessing"]
+//def description = "Burns streams into a DEM."
+//def toolboxes = ["DEMPreprocessing"]
 
 public class MinimumImpactStreamBurning implements ActionListener {
 	private WhiteboxPluginHost pluginHost

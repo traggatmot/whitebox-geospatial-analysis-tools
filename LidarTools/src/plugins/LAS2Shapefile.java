@@ -14,6 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/* Update History: 
+    Fixed problem with writing dbf file May 18, 2016.
+*/
 package plugins;
 
 import java.io.File;
@@ -129,6 +133,8 @@ public class LAS2Shapefile implements WhiteboxPlugin {
         if (myHost != null && ((progress != previousProgress)
                 || (!progressLabel.equals(previousProgressLabel)))) {
             myHost.updateProgress(progressLabel, progress);
+        } else {
+            System.out.println(progressLabel + " " + progress + "%");
         }
         previousProgress = progress;
         previousProgressLabel = progressLabel;
@@ -143,6 +149,8 @@ public class LAS2Shapefile implements WhiteboxPlugin {
     private void updateProgress(int progress) {
         if (myHost != null && progress != previousProgress) {
             myHost.updateProgress(progress);
+        } else {
+            System.out.println("Progress: " + progress + "%");
         }
         previousProgress = progress;
     }
@@ -196,7 +204,7 @@ public class LAS2Shapefile implements WhiteboxPlugin {
         double gpsTime;
         int intensity;
         byte classValue, numReturns, returnNum, scanAngle;
-        int a, n;
+        int a;
         int progress = 0;
         int numPoints = 0;
 
@@ -316,7 +324,7 @@ public class LAS2Shapefile implements WhiteboxPlugin {
                         whitebox.geospatialfiles.shapefile.Point wbGeometry = new whitebox.geospatialfiles.shapefile.Point(x, y);
                         
                         Object[] rowData = new Object[8];
-                        rowData[0] = numPoints + 1;
+                        rowData[0] = (double)numPoints + 1;
                         rowData[1] = z;
                         rowData[2] = (double) intensity;
                         rowData[3] = (double) classValue;
@@ -363,9 +371,8 @@ public class LAS2Shapefile implements WhiteboxPlugin {
 //    public static void main(String[] args) {
 //        LAS2Shapefile L2S = new LAS2Shapefile();
 //        args = new String[1];
-//        args[0] = "/Users/johnlindsay/Documents/Data/Rondeau LiDAR/LAS classified/403_4696.las;/Users/johnlindsay/Documents/Data/Rondeau LiDAR/LAS classified/403_4695.las";
+//        args[0] = "/Users/johnlindsay/Documents/Data/LAS files/423_4693.las";
 //        L2S.setArgs(args);
 //        L2S.run();
-//        
 //    }
 }

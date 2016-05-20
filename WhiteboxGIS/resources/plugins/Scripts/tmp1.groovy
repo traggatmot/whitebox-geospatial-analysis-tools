@@ -44,8 +44,8 @@ import groovy.transform.CompileStatic
 // Comment them out if you want to remove the script.
 def name = "BreachBurning"
 def descriptiveName = "BreachBurning"
-def description = "Burns streams into a DEM."
-def toolboxes = ["DEMPreprocessing"]
+//def description = "Burns streams into a DEM."
+//def toolboxes = ["DEMPreprocessing"]
 
 public class BreachBurning implements ActionListener {
 	private WhiteboxPluginHost pluginHost

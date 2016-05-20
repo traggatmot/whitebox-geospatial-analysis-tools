@@ -22,7 +22,7 @@ var description = "Extract whole watersheds for a set of outlet points.";
 var toolboxes = ["WatershedTools"];
 
 // Create a dialog for the tool
-function createDialog(args, toolName) {
+function createDialog(args) {
     if (args.length !== 0) {
         execute(args);
     } else {
@@ -44,8 +44,8 @@ function createDialog(args, toolName) {
         });
 
         // Create the scriptdialog object
-        sd = new ScriptDialog(pluginHost, descriptiveName, ac);
-
+        var sd = new ScriptDialog(pluginHost, descriptiveName, ac);
+        
         // Add some components to it
         sd.addDialogFile("Input D8 flow pointer file", "Input D8 Flow Pointer Raster File:", "open", "Raster Files (*.dep), DEP", true, false);
         sd.addDialogFile("Input pour point (outlet) file", "Input Pour Point (i.e. Outlet) File:", "open", "Vector Files (*.shp), SHP", true, false);
@@ -276,5 +276,5 @@ function execute(args) {
 if (args === null) {
     pluginHost.showFeedback("The arguments array has not been set.");
 } else {
-    var sd = createDialog(args, descriptiveName);
+    var sd = createDialog(args);
 }

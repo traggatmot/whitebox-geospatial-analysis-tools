@@ -1,4 +1,4 @@
-Whitebox Geospatial Analysis Tools 3.0 - Iguazu
+Whitebox Geospatial Analysis Tools 3.3 - Glasgow
 
 
 GENERAL DESCRIPTION: 
@@ -21,12 +21,41 @@ greatly increased performance.
 RELEASE NOTES:
 
 Version 3.3.0 (May 2016)
+-Altered the 'Update Script From Code Repository' function to retrieve updates 
+ from the new GitHub Whitebox repo rather than Google Code.
 -Added the Quantiles tool, which transforms a raster into quantiles. Quantiles 
  are values taken at regular intervals from the inverse of the cumulative 
  distribution function (CDF) of a random variable.
--Altered the 'Update Script From Code Repository' function to retrieve updates 
- from the new GitHub Whitebox repo rather than Google Code.
-
+-Fixed a bug in the LAS2Shapefile tool that did not allow for the output dbf file
+ to be written.
+-Added the Convert LAS to MultiPointZ Shapefile tool. This allows for a more
+ efficient means of storing LiDAR data as a Shapefile. All LiDAR points are 
+ stored in a single record in the Shapefile, with Z and intensity data stored
+ in the 'z' and 'm' components of the shapefile respectively.
+-Added the Unnest Basins tool to extract the entire, unnested watersheds from 
+ a series of pour points and a DEM.
+-Added the Stream Slope (continuous) tool, which calculates the slope of stream
+ grid cells in a raster stream network.
+-Added the Rasterize Streams tool.
+-Added the Prune Vector Stream Network tool.
+-Added the experimental Impoundment Index tool for applications involving the
+ mapping of drained wetlands from LiDAR and other fine-resolution DEMs.
+-Added the Roughness From Point Cloud Profiles (RPCP) tool.
+-Added the Split Vector Lines tool.
+-Added the Integral Image tool.
+-Added discrete Sibson interpolation tools (i.e. natural neighbour) for both 
+ LiDAR specific data and for point data contained in Shapefiles.
+-Added the De-noise DEM tool.
+-Added the Reinitialize Attribute Table tool.
+-Added the Standard Deviation of Elevation tool.
+-Added the Isolate Ground Points (Lindsay's Method) tool for filtering LiDAR
+ point clouds.
+-Added the Create Multiscale Topographic Position Image tool.
+-Added the Topological Breach Burn and FillBurn stream burning tools.
+-Modified tools that require calculating integral images to include a "number of
+ significant decimal places" input. This allows the integral images to be 
+ calculated using longs (instead of doubles) and reduces the likelihood of 
+ numerical overflow errors for rasters with greater than two million grid cells.
 
 Version 3.2.2 (April 12, 2015)
 -LAS files can now be rendered based on the Classification, Scan Angle, and GPS Time

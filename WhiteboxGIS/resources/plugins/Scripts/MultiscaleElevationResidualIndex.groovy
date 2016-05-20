@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * Copyright (C) 2016 Dr. John Lindsay <jlindsay@uoguelph.ca>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -73,6 +73,7 @@ public class MultiscaleElevationResidualIndex implements ActionListener {
 			sd.addDialogFile("Input DEM file", "Input DEM:", "open", "Raster Files (*.dep), DEP", true, false)
 			sd.addDialogFile("Output file", "Output Raster File:", "save", "Raster Files (*.dep), DEP", true, false)
 			sd.addDialogDataInput("Base value", "Base Value:", "1.5", true, false)
+            sd.addDialogDataInput("Number of significant decimal places", "Significant Decimal Places:", "2", true, true)
             
 			// resize the dialog to the standard size and display it
 			sd.setSize(800, 400)
@@ -86,7 +87,7 @@ public class MultiscaleElevationResidualIndex implements ActionListener {
 	@CompileStatic
 	private void execute(String[] args) {
 		try {
-			if (args.length != 3) {
+			if (args.length < 3) {
 				pluginHost.showFeedback("Incorrect number of arguments given to tool.")
 				return
 			}
@@ -96,6 +97,13 @@ public class MultiscaleElevationResidualIndex implements ActionListener {
 			double baseValue = Double.parseDouble(args[2])
 			if (baseValue <= 1) { baseValue = 1.01 }
 			if (baseValue >= 2) { baseValue = 2.0 }
+			int numSigDecimalPlaces = 2;
+			if (args.length >= 4) {
+				numSigDecimalPlaces = Integer.parseInt(args[3]);
+				if (numSigDecimalPlaces < 0) { numSigDecimalPlaces = 0; }
+				if (numSigDecimalPlaces > 8) { numSigDecimalPlaces = 8; }
+			}
+			double multiplier = Math.pow(10, numSigDecimalPlaces);
 			
 			int numScales
 			int numCells
@@ -122,13 +130,15 @@ public class MultiscaleElevationResidualIndex implements ActionListener {
 
 			numScales = radii.size()
 
-			double[][] integralImage = new double[rows][cols]
+			long[][] integralImage = new long[rows][cols]
 			int[][] integralImageN = new int[rows][cols]
 			
 			// calculate the integral image
 			int progress = 0
 			int oldProgress = -1
-			double z, sum, sumN
+			double z
+			long sum, val
+			int sumN
 			for (int row = 0; row < rows; row++) {
 				sum = 0
 				sumN = 0
@@ -137,10 +147,11 @@ public class MultiscaleElevationResidualIndex implements ActionListener {
   					if (z == nodata) {
   						z = 0
   					} else {
-  						z = (z - minValue) / range
+  						z = (z - minValue) * multiplier //(z - minValue) / range
   						sumN++
   					}
-  					sum += z
+  					val = (long)(Math.round(z))
+  					sum += val //z
   					if (row > 0) {
 						integralImage[row][col] = sum + integralImage[row - 1][col]
 						integralImageN[row][col] = (int)(sumN + integralImageN[row - 1][col])
@@ -193,14 +204,15 @@ public class MultiscaleElevationResidualIndex implements ActionListener {
 							if (x2 < 0) { x2 = 0 }
 							if (x2 >= cols) { x2 = cols - 1 }
 
-							a = integralImage[y1][x1]
-							b = integralImage[y1][x2]
-							c = integralImage[y2][x2]
-							d = integralImage[y2][x1]
+							a = integralImage[y1][x1] / multiplier
+							b = integralImage[y1][x2] / multiplier
+							c = integralImage[y2][x2] / multiplier
+							d = integralImage[y2][x1] / multiplier
 
 							numCells = (int)(integralImageN[y2][x2] + integralImageN[y1][x1] - integralImageN[y1][x2] - integralImageN[y2][x1])
 	
-							outValue = z - ((c + a - b - d) / numCells * range + minValue)
+							//outValue = z - ((c + a - b - d) / numCells * range + minValue)
+							outValue = z - ((c + a - b - d) / numCells + minValue)
 							if (outValue > 0) {
 								value++
 							}

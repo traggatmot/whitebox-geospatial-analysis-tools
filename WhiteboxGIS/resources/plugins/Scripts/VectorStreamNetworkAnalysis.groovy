@@ -14,7 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
+ /* The following is an experiment for a paper that I am drafting. It
+  *  is not yet ready for general use.
+  */
 import java.awt.event.ActionListener
 import java.awt.event.ActionEvent
 import java.beans.PropertyChangeEvent
@@ -42,8 +45,8 @@ import groovy.transform.CompileStatic
 // Comment them out if you want to remove the script.
 def name = "VectorStreamNetworkAnalysis"
 def descriptiveName = "Vector Stream Network Analysis"
-def description = "Vector stream network analysis"
-def toolboxes = ["StreamAnalysis"]
+//def description = "Vector stream network analysis"
+//def toolboxes = ["StreamAnalysis"]
 
 public class VectorStreamNetworkAnalysis implements ActionListener {
 	private WhiteboxPluginHost pluginHost

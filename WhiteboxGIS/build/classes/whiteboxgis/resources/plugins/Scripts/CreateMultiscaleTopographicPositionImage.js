@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * Copyright (C) 2016 Dr. John Lindsay <jlindsay@uoguelph.ca>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ var description = "Creates a multiscale topographic position image";
 var toolboxes = ["ElevResiduals"];
 
 // Create a dialog for the tool
-function createDialog(args, toolName) {
+function createDialog(args) {
     if (args.length !== 0) {
         execute(args);
     } else {
@@ -218,5 +218,5 @@ function execute(args) {
 if (args === null) {
     pluginHost.showFeedback("The arguments array has not been set.");
 } else {
-    var sd = createDialog(args, descriptiveName);
+    var sd = createDialog(args);
 }

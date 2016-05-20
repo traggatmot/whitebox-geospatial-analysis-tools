@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * Copyright (C) 2016 Dr. John Lindsay <jlindsay@uoguelph.ca>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,17 +42,17 @@ import groovy.transform.CompileStatic
 // The following four variables are required for this 
 // script to be integrated into the tool tree panel. 
 // Comment them out if you want to remove the script.
-def name = "BreachBurning"
-def descriptiveName = "BreachBurning"
-def description = "Burns streams into a DEM."
-def toolboxes = ["DEMPreprocessing"]
+def name = "BreachBurn"
+def descriptiveName = "BreachBurn"
+//def description = "Burns streams into a DEM."
+//def toolboxes = ["DEMPreprocessing"]
 
-public class BreachBurning implements ActionListener {
+public class BreachBurn implements ActionListener {
 	private WhiteboxPluginHost pluginHost
 	private ScriptDialog sd;
 	private String descriptiveName
 	
-	public BreachBurning(WhiteboxPluginHost pluginHost, 
+	public BreachBurn(WhiteboxPluginHost pluginHost, 
 		String[] args, String name, String descriptiveName) {
 		this.pluginHost = pluginHost
 		this.descriptiveName = descriptiveName
@@ -692,5 +692,5 @@ public class BreachBurning implements ActionListener {
 if (args == null) {
 	pluginHost.showFeedback("Plugin arguments not set.")
 } else {
-	def tdf = new BreachBurning(pluginHost, args, name, descriptiveName)
+	def tdf = new BreachBurn(pluginHost, args, name, descriptiveName)
 }

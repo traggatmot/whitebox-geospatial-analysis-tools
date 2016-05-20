@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * Copyright (C) 2016 Dr. John Lindsay <jlindsay@uoguelph.ca>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,6 +14,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+ /* Update (May 2016): I'm not sure whether or not this tool actually 
+  *  works. I cannot find any online reference to a MapWindow ASCII 
+  *  Raster format.
+  *  
+  *  As such, I'm not listing this tool in the toolbox until I can
+  *  confirm the format exists. I cannot find the original posting.
+  */
  
 import java.awt.event.ActionListener
 import java.awt.event.ActionEvent
@@ -35,8 +43,8 @@ import groovy.transform.CompileStatic
 // Comment them out if you want to remove the script.
 def name = "ImportMapWindowAsciiGrid"
 def descriptiveName = "Import MapWindow ASCII Grid"
-def description = "Imports a MapWindow ASCII grid file (.txt, .asc)."
-def toolboxes = ["IOTools"]
+//def description = "Imports a MapWindow ASCII grid file (.txt, .asc)."
+//def toolboxes = ["IOTools"]
 
 // The following variables tell the plugin host that 
 // this tool should be used as a supported geospatial

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * Copyright (C) 2015 Dr. John Lindsay <jlindsay@uoguelph.ca>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -81,7 +81,8 @@ public class MaximumElevationDeviation implements ActionListener {
 			def minN = sd.addDialogDataInput("Minimum search neighbourhood radius (cells)", "Minimum Neighbourhood Radius (cells):", "3", true, false)
             def maxN = sd.addDialogDataInput("Maximum search neighbourhood radius (cells)", "Maximum Neighbourhood Radius (cells):", "", true, false)
             def stepSize = sd.addDialogDataInput("Step size", "Step Size (cells):", "10", true, false)
-
+			sd.addDialogDataInput("Number of significant decimal places", "Significant Decimal Places:", "2", true, true)
+            
             //Listener           
             def lsn = { evt -> if (evt.getPropertyName().equals("value")) { 
             		
@@ -111,7 +112,7 @@ public class MaximumElevationDeviation implements ActionListener {
 	@CompileStatic
 	private void execute(String[] args) {
 		try {
-			if (args.length != 6) {
+			if (args.length < 7) {
 				pluginHost.showFeedback("Incorrect number of arguments given to tool.")
 				return
 			}
@@ -135,13 +136,21 @@ public class MaximumElevationDeviation implements ActionListener {
 			int neighbourhoodStep = Integer.parseInt(args[5])
 			if (neighbourhoodStep < 1) { neighbourhoodStep = 1 }
 			
+			int numSigDecimalPlaces = 3;
+			if (args.length == 4) {
+				numSigDecimalPlaces = Integer.parseInt(args[6]);
+				if (numSigDecimalPlaces < 0) { numSigDecimalPlaces = 0; }
+				if (numSigDecimalPlaces > 8) { numSigDecimalPlaces = 8; }
+			}
+			
 			double minValue = image.getMinimumValue()
 			double maxValue = image.getMaximumValue()
 			double range = maxValue - minValue
 			double K = minValue + range / 2.0
+			double multiplier = Math.pow(10, numSigDecimalPlaces);
 			
-			double[][] I = new double[rows][cols]
-			double[][] I2 = new double[rows][cols]
+			long[][] I = new long[rows][cols]
+			long[][] I2 = new long[rows][cols]
 			int[][] IN = new int[rows][cols]
 			double[][] maxVal = new double[rows][cols]
 			int[][] scaleVal = new int[rows][cols]
@@ -150,7 +159,9 @@ public class MaximumElevationDeviation implements ActionListener {
 			// calculate the integral image
 			int progress = 0
 			int oldProgress = -1
-			double z, sum, sumN, sumSqr
+			double z
+			long sum, sumSqr, val
+			int sumN
 			for (int row = 0; row < rows; row++) {
 				sum = 0
 				sumSqr = 0
@@ -161,11 +172,12 @@ public class MaximumElevationDeviation implements ActionListener {
   					if (z == nodata) {
   						z = 0
   					} else {
-  						z = z - K
+  						z = (z - K) * multiplier
   						sumN++
   					}
-  					sum += z
-  					sumSqr += z * z
+  					val = (long)(Math.round(z))
+  					sum += val
+  					sumSqr += val * val
   					if (row > 0) {
   						I[row][col] = sum + I[row - 1][col]
   						I2[row][col] = sumSqr + I2[row - 1][col]
@@ -232,10 +244,10 @@ public class MaximumElevationDeviation implements ActionListener {
 							if (N > 0) {
 								sum = I[y2][x2] + I[y1][x1] - I[y1][x2] - I[y2][x1]
 								sumSqr = I2[y2][x2] + I2[y1][x1] - I2[y1][x2] - I2[y2][x1]
-								v = (sumSqr - (sum * sum) / N) / N
+								v = ((sumSqr / (multiplier * multiplier)) - ((sum / multiplier) * (sum / multiplier)) / N) / N
 								if (v > 0) {
 									s = Math.sqrt(v)
-									m = sum / N
+									m = (sum / multiplier) / N
 									outValue = ((z - K) - m) / s
 									if (Math.abs(outValue) > maxVal[row][col]) {
 										maxVal[row][col] = Math.abs(outValue)
@@ -268,8 +280,8 @@ public class MaximumElevationDeviation implements ActionListener {
 
 			// release some memory
 //			image.close()
-			I = new double[0][0]
-			I2 = new double[0][0]
+			I = new long[0][0]
+			I2 = new long[0][0]
 			IN = new int[0][0]
 			zVal = new double[0][0]
 			

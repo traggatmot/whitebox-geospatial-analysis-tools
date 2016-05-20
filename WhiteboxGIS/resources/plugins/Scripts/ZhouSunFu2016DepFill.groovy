@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * Copyright (C) 2016 Dr. John Lindsay <jlindsay@uoguelph.ca>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,6 +14,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+ /* This is an experiment with the Zhou, Sun, and Fu (2016) modified
+  *  priority flood depression filling algorithm. The algorithm uses
+  *  a regular queue for most of the heavy lifting instead of a 
+  *  priority queue. According to the publication, the efficiency
+  *  difference between a queue and a pq is so great that the
+  *  algorithm fills DEMs in about half the time as the regular
+  *  prority flood method. I was never able to acheive anything
+  *  near that level of improvement. In fact, for many DEMs the
+  *  modified algorithm was slower. I don't know if it is down to
+  *  the queue implementation in Java being inefficient or the
+  *  pq implementation being partiuclarly efficient but either way
+  *  the gains in efficiency just didn't pan out.
+  */
  
 import java.awt.event.ActionListener
 import java.awt.event.ActionEvent
@@ -32,8 +46,6 @@ import whitebox.geospatialfiles.ShapeFile
 import whitebox.geospatialfiles.shapefile.*
 import whitebox.ui.plugin_dialog.*
 import whitebox.utilities.StringUtilities
-//import whitebox.structures.BooleanBitArray2D
-//import whitebox.structures.NibbleArray2D
 import groovy.transform.CompileStatic
 import groovy.time.TimeDuration
 import groovy.time.TimeCategory
@@ -41,10 +53,10 @@ import groovy.time.TimeCategory
 // The following four variables are required for this 
 // script to be integrated into the tool tree panel. 
 // Comment them out if you want to remove the script.
-def name = "TestDepFill"
-def descriptiveName = "TestDepFill"
-def description = "Calculates the distance of grid cells to the nearest downslope stream cell."
-def toolboxes = ["DEMPreprocessing"]
+//def name = "TestDepFill"
+//def descriptiveName = "TestDepFill"
+//def description = "Calculates the distance of grid cells to the nearest downslope stream cell."
+//def toolboxes = ["DEMPreprocessing"]
 
 public class TestDepFill implements ActionListener {
 	private WhiteboxPluginHost pluginHost

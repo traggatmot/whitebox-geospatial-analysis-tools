@@ -1,3 +1,6 @@
+/* Early draft of the Roughness From Point Cloud Profiles tool.
+ *  Kept as back-up. Dr. John Lindsay.
+ */
 import java.awt.event.ActionListener
 import java.awt.event.ActionEvent
 import java.util.Date
@@ -54,8 +57,8 @@ import org.jfree.ui.RectangleAnchor;
 // Comment them out if you want to remove the script.
 def name = "ProfileRoughnessLiDAR"
 def descriptiveName = "Profile Roughness (LiDAR)"
-def description = "Extracts profile roughness from LiDAR data."
-def toolboxes = ["LidarTools"]
+//def description = "Extracts profile roughness from LiDAR data."
+//def toolboxes = ["LidarTools"]
 
 public class ProfileRoughnessLiDAR implements ActionListener {
 	private WhiteboxPluginHost pluginHost

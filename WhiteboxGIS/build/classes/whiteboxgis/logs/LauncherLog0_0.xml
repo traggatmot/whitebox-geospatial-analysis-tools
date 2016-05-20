@@ -232,3 +232,211 @@
   <message>HeapSize = -Xmx14G</message>
 </record>
 </log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-05-18T13:45:27</date>
+  <millis>1463593527333</millis>
+  <sequence>0</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>launchProgram</method>
+  <thread>1</thread>
+  <message>sun.arch.data.model = 64</message>
+</record>
+<record>
+  <date>2016-05-18T13:45:27</date>
+  <millis>1463593527373</millis>
+  <sequence>1</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>startSecondJVM</method>
+  <thread>1</thread>
+  <message>HeapSize = -Xmx14G</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-05-18T15:56:05</date>
+  <millis>1463601365017</millis>
+  <sequence>0</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>launchProgram</method>
+  <thread>1</thread>
+  <message>sun.arch.data.model = 64</message>
+</record>
+<record>
+  <date>2016-05-18T15:56:05</date>
+  <millis>1463601365038</millis>
+  <sequence>1</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>startSecondJVM</method>
+  <thread>1</thread>
+  <message>HeapSize = -Xmx14G</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-05-18T16:53:34</date>
+  <millis>1463604814715</millis>
+  <sequence>0</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>launchProgram</method>
+  <thread>1</thread>
+  <message>sun.arch.data.model = 64</message>
+</record>
+<record>
+  <date>2016-05-18T16:53:34</date>
+  <millis>1463604814727</millis>
+  <sequence>1</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>startSecondJVM</method>
+  <thread>1</thread>
+  <message>HeapSize = -Xmx14G</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-05-18T16:58:44</date>
+  <millis>1463605124440</millis>
+  <sequence>0</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>launchProgram</method>
+  <thread>1</thread>
+  <message>sun.arch.data.model = 64</message>
+</record>
+<record>
+  <date>2016-05-18T16:58:44</date>
+  <millis>1463605124457</millis>
+  <sequence>1</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>startSecondJVM</method>
+  <thread>1</thread>
+  <message>HeapSize = -Xmx14G</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-05-18T17:00:20</date>
+  <millis>1463605220618</millis>
+  <sequence>0</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>launchProgram</method>
+  <thread>1</thread>
+  <message>sun.arch.data.model = 64</message>
+</record>
+<record>
+  <date>2016-05-18T17:00:20</date>
+  <millis>1463605220665</millis>
+  <sequence>1</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>startSecondJVM</method>
+  <thread>1</thread>
+  <message>HeapSize = -Xmx14G</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-05-19T16:09:06</date>
+  <millis>1463688546067</millis>
+  <sequence>0</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>launchProgram</method>
+  <thread>1</thread>
+  <message>sun.arch.data.model = 64</message>
+</record>
+<record>
+  <date>2016-05-19T16:09:06</date>
+  <millis>1463688546115</millis>
+  <sequence>1</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>startSecondJVM</method>
+  <thread>1</thread>
+  <message>HeapSize = -Xmx14G</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-05-20T09:05:26</date>
+  <millis>1463749526595</millis>
+  <sequence>0</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>launchProgram</method>
+  <thread>1</thread>
+  <message>sun.arch.data.model = 64</message>
+</record>
+<record>
+  <date>2016-05-20T09:05:26</date>
+  <millis>1463749526619</millis>
+  <sequence>1</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>startSecondJVM</method>
+  <thread>1</thread>
+  <message>HeapSize = -Xmx14G</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-05-20T09:16:14</date>
+  <millis>1463750174558</millis>
+  <sequence>0</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>launchProgram</method>
+  <thread>1</thread>
+  <message>sun.arch.data.model = 64</message>
+</record>
+<record>
+  <date>2016-05-20T09:16:14</date>
+  <millis>1463750174586</millis>
+  <sequence>1</sequence>
+  <logger>whiteboxgis</logger>
+  <level>CONFIG</level>
+  <class>whiteboxgis.Main</class>
+  <method>startSecondJVM</method>
+  <thread>1</thread>
+  <message>HeapSize = -Xmx14G</message>
+</record>
+</log>

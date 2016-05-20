@@ -8,10 +8,10 @@ var ShapeFile = Java.type('whitebox.geospatialfiles.ShapeFile');
 // The following four variables are what make this recognizable as 
 // a plugin tool for Whitebox. Each of name, descriptiveName, 
 // description and toolboxes must be present.
-var toolName = "PolygonCenterline";
-var descriptiveName = "Polygon Centerlines";
-var description = "Locates the centerlines of polygons";
-var toolboxes = ["topmost"];
+//var toolName = "PolygonCenterline";
+//var descriptiveName = "Polygon Centerlines";
+//var description = "Locates the centerlines of polygons";
+//var toolboxes = ["topmost"];
 
 // Create a dialog for the tool
 function createDialog(args, toolName) {

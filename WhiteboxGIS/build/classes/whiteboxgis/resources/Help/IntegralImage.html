@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=iso-8859-1" http-equiv="content-type">
+        <title>IntegralImage</title>
+        <link rel="stylesheet" type="text/css" href="Help.css">
+    </head>
+
+    <body>
+        <h1>Integral image</h1>
+
+        <p>This tool transforms an input raster image into an integral image, or summed area table. Integral
+        images are the two-dimensional equivalent to a cumulative distribution function. Each pixel 
+        contains the sum of all pixels contained within the enclosing rectangle above and to the left of
+        a pixel. Images with more than two million grid cells will likely experience numerical overflow errors
+        when converted to an integral image.</p>
+
+        <h2 class="SeeAlso">See Also:</h2>
+        <ul>
+            <li>None</li>
+        </ul>
+
+        <h2 class="SeeAlso">Scripting:</h2>
+        <p>The following is an example of a Python script using this tool:</p>
+        <p style="background-color: rgb(240,240,240);">
+            <code>
+                wd = pluginHost.getWorkingDirectory()<br>
+                inputFile = wd + "input.dep"<br>
+                outputFile = wd + "output.dep"<br>
+                args = [inputFile, outputFile]<br>
+                pluginHost.runPlugin("IntegralImage", args, False)<br>
+            </code>
+        </p>
+        <p>This is a Groovy script also using this tool:</p>
+        <p style="background-color: rgb(240,240,240);">
+            <code>
+                def wd = pluginHost.getWorkingDirectory()<br>
+                def inputFile = wd + "input.shp"<br>
+                def outputFile = wd + "output.dep"<br>
+                String[] args = [inputFile, outputFile]<br>
+                pluginHost.runPlugin("IntegralImage", args, false)<br>
+            </code>
+        </p>
+
+        <h2 class="SeeAlso">Credits:</h2>
+        <ul>
+            <li>John Lindsay (2016) email: jlindsay@uoguelph.ca</li>
+        </ul>
+    </body>
+</html>
