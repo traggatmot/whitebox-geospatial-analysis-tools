@@ -36,9 +36,9 @@ public class WhiteboxRasterBase {
     protected boolean isDirty = false;
     
     
-    // ***********************************
-    // Constructors
-    // ***********************************
+    /**
+     * Parameterless constructor
+     */
     public WhiteboxRasterBase()
     {
     }

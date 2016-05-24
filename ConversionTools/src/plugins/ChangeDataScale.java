@@ -114,7 +114,7 @@ public class ChangeDataScale implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args String array
      */
     @Override
     public void setArgs(String[] args) {
