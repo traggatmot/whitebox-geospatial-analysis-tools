@@ -15,6 +15,21 @@ Screenshots
 
 ![Whitebox GAT screenshot.](./screenshots/wgat3_2_2_ss4.png "Whitebox GAT screenshot.")
 
+Contributing
+------------
+
+1. Fork it ( https://github.com/jblindsay/whitebox-geospatial-analysis-tools/fork )
+2. Create your feature branch (git checkout -b my-new-feature)
+3. Commit your changes (git commit -am 'Add some feature')
+4. Push to the branch (git push origin my-new-feature)
+5. Create a new Pull Request
+
 License
 -------
+
 Whitebox GAT is distributed under the [GNU General Public License (GPL) version 3](http://www.uoguelph.ca/~hydrogeo/Whitebox/gpl-3_0.txt).
+
+Contributors
+------------
+
+- [John Lindsay](https://github.com/jblindsay) - creator, maintainer
