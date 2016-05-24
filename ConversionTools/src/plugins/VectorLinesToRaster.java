@@ -36,7 +36,7 @@ import whitebox.structures.RowPriorityGridCell;
 /**
  * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca.
  */
 public class VectorLinesToRaster implements WhiteboxPlugin {
 
@@ -192,7 +192,9 @@ public class VectorLinesToRaster implements WhiteboxPlugin {
     public boolean isActive() {
         return amIActive;
     }
-
+/**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
