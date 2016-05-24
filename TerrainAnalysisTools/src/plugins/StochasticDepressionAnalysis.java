@@ -29,7 +29,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 /**
  * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
  *
- * @author John Lindsay<jlindsay@uoguelph.ca> and Beau Ahrens
+ * @author John Lindsay email: jlindsay@uoguelph.ca and Beau Ahrens
  */
 public class StochasticDepressionAnalysis implements WhiteboxPlugin {
     private WhiteboxRaster outputFile = null;
@@ -156,7 +156,7 @@ public class StochasticDepressionAnalysis implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {

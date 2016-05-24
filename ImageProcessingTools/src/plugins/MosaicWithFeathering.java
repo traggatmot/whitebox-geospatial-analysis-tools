@@ -27,7 +27,7 @@ import whitebox.utilities.StringUtilities;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class MosaicWithFeathering implements WhiteboxPlugin {
 
@@ -149,7 +149,7 @@ public class MosaicWithFeathering implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
