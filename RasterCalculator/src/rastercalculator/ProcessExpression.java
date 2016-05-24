@@ -32,7 +32,7 @@ import whitebox.interfaces.ThreadListener;
 
 /**
  * This is originally based on a math parser written in VB by Rod Stephens.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ProcessExpression implements WhiteboxPluginHost, Runnable {
 
