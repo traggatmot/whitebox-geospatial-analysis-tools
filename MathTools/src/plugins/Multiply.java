@@ -202,31 +202,27 @@ public class Multiply implements WhiteboxPlugin {
             return;
         }
         
-        for (int i = 0; i < args.length; i++) {
-            if (i == 0) {
-                inputHeader1 = args[i];
-                File file = new File(inputHeader1);
-                image1Bool = file.exists();
-                if (image1Bool) {
-                    constant1 = -1;
-                } else {
-                    constant1 = Double.parseDouble(file.getName().replace(".dep", ""));
-                }
-                file = null;
-            } else if (i == 1) {
-                inputHeader2 = args[i];
-                File file = new File(inputHeader2);
-                image2Bool = file.exists();
-                if (image2Bool) {
-                    constant2 = -1;
-                } else {
-                    constant2 = Double.parseDouble(file.getName().replace(".dep", ""));
-                }
-                file = null;
-            } else if (i == 2) {
-                outputHeader = args[i];
-            }
+        inputHeader1 = args[0];
+        File file = new File(inputHeader1);
+        image1Bool = file.exists();
+        if (image1Bool) {
+            constant1 = -1;
+        } else {
+            constant1 = Double.parseDouble(file.getName().replace(".dep", ""));
         }
+        file = null;
+        
+        inputHeader2 = args[1];
+        file = new File(inputHeader2);
+        image2Bool = file.exists();
+        if (image2Bool) {
+            constant2 = -1;
+        } else {
+            constant2 = Double.parseDouble(file.getName().replace(".dep", ""));
+        }
+        file = null;
+        
+        outputHeader = args[2];
 
         // check to see that the inputHeader and outputHeader are not null.
         if ((inputHeader1 == null) || (inputHeader2 == null) || (outputHeader == null)) {
@@ -247,7 +243,9 @@ public class Multiply implements WhiteboxPlugin {
 
                 int rows = inputFile1.getNumberRows();
                 int cols = inputFile1.getNumberColumns();
-                double noData = inputFile1.getNoDataValue();
+                double noData1 = inputFile1.getNoDataValue();
+                
+                double noData2 = inputFile2.getNoDataValue();
 
                 // make sure that the input images have the same dimensions.
                 if ((inputFile2.getNumberRows() != rows) || (inputFile2.getNumberColumns() != cols)) {
@@ -255,7 +253,7 @@ public class Multiply implements WhiteboxPlugin {
                     return;
                 }
 
-                WhiteboxRaster outputFile = new WhiteboxRaster(outputHeader, "rw", inputHeader1, WhiteboxRaster.DataType.FLOAT, noData);
+                WhiteboxRaster outputFile = new WhiteboxRaster(outputHeader, "rw", inputHeader1, WhiteboxRaster.DataType.FLOAT, noData1);
                 outputFile.setPreferredPalette(inputFile1.getPreferredPalette());
                 for (row = 0; row < rows; row++) {
                     data1 = inputFile1.getRowValues(row);
@@ -263,8 +261,10 @@ public class Multiply implements WhiteboxPlugin {
                     for (col = 0; col < cols; col++) {
                         z1 = data1[col];
                         z2 = data2[col];
-                        if ((z1 != noData) && (z2 != noData)) {
+                        if ((z1 != noData1) && (z2 != noData2)) {
                             outputFile.setValue(row, col, z1 * z2);
+                        } else {
+                            outputFile.setValue(row, col, noData1);
                         }
                     }
                     if (cancelOp) {
