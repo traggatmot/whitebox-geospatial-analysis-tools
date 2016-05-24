@@ -1,17 +1,17 @@
-Chapter 1. Whitebox GAT Introduction
-====================================
+Chapter 1. Introduction
+=======================
 
 Preamble
 --------
-Welcome to the Whitebox Geospatial Analysis Tools user manual. The [Whitebox GAT project](http://www.uoguelph.ca/~hydrogeo/Whitebox/) began in 2009 and was intended to provide a platform for advanced geospatial data analysis with applications in both environmental research and the geomatics industry more broadly. It was envisioned from the outset as providing an ideal platform for experimenting with novel geospatial analysis methods. Equally important is the project’s goal of providing a tool that can be used for geomatics-based education. Its unique open-access development model provides easy opportunities for the user community to inspect, modify, and build upon the source code of Whitebox’s many powerful spatial analysis tools.
+Welcome to the Whitebox Geospatial Analysis Tools user manual. The [Whitebox GAT project](http://www.uoguelph.ca/~hydrogeo/Whitebox/) began in 2009 and was intended to provide a platform for advanced geospatial data analysis with applications in both environmental research and the geomatics industry more broadly. It was envisioned from the outset as providing an ideal platform for experimenting with novel geospatial analysis methods. Equally important is the project’s goal of providing a tool that can be used for geomatics-based education. Its unique open-access development model provides opportunities for the user community to inspect, modify, and build upon the source code of Whitebox GAT’s many powerful spatial analysis tools.
 
 Download
 --------
-The latest version of Whitebox GAT can be downloaded [here](http://www.uoguelph.ca/~hydrogeo/Whitebox/download.shtml "Whitebox GAT 'Glasgow' v. 3.3.0 (60 MB)")
+The latest version of Whitebox GAT can be downloaded [here](http://www.uoguelph.ca/~hydrogeo/Whitebox/download.shtml "Whitebox GAT 'Glasgow' v. 3.3.0 (60 MB)"). Whitebox GAT will run on Microsoft Windows, Mac OS X, and Linux operating systems; the same downloadable file is used for installing Whitebox GAT on each of these supported operating systems.
 
 Installation
 ------------
-Whitebox will be downloaded as a compressed zip file. In order to run Whitebox, the folder must first be unzipped (decompressed). Once the file is unzipped, to launch the program simply locate and run the WhiteboxGIS.jar file.
+The Whitebox GAT download is a compressed file (*WhiteboxGAT.zip*) that must be decompressed prior to running the software. On many operating systems, the zip file can be decompressed simply by double-clicking the file, which triggers the default decompression utility program. However, on some operating systems (including many versions of Microsoft Windows) double-clicking a zip file will only open the compressed file for viewing contents without actually decompressing it. Once *WhiteboxGAT.zip* has been decompressed, you will have a folder named *'WhiteboxGAT'*, which you may move to any desired location. This folder contains all of the files needed to run Whitebox GAT. To launch the program double-click the *WhiteboxGIS.jar* file contained within the *WhiteboxGAT* folder, or alternatively if you are running the software on Microsoft Windows, double-click the *WhiteboxGAT.bat* file. You may also wish to create a shortcut to this file on your desktop or program launcher.
 
 In order to run Whitebox you must also ensure that you have installed and enabled an up to date version of [Java](https://java.com/en/download/ "Java download") (version 8.0 or higher).
 
