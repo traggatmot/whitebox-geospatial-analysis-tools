@@ -181,7 +181,10 @@ public class CreateNewShapefile implements WhiteboxPlugin {
     public boolean isActive() {
         return amIActive;
     }
-
+    
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
