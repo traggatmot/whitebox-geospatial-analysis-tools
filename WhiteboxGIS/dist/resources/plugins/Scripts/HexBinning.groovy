@@ -115,40 +115,54 @@ public class Hexbinning implements ActionListener {
 			int oldProgress = -1
 				
 
-            // set up the output files of the shapefile and the dbf
-            DBFField[] fields = new DBFField[4];
-
-            fields[0] = new DBFField();
-            fields[0].setName("FID");
-            fields[0].setDataType(DBFField.DBFDataType.NUMERIC);
-            fields[0].setFieldLength(10);
-            fields[0].setDecimalCount(0);
-
-            fields[1] = new DBFField();
-            fields[1].setName("COUNT");
-            fields[1].setDataType(DBFField.DBFDataType.NUMERIC);
-            fields[1].setFieldLength(10);
-            fields[1].setDecimalCount(0);
-
-            fields[2] = new DBFField();
-            fields[2].setName("ROW");
-            fields[2].setDataType(DBFField.DBFDataType.NUMERIC);
-            fields[2].setFieldLength(10);
-            fields[2].setDecimalCount(0);
-
-            fields[3] = new DBFField();
-            fields[3].setName("COLUMN");
-            fields[3].setDataType(DBFField.DBFDataType.NUMERIC);
-            fields[3].setFieldLength(10);
-            fields[3].setDecimalCount(0);
-            
-            ShapeFile output = new ShapeFile(outputFile, ShapeType.POLYGON, fields);
-
             int[] parts = [0];
 
 			// figure out the extent of the base data set
 			BoundingBox extent
 			if (baseFile.toLowerCase().contains(".las")) {
+
+				// set up the output files of the shapefile and the dbf
+	            DBFField[] fields = new DBFField[6];
+	
+	            fields[0] = new DBFField();
+	            fields[0].setName("FID");
+	            fields[0].setDataType(DBFField.DBFDataType.NUMERIC);
+	            fields[0].setFieldLength(10);
+	            fields[0].setDecimalCount(0);
+	
+	            fields[1] = new DBFField();
+	            fields[1].setName("COUNT");
+	            fields[1].setDataType(DBFField.DBFDataType.NUMERIC);
+	            fields[1].setFieldLength(10);
+	            fields[1].setDecimalCount(0);
+	
+	            fields[2] = new DBFField();
+	            fields[2].setName("ROW");
+	            fields[2].setDataType(DBFField.DBFDataType.NUMERIC);
+	            fields[2].setFieldLength(10);
+	            fields[2].setDecimalCount(0);
+	
+	            fields[3] = new DBFField();
+	            fields[3].setName("COLUMN");
+	            fields[3].setDataType(DBFField.DBFDataType.NUMERIC);
+	            fields[3].setFieldLength(10);
+	            fields[3].setDecimalCount(0);
+
+	            fields[4] = new DBFField();
+	            fields[4].setName("MIN_Z");
+	            fields[4].setDataType(DBFField.DBFDataType.NUMERIC);
+	            fields[4].setFieldLength(12);
+	            fields[4].setDecimalCount(5);
+
+	            fields[5] = new DBFField();
+	            fields[5].setName("MAX_Z");
+	            fields[5].setDataType(DBFField.DBFDataType.NUMERIC);
+	            fields[5].setFieldLength(12);
+	            fields[5].setDecimalCount(5);
+	            
+	            ShapeFile output = new ShapeFile(outputFile, ShapeType.POLYGON, fields);
+
+
 				LASReader las = new LASReader(baseFile)
 				extent = new BoundingBox(las.getMinX(), las.getMinY(), las.getMaxX(), las.getMaxY());
 			
@@ -160,7 +174,7 @@ public class Hexbinning implements ActionListener {
 					int rows = (int)Math.ceil(extent.getHeight() / threeQuarterHeight)
 					int cols = (int)Math.ceil(extent.getWidth() / width)
 					if (rows * cols > 100000) {
-						int ret = pluginHost.showFeedback("This operation will produce a vector file with a very large number of polygons which may be difficult to handle. Do you want to proceed?", 1, 1)
+						int ret = pluginHost.showFeedback("This operation will produce a vector file with a very large number of \npolygons which may be difficult to handle. Do you want to proceed?", 1, 1)
 						if (ret == 1) {
 							return
 						}
@@ -187,21 +201,32 @@ public class Hexbinning implements ActionListener {
 						}
 					}
 					int[] counts = new int[numHexagons]
+					double[] minZ = new double[numHexagons]
+					double[] maxZ = new double[numHexagons]
+					for (int a = 0; a < numHexagons; a++) { 
+						minZ[a] = Double.POSITIVE_INFINITY;
+						maxZ[a] = Double.NEGATIVE_INFINITY; 
+					}
 					
 					int numPoints = (int) las.getNumPointRecords();
 					PointRecord point;
-	    			List<KdTree.Entry<Integer>> result
-	    			double x, y
+	    			//List<KdTree.Entry<Integer>> result
+	    			KdTree.Entry<Integer> result
+	    			double x, y, z
 					for (int a = 0; a < numPoints; a++) {
 		                point = las.getPointRecord(a);
 		                if (!point.isPointWithheld()) {
 		                    x = point.getX();
 		                    y = point.getY();
-		                    
+		                    z = point.getZ();
 		                    double[] entry = [y, x];
-		                    result = pointsTree.nearestNeighbor(entry, 1, true, false);
-		                    index = (int)result.get(0).value;
+		                    //result = pointsTree.nearestNeighbor(entry), 1, true, false);
+		                    result = pointsTree.nearestNeighbor(entry);
+		                    //index = (int)result.get(0).value;
+		                    index = (int)result.value;
 		                    counts[index]++
+		                    if (z < minZ[index]) { minZ[index] = z; }
+		                    if (z > maxZ[index]) { maxZ[index] = z; }
 		                }
 		                progress = (int) (100f * (a + 1) / numPoints);
 		                if (progress != oldProgress) {
@@ -230,11 +255,13 @@ public class Hexbinning implements ActionListener {
 					            }
 					            
 					            Polygon poly = new Polygon(parts, points.getPointsArray());
-					            Object[] rowData = new Object[4];
+					            Object[] rowData = new Object[6];
 					            rowData[0] = new Double(FID);
 					            rowData[1] = new Double(counts[FID]);
 					            rowData[2] = new Double(row);
 					            rowData[3] = new Double(col);
+					            rowData[4] = new Double(minZ[FID]);
+					            rowData[5] = new Double(maxZ[FID]);
 					            output.addRecord(poly, rowData);
 							}
 				            FID++
@@ -257,7 +284,7 @@ public class Hexbinning implements ActionListener {
 					int rows = (int)Math.ceil(extent.getHeight() / width)
 					int cols = (int)Math.ceil(extent.getWidth() / threeQuarterHeight)
 					if (rows * cols > 100000) {
-						int ret = pluginHost.showFeedback("This operation will produce a vector file with a very large number of polygons which may be difficult to handle. Do you want to proceed?", 1, 1)
+						int ret = pluginHost.showFeedback("This operation will produce a vector file with a very large number of \npolygons which may be difficult to handle. Do you want to proceed?", 1, 1)
 						if (ret == 1) {
 							return
 						}
@@ -284,11 +311,18 @@ public class Hexbinning implements ActionListener {
 						}
 					}
 					int[] counts = new int[numHexagons]
+					double[] minZ = new double[numHexagons]
+					double[] maxZ = new double[numHexagons]
+					for (int a = 0; a < numHexagons; a++) { 
+						minZ[a] = Double.POSITIVE_INFINITY;
+						maxZ[a] = Double.NEGATIVE_INFINITY; 
+					}
 
 					int numPoints = (int) las.getNumPointRecords();
 					PointRecord point;
-	    			List<KdTree.Entry<Integer>> result
-	    			double x, y
+	    			//List<KdTree.Entry<Integer>> result
+	    			KdTree.Entry<Integer> result
+	    			double x, y, z
 					for (int a = 0; a < numPoints; a++) {
 		                point = las.getPointRecord(a);
 		                if (!point.isPointWithheld()) {
@@ -296,9 +330,13 @@ public class Hexbinning implements ActionListener {
 		                    y = point.getY();
 		                    
 		                    double[] entry = [y, x];
-		                    result = pointsTree.nearestNeighbor(entry, 1, true, false);
-		                    index = (int)result.get(0).value;
+		                    //result = pointsTree.nearestNeighbor(entry, 1, true, false);
+		                    //index = (int)result.get(0).value;
+		                    result = pointsTree.nearestNeighbor(entry);
+		                    index = (int)result.value;
 		                    counts[index]++
+		                    if (z < minZ[index]) { minZ[index] = z; }
+		                    if (z > maxZ[index]) { maxZ[index] = z; }
 		                }
 		                progress = (int) (100f * (a + 1) / numPoints);
 		                if (progress != oldProgress) {
@@ -328,11 +366,13 @@ public class Hexbinning implements ActionListener {
 					            }
 					            
 					            Polygon poly = new Polygon(parts, points.getPointsArray());
-					            Object[] rowData = new Object[4];
+					            Object[] rowData = new Object[6];
 					            rowData[0] = new Double(FID);
 					            rowData[1] = new Double(counts[FID]);
 					            rowData[2] = new Double(row);
 					            rowData[3] = new Double(col);
+					            rowData[4] = new Double(minZ[FID]);
+					            rowData[5] = new Double(maxZ[FID]);
 					            output.addRecord(poly, rowData);
 							}
 				            FID++
@@ -356,6 +396,35 @@ public class Hexbinning implements ActionListener {
 //	            pluginHost.returnData(outputFile)			
 			
 			} else if (baseFile.toLowerCase().contains(".shp")) {
+				// set up the output files of the shapefile and the dbf
+	            DBFField[] fields = new DBFField[4];
+	
+	            fields[0] = new DBFField();
+	            fields[0].setName("FID");
+	            fields[0].setDataType(DBFField.DBFDataType.NUMERIC);
+	            fields[0].setFieldLength(10);
+	            fields[0].setDecimalCount(0);
+	
+	            fields[1] = new DBFField();
+	            fields[1].setName("COUNT");
+	            fields[1].setDataType(DBFField.DBFDataType.NUMERIC);
+	            fields[1].setFieldLength(10);
+	            fields[1].setDecimalCount(0);
+	
+	            fields[2] = new DBFField();
+	            fields[2].setName("ROW");
+	            fields[2].setDataType(DBFField.DBFDataType.NUMERIC);
+	            fields[2].setFieldLength(10);
+	            fields[2].setDecimalCount(0);
+	
+	            fields[3] = new DBFField();
+	            fields[3].setName("COLUMN");
+	            fields[3].setDataType(DBFField.DBFDataType.NUMERIC);
+	            fields[3].setFieldLength(10);
+	            fields[3].setDecimalCount(0);
+	            
+	            ShapeFile output = new ShapeFile(outputFile, ShapeType.POLYGON, fields);
+
 				ShapeFile sf = new ShapeFile(baseFile)
 				ShapeType shapeType = sf.getShapeType()
 				if (shapeType.getBaseType() != ShapeType.POINT &&
@@ -374,7 +443,7 @@ public class Hexbinning implements ActionListener {
 					int rows = (int)Math.ceil(extent.getHeight() / threeQuarterHeight)
 					int cols = (int)Math.ceil(extent.getWidth() / width)
 					if (rows * cols > 100000) {
-						int ret = pluginHost.showFeedback("This operation will produce a vector file with a very large number of polygons which may be difficult to handle. Do you want to proceed?", 1, 1)
+						int ret = pluginHost.showFeedback("This operation will produce a vector file with a very large number of \npolygons which may be difficult to handle. Do you want to proceed?", 1, 1)
 						if (ret == 1) {
 							return
 						}
@@ -495,7 +564,7 @@ public class Hexbinning implements ActionListener {
 					int rows = (int)Math.ceil(extent.getHeight() / width)
 					int cols = (int)Math.ceil(extent.getWidth() / threeQuarterHeight)
 					if (rows * cols > 100000) {
-						int ret = pluginHost.showFeedback("This operation will produce a vector file with a very large number of polygons which may be difficult to handle. Do you want to proceed?", 1, 1)
+						int ret = pluginHost.showFeedback("This operation will produce a vector file with a very large number of \npolygons which may be difficult to handle. Do you want to proceed?", 1, 1)
 						if (ret == 1) {
 							return
 						}

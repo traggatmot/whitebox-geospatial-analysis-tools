@@ -45,7 +45,7 @@ try {
 	sb.append("<form onsubmit=\"return true\" action=\"http://www.uoguelph.ca/cgi-bin/FormMail.pl\"")
 	sb.append("method=\"post\" name=\"form1\" id=\"form1\">")
 	sb.append("<input value=\"${versionNum}\" name=\"version\" type=\"hidden\">")
-	sb.append("<textarea name=\"errorDescription\" form=\"form1\" rows=\"10\" cols=\"40\"></textarea><br>")
+	sb.append("<textarea name=\"errorDescription\" form=\"form1\" rows=\"15\" cols=\"40\"></textarea><br>")
 	sb.append("<p>The contents of your log files will be attached.</p><br>")
 	sb.append("<input value=\"").append(errorLogs.toString()).append("\" name=\"errorlogs\" type=\"hidden\">")
 	sb.append("<input value=\"Clear\" type=\"reset\"><input value=\"Submit\" type=\"submit\">") 

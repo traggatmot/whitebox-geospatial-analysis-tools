@@ -14,14 +14,8 @@
         acquired by laser scanners. The user must specify the name of one or more LAS files. 
         The output DEMs will have the same name as the corresponding input LAS file, 
         with specified file suffix appended to the end of the file name. The user must also 
-        specify the grid resolution, the discretization factor (5-20). The tool distinguishes ground points from non-ground points 
-        based on the inter-point slope threshold. The interpolation area is divided into grid 
-        cells, corresponding to the cells of the output DEM. All of the LiDAR points within the 
-        circle encompassing each grid cell is then examined as a neighbourhood. All points within 
-        a neighbourhood that have an inter-point slope with any other point and is also situated 
-        above the corresponding point, is considered to be a non-ground point. An appropriate 
-        value for the inter-point slope threshold parameter will depend on the steepness of the 
-        terrain, but generally values of 15-35 degrees produce satisfactory results. The algorithm
+        specify the grid resolution, the discretization factor (5-20). All of the LiDAR points within the 
+        circle encompassing each grid cell is then examined as a neighbourhood. The algorithm
         is extremely computationally intenstive and may take a long while to complete.</p>
 
         <p>If the 

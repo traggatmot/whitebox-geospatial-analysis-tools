@@ -85,6 +85,7 @@ public class LiDAR_BareEarthDEM implements ActionListener {
 			sd.addDialogDataInput("Grid Resolution (m)", "Grid Resolution:", "", true, false)
 			sd.addDialogDataInput("Threshold in the slope between points to define an off-terrain point.", "Inter-point Slope Threshold:", "30.0", true, false)
 			sd.addDialogDataInput("Max Scan Angle Deviation (optional)", "Max Scan Angle Deviation (optional)", "", true, true)
+			sd.addDialogDataInput("Minimum elevation (used to exclude drop-out points; optional).", "Minimum Elevation:", "", true, true)
 			
 			// resize the dialog to the standard size and display it
 			sd.setSize(800, 400)
@@ -99,7 +100,7 @@ public class LiDAR_BareEarthDEM implements ActionListener {
 	private void execute(String[] args) {
 		long start = System.currentTimeMillis()  
 	  try {
-	  	if (args.length != 7) {
+	  	if (args.length != 8) {
 			pluginHost.showFeedback("Incorrect number of arguments given to tool.")
 			return
 		}
@@ -108,7 +109,7 @@ public class LiDAR_BareEarthDEM implements ActionListener {
 		final String inputFileString = args[0]
 		String suffix = ""
 		if (args[1] != null) {
-			suffix = " " + args[1].trim();
+			suffix = args[1].trim();
 		}
         double weight = Double.parseDouble(args[2]);
 		double maxDist = Double.parseDouble(args[3]);
@@ -121,6 +122,12 @@ public class LiDAR_BareEarthDEM implements ActionListener {
         	}
         }
         if (maxScanAngleDeviation < 1.0) { maxScanAngleDeviation = 1.0; }
+        double minHeight = Double.MIN_VALUE;
+        if (args[7] != null && !args[7].isEmpty()) {
+        	if (!args[7].toLowerCase().equals("not specified")) {
+        		minHeight = Double.parseDouble(args[7]);
+        	}
+        }
         
 		String[] inputFiles = inputFileString.split(";")
 
@@ -161,7 +168,7 @@ public class LiDAR_BareEarthDEM implements ActionListener {
 		for (i = 0; i < numFiles; i++) {
 			tasks.add(new DoWork(i, inputFiles, suffix, 
 	      		 bb, resolution, maxSlope, maxScanAngleDeviation,
-	      		 weight, maxDist))
+	      		 weight, maxDist, minHeight))
 		}
 
 		ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
@@ -245,11 +252,12 @@ public class LiDAR_BareEarthDEM implements ActionListener {
 	    private double maxScanAngleDeviation
 	    private double weight
 		private double maxDist
+		private double minHeight
 		
 	    DoWork(int tileNum, String[] inputFiles, String suffix, 
 	      BoundingBox[] bb, double resolution, double maxSlope,
 	      double maxScanAngleDeviation, double weight, 
-	      double maxDist) {
+	      double maxDist, double minHeight) {
 			this.tileNum = tileNum;
 			this.inputFiles = inputFiles.clone();
 			this.suffix = suffix;
@@ -259,6 +267,7 @@ public class LiDAR_BareEarthDEM implements ActionListener {
 			this.maxScanAngleDeviation = maxScanAngleDeviation
 			this.weight = weight
 			this.maxDist = maxDist
+			this.minHeight = minHeight
        	}
         	
         @Override
@@ -283,6 +292,7 @@ public class LiDAR_BareEarthDEM implements ActionListener {
 			
 			// count how many valid points there are
 			int numPoints = 0;
+			byte classVal
 			ArrayList<PointRecord> recs = new ArrayList<>();
 			for (int a = 0; a < numFiles; a++) {
 				if (bb[a].entirelyContainedWithin(expandedBB) || 
@@ -290,7 +300,11 @@ public class LiDAR_BareEarthDEM implements ActionListener {
 				 	las = new LASReader(inputFiles[a])
 				 	ArrayList<PointRecord> points = las.getPointRecordsInBoundingBox(expandedBB)
 			 		for (PointRecord point : points) {
-				 		if (!point.isPointWithheld()) {
+				 		classVal = point.getClassification();
+				 		if (!point.isPointWithheld()
+				 		    && point.getReturnNumber() == point.getNumberOfReturns()
+				 		    && classVal != 4 && classVal != 5 
+				 		    && classVal != 6 && classVal != 7 && point.z >= minHeight) {
                             recs.add(point);
                         }
 			 		}
@@ -345,8 +359,6 @@ public class LiDAR_BareEarthDEM implements ActionListener {
                 double slopeThreshold = maxSlope / radToDeg
 	            InterpolationRecord value;
                 double dist, val, minVal, maxVal;
-//                double maxDist = Math.sqrt(2) * resolution / 2.0d;
-//                double maxDistSqr = maxDist * maxDist;
 	            double minDist, minDistVal;
 	            double halfResolution = resolution / 2;
 	            int oldProgress = -1;
@@ -380,7 +392,8 @@ public class LiDAR_BareEarthDEM implements ActionListener {
 							// eliminate all non-ground points based on slope
 							int n = results.size()
 	                        double slope
-	                        int higherPoint, higherPointIndex
+	                        //int higherPoint
+	                        int higherPointIndex
 	                        double higherVal, lowerVal
 	                        InterpolationRecord rec1, rec2
 							for (i = 0; i < n - 1; i++) {
@@ -394,12 +407,12 @@ public class LiDAR_BareEarthDEM implements ActionListener {
 											if (rec1.getValue() > rec2.getValue()) {
 												higherVal = rec1.getValue()
 												lowerVal = rec2.getValue()
-												higherPoint = i
+												//higherPoint = i
 												higherPointIndex = rec1.getIndex()
 											} else {
 												higherVal = rec2.getValue()
 												lowerVal = rec1.getValue()
-												higherPoint = j
+												//higherPoint = j
 												higherPointIndex = rec2.getIndex()
 											}
 											slope = Math.atan((higherVal - lowerVal) / dist)
@@ -488,6 +501,9 @@ public class LiDAR_BareEarthDEM implements ActionListener {
 
                 image.addMetadataEntry("Created by the " + descriptiveName + " tool.");
                 image.addMetadataEntry("Created on " + new Date());
+                image.addMetadataEntry("IDW weight: $weight");
+                image.addMetadataEntry("Slope threshold: $maxSlope");
+                image.addMetadataEntry("Max search dist: $maxDist");
                 image.close();
 
 	        } catch (Exception e) {
@@ -502,6 +518,7 @@ public class LiDAR_BareEarthDEM implements ActionListener {
         }                
     }
 
+	@CompileStatic
 	class InterpolationRecord {
         
         double value;

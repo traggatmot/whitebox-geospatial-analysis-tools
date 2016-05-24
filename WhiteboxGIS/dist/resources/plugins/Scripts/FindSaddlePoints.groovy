@@ -77,7 +77,7 @@ public class FindSaddlePoints implements ActionListener {
 			sd.addDialogFile("Valley line file", "Valley Network File:", "open", "Raster Files (*.dep), DEP", true, false)
 			sd.addDialogFile("D8 flow pointer file", "D8 Flow Pointer File:", "open", "Raster Files (*.dep), DEP", true, false)
 			sd.addDialogFile("Digital elevation network file", "DEM File:", "open", "Raster Files (*.dep), DEP", true, false)
-			sd.addDialogFile("Output file", "Output File:", "save", "Whitebox Files (*.dep, *.shp), DEP, SHP", true, false)
+			sd.addDialogFile("Output file", "Output File:", "save", "Whitebox Files (*.dep; *.shp), DEP, SHP", true, false)
 			
 			// resize the dialog to the standard size and display it
 			sd.setSize(800, 400)
@@ -106,6 +106,8 @@ public class FindSaddlePoints implements ActionListener {
 		if (!outputFile.toLowerCase().endsWith(".dep")) {
 			isRasterOutput = false
 		}
+
+		System.out.println(outputFile)
 		
 		int i, row, col, rN, cN, n, numChannelHeads
 		double z, valleyVal, ridgeVal, pointerVal
@@ -152,6 +154,7 @@ public class FindSaddlePoints implements ActionListener {
 		} else {
 			tempFile = outputFile.replace(".shp", "_temp.dep")
 		}
+		System.out.println(tempFile)
 		WhiteboxRaster tempGrid = new WhiteboxRaster(tempFile, "rw", 
   		  	  ridgesFile, DataType.FLOAT, ridgesNoData)
   		tempGrid.isTemporaryFile = true
@@ -182,13 +185,16 @@ public class FindSaddlePoints implements ActionListener {
   			}
   		}
 
-  		double[] xCoords = new double[numChannelHeads]
-  		double[] yCoords = new double[numChannelHeads]
-  		double[] minElev = new double[numChannelHeads]
+  		double[] xCoords = new double[numChannelHeads + 1]
+  		double[] yCoords = new double[numChannelHeads + 1]
+  		double[] minElev = new double[numChannelHeads + 1]
 
   		for (i = 0; i < numChannelHeads; i++) {
   			minElev[i] = Double.POSITIVE_INFINITY
   		}
+
+//  		tempGrid.close();
+//  		return
 
   		// descend each flowpath starting from a ridge cell
 		// locating the flowpaths that terminate at channel

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * Copyright (C) 2016 Dr. John Lindsay <jlindsay@uoguelph.ca>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -194,7 +194,7 @@ public class IsolateGroundPointsLindsaysMethod {
 
 
             /* visit the neighbourhood around each point hunting for 
-	           points that can be touched by a corder of a square prism
+	           points that can be touched by a corner of a square prism
 	           when approached from the bottom. */
 	        BooleanBitArray1D isOnTerrain = new BooleanBitArray1D(numPoints);
             for (a = 0; a < numPoints; a++) {

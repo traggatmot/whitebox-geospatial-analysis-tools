@@ -302,16 +302,16 @@ public class GetLasFileSummary implements ActionListener {
 				ret.append(df2.format(1f * numFirstRet / totalPoints))
 				ret.append("</td></tr>").append("\n")
 
-				ret.append("<tr><td>Last</td><td class=\"numberCell\">")
-				ret.append(df.format(numLastRet))
-				ret.append("<td class=\"numberCell\">")
-				ret.append(df2.format(1f * numLastRet / totalPoints))
-				ret.append("</td></tr>").append("\n")
-
 				ret.append("<tr><td>Intermediate</td><td class=\"numberCell\">")
 				ret.append(df.format(intermediateRet))
 				ret.append("<td class=\"numberCell\">")
 				ret.append(df2.format(1f * intermediateRet / totalPoints))
+				ret.append("</td></tr>").append("\n")
+
+				ret.append("<tr><td>Last</td><td class=\"numberCell\">")
+				ret.append(df.format(numLastRet))
+				ret.append("<td class=\"numberCell\">")
+				ret.append(df2.format(1f * numLastRet / totalPoints))
 				ret.append("</td></tr>").append("\n")
 
 				ret.append("</table>")

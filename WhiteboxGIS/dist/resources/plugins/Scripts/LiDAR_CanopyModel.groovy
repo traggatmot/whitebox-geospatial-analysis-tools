@@ -106,7 +106,7 @@ public class LiDAR_CanopyModel implements ActionListener {
 		final String inputFileString = args[0]
 		String suffix = ""
 		if (args[1] != null) {
-			suffix = " " + args[1].trim();
+			suffix = args[1].trim();
 		}
         double resolution = Double.parseDouble(args[2]);
         double minHeight = Double.parseDouble(args[3]);

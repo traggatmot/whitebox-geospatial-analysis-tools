@@ -90,7 +90,7 @@ public class FloodOrder implements ActionListener {
 	  		int dir, numCellsInPath
 	  		double z, zN, zTest, zN2, lowestNeighbour
 	  		boolean isPit, isEdgeCell, flag
-	  		double SMALL_NUM = 0.0001d
+	  		//double SMALL_NUM = 0.0001d
 	  		GridCell gc
 			int[] dX = [ 1, 1, 1, 0, -1, -1, -1, 0 ]
 			int[] dY = [ -1, 0, 1, 1, 1, 0, -1, -1 ]
@@ -113,6 +113,12 @@ public class FloodOrder implements ActionListener {
 			int rowsLessOne = rows - 1
 			int colsLessOne = cols - 1
 			int numCellsTotal = rows * cols
+
+			double minVal = dem.getMinimumValue()
+			int elevDigits = (String.valueOf((int)(dem.getMaximumValue() - minVal))).length()
+			double elevMultiplier = Math.pow(10, 8-elevDigits)
+			double SMALL_NUM = 1 / elevMultiplier * 10
+			long priority
 
 			double[][] output = new double[rows + 2][cols + 2]
 			double[][] floodOrder = new double[rows + 2][cols + 2]
@@ -142,7 +148,8 @@ public class FloodOrder implements ActionListener {
 						}
 						if (isPit) { 
 							if (isEdgeCell) {
-								queue.add(new GridCell(row + 1, col + 1, z))
+								//priority = (long)(z * elevMultiplier * 100000)
+								queue.add(new GridCell(row + 1, col + 1, z, 0))
 								inQueue.setValue(row + 1, col + 1, true)
 							}
 						}
@@ -181,11 +188,14 @@ public class FloodOrder implements ActionListener {
             pluginHost.updateProgress("Loop 2 of 3: ", oldProgress);
 
 			int order = 0
+			int flatIndex
+			int k
             while (queue.isEmpty() == false) {
                 gc = queue.poll();
                 row = gc.row;
                 col = gc.col;
-                z = gc.z;
+                flatIndex = gc.flatIndex;
+                //z = gc.z;
                 floodOrder[row][col] = order
                 order++
                 for (int i = 0; i < 8; i++) {
@@ -194,8 +204,15 @@ public class FloodOrder implements ActionListener {
                     zN = output[rowN][colN];
                     if ((zN != nodata) && (!inQueue.getValue(rowN, colN))) {
                         numSolvedCells++;
-                        gc = new GridCell(rowN, colN, zN);
-                        queue.add(gc);
+                        k = 0
+						if (zN == output[row][col]) {
+							k = flatIndex + 1
+						}
+                        //priority = (long)(zN * elevMultiplier * 100000 + (k % 10000))
+						queue.add(new GridCell(rowN, colN, zN, k))
+						
+                        //gc = new GridCell(rowN, colN, zN);
+                        //queue.add(gc);
                         inQueue.setValue(rowN, colN, true)
                     }
                 }
@@ -280,38 +297,31 @@ public class FloodOrder implements ActionListener {
         public int row;
         public int col;
         public double z;
+        public int flatIndex;
+        //public long priority
 
-        public GridCell(int Row, int Col, double Z) {
-            row = Row;
-            col = Col;
-            z = Z;
+        public GridCell(int row, int col, double z, int flatIndex) { //, long priority) { // double Z) {
+            this.row = row;
+            this.col = col;
+            this.z = z;
+            this.flatIndex = flatIndex;
+            //this.priority = priority;
         }
 
         @Override
         public int compareTo(GridCell other) {
-            final int BEFORE = -1;
-            final int EQUAL = 0;
-            final int AFTER = 1;
-
-            if (this.z < other.z) {
-                return BEFORE;
-            } else if (this.z > other.z) {
-                return AFTER;
-            }
-
-            if (this.row < other.row) {
-                return BEFORE;
-            } else if (this.row > other.row) {
-                return AFTER;
-            }
-
-            if (this.col < other.col) {
-                return BEFORE;
-            } else if (this.col > other.col) {
-                return AFTER;
-            }
-
-            return EQUAL;
+        	if (this.z > other.z) {
+        		return 1
+        	} else if (this.z < other.z) {
+        		return -1
+        	} else {
+        		if (this.flatIndex > other.flatIndex) {
+        			return 1
+        		} else if (this.flatIndex < other.flatIndex) {
+        			return -1
+        		}
+				return 0
+        	}
         }
     }
 }

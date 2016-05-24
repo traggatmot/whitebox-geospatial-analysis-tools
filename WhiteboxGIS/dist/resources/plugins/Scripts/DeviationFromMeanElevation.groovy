@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * Copyright (C) 2016 Dr. John Lindsay <jlindsay@uoguelph.ca>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -75,6 +75,7 @@ public class DeviationFromMeanElevation implements ActionListener {
 			sd.addDialogFile("Input DEM file", "Input DEM:", "open", "Raster Files (*.dep), DEP", true, false)
 			sd.addDialogFile("Output file", "Output Raster File:", "save", "Raster Files (*.dep), DEP", true, false)
 			sd.addDialogDataInput("Search neighbourhood size", "Search Neighbourhood Size (cells):", "", true, false)
+            sd.addDialogDataInput("Number of significant decimal places", "Significant Decimal Places:", "2", true, true)
             
 			// resize the dialog to the standard size and display it
 			sd.setSize(800, 400)
@@ -90,7 +91,7 @@ public class DeviationFromMeanElevation implements ActionListener {
 		try {
 			Date start1 = new Date()
 		
-			if (args.length != 3) {
+			if (args.length < 4) {
 				pluginHost.showFeedback("Incorrect number of arguments given to tool.")
 				return
 			}
@@ -100,6 +101,12 @@ public class DeviationFromMeanElevation implements ActionListener {
 			int neighbourhoodSize = Integer.parseInt(args[2])
 			if (neighbourhoodSize < 1) { neighbourhoodSize = 1 }
 			int numCells
+			int numSigDecimalPlaces = 2;
+			if (args.length >= 4) {
+				numSigDecimalPlaces = Integer.parseInt(args[3]);
+				if (numSigDecimalPlaces < 0) { numSigDecimalPlaces = 0; }
+				if (numSigDecimalPlaces > 8) { numSigDecimalPlaces = 8; }
+			}
 			
 			// read the input image
 			WhiteboxRaster image = new WhiteboxRaster(inputFile, "r")
@@ -111,14 +118,18 @@ public class DeviationFromMeanElevation implements ActionListener {
 			double range = maxValue - minValue
 			double K = minValue + range / 2.0
 
-			double[][] I = new double[rows][cols]
-			double[][] I2 = new double[rows][cols]
+			long[][] I = new long[rows][cols]
+			long[][] I2 = new long[rows][cols]
 			int[][] IN = new int[rows][cols]
+
+			double multiplier = Math.pow(10, numSigDecimalPlaces);
 			
 			// calculate the integral image
 			int progress = 0
 			int oldProgress = -1
-			double z, sum, sumN, sumSqr
+			double z
+			long sum, sumSqr, val
+			int sumN
 			for (int row = 0; row < rows; row++) {
 				sum = 0
 				sumSqr = 0
@@ -128,11 +139,12 @@ public class DeviationFromMeanElevation implements ActionListener {
   					if (z == nodata) {
   						z = 0
   					} else {
-  						z = z - K
+  						z = (z - K) * multiplier
   						sumN++
   					}
-  					sum += z
-  					sumSqr += z * z
+  					val = (long)(Math.round(z))
+  					sum += val
+  					sumSqr += val * val
   					if (row > 0) {
   						I[row][col] = sum + I[row - 1][col]
   						I2[row][col] = sumSqr + I2[row - 1][col]
@@ -187,10 +199,10 @@ public class DeviationFromMeanElevation implements ActionListener {
 						if (N > 0) {
 							sum = I[y2][x2] + I[y1][x1] - I[y1][x2] - I[y2][x1]
 							sumSqr = I2[y2][x2] + I2[y1][x1] - I2[y1][x2] - I2[y2][x1]
-							v = (sumSqr - (sum * sum) / N) / N
+							v = ((sumSqr / (multiplier * multiplier)) - ((sum / multiplier) * (sum / multiplier)) / N) / N
 							if (v > 0) {
 								s = Math.sqrt(v)
-								m = sum / N
+								m = (sum / multiplier) / N
 								outValue = ((z - K) - m) / s
 								output.setValue(row, col, outValue)
 							} else {

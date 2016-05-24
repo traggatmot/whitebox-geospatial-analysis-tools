@@ -17,7 +17,7 @@ var description = "Tranforms raster values into quantiles.";
 var toolboxes = ["StatisticalTools", "ReclassTools"];
 
 // Create a dialog for the tool
-function createDialog(args, toolName) {
+function createDialog(args) {
     if (args.length !== 0) {
         execute(args);
     } else {
@@ -192,5 +192,5 @@ function execute(args) {
 if (args === null) {
     pluginHost.showFeedback("The arguments array has not been set.");
 } else {
-    var sd = createDialog(args, descriptiveName);
+    var sd = createDialog(args);
 }

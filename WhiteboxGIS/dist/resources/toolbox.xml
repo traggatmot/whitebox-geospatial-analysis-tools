@@ -26,7 +26,7 @@
 
     <toolbox name="HydroTools" label="Hydrolgical Tools">
         <toolbox name="DEMPreprocessing" label="DEM Pre-processing"></toolbox>
- 
+        
  	<toolbox name="FlowPointers" label="Flow Pointers"></toolbox>
 
 	<toolbox name="FlowAccum" label="Flow Accumulation"></toolbox>

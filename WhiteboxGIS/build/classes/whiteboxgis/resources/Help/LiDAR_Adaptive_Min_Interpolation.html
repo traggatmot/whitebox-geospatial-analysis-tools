@@ -26,7 +26,13 @@
             will not necessarily be the lowest elevation within the neighbourhood but rather 
             the elevation associated with a large drop in the minimum elevation function. If
             no such drop occurs in the minimum elevation function, the output grid cell will be
-            assigned the nearest elevation, effectively performing a nearest neighbour interpolation.</p>
+            assigned the nearest elevation, effectively performing a nearest neighbour 
+            interpolation. Block-minimum gridding is a common method of interpolating LiDAR
+            data in order to remove the impact of points associated with non-ground, or
+            off-terrain, points. However, this gridding method affects every location, 
+            not just those grid cells associated with non-ground points. The adaptive 
+        minimum interpolation method is an attempt to reduce the impact of this minimum
+        interpolator while retaining its effectiveness at removing off-terrain objects.</p>
          <p>
             The user inputs one or more LiDAR datasets in LAS file format (.las) and the name of the 
             suffix to assign output raster grids that are created. Although most often this 

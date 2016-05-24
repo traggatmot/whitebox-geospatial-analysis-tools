@@ -410,17 +410,17 @@ public class WhiteboxGui extends JFrame implements ThreadListener, ActionListene
             checkVersionIsUpToDate();
 
             // Issue a warning if Whitebox is being run on 32-bit JRE on a 64-bit machine, at least on Windows
-            if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-                if (!System.getProperty("sun.arch.data.model").contains("32")
-                        && (System.getenv("ProgramFiles(x86)") != null)) {
-                    String str = "WARNGING: Whitebox is running on a 32-bit Java runtime which could lead to out-of-memory errors \n"
-                            + "when handling large files. It is advisable that you uninstall the 32-bit version of Java and \n"
-                            + "download and install the 64-bit version. This will allow Whitebox to take fuller advantage of \n"
-                            + "the RAM resources of your computer.";
-                    returnData(str);
-                    status.setMessage(str);
-                }
-            }
+//            if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+//                if (System.getProperty("sun.arch.data.model").contains("32")
+//                        && (System.getenv("ProgramFiles(x86)") != null)) {
+//                    String str = "WARNGING: Whitebox is running on a 32-bit Java runtime which could lead to out-of-memory errors \n"
+//                            + "when handling large files. It is advisable that you uninstall the 32-bit version of Java and \n"
+//                            + "download and install the 64-bit version. This will allow Whitebox to take fuller advantage of \n"
+//                            + "the RAM resources of your computer.";
+//                    returnData(str);
+//                    status.setMessage(str);
+//                }
+//            }
 
             pan();
 

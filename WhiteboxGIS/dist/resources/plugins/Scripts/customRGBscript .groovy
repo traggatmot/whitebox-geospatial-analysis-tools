@@ -21,10 +21,15 @@ double cutoff = 2.58
 //def blueImageName = "/Users/johnlindsay/Documents/Data/West_Coast_SRTM/local mag.dep"
 //def outputImageName = "/Users/johnlindsay/Documents/Data/West_Coast_SRTM/colour comp.dep"
 
-def redImageName = "/Users/johnlindsay/Documents/Data/SouthernOnt/DEVmax broad.dep"
-def greenImageName = "/Users/johnlindsay/Documents/Data/SouthernOnt/DEVmax meso.dep"
-def blueImageName = "/Users/johnlindsay/Documents/Data/SouthernOnt/DEVmax local.dep"
-def outputImageName = "/Users/johnlindsay/Documents/Data/SouthernOnt/colour comp.dep"
+//def redImageName = "/Users/johnlindsay/Documents/Data/SouthernOnt/DEVmax broad.dep"
+//def greenImageName = "/Users/johnlindsay/Documents/Data/SouthernOnt/DEVmax meso.dep"
+//def blueImageName = "/Users/johnlindsay/Documents/Data/SouthernOnt/DEVmax local.dep"
+//def outputImageName = "/Users/johnlindsay/Documents/Data/SouthernOnt/colour comp.dep"
+
+def redImageName = "/Users/johnlindsay/Documents/Research/Multi-scale Topographic Position paper/data/Hawaii/tmp5.dep"
+def greenImageName = "/Users/johnlindsay/Documents/Research/Multi-scale Topographic Position paper/data/Hawaii/tmp7.dep"
+def blueImageName = "/Users/johnlindsay/Documents/Research/Multi-scale Topographic Position paper/data/Hawaii/tmp6.dep"
+def outputImageName = "/Users/johnlindsay/Documents/Research/Multi-scale Topographic Position paper/data/Hawaii/MTPCC1.dep"
 
 def redraster = new WhiteboxRaster(redImageName, "r")
 def rows = redraster.getNumberRows()

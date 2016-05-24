@@ -103,7 +103,7 @@ public class VoronoiDiagram {
 			sd.setSourceFile(scriptFile)
 			
 			// add some components to the dialog
-			sd.addDialogFile("Input shapefile file", "Input Shapefile File:", "open", "Vector Files (*.shp), SHP", true, false)
+			sd.addDialogFile("Input shapefile file", "Input Vector File:", "open", "Vector Files (*.shp), SHP", true, false)
             sd.addDialogFile("Output file", "Output Vector File:", "close", "Vector Files (*.shp), SHP", true, false)
             
 			// resize the dialog to the standard size and display it
@@ -138,10 +138,10 @@ public class VoronoiDiagram {
             int numFeatures = input.getNumberOfRecords()
             // make sure that input is of a POINTS base shapetype
             ShapeType shapeType = input.getShapeType()
-            if (shapeType.getBaseType() != ShapeType.POINT && shapeType.getBaseType() != ShapeType.MULTIPOINT) {
-                pluginHost.showFeedback("Input shapefile must be of a POINTS or MULTIPOINTS base shapetype.")
-                return
-            }
+//            if (shapeType.getBaseType() != ShapeType.POINT && shapeType.getBaseType() != ShapeType.MULTIPOINT) {
+//                pluginHost.showFeedback("Input shapefile must be of a POINTS or MULTIPOINTS base shapetype.")
+//                return
+//            }
 
             // Read the data in
 			double minX = Double.POSITIVE_INFINITY;

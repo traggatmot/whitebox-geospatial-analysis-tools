@@ -11,9 +11,9 @@
 
         <p>This tool can be used to calculate the difference in between the elevation of 
             each grid cell in an input DEM and the average elevation in the local 
-            neighbourhood. The local neighbourhood is defined as a circular area of a 
-            user-specified dimension surrounding each grid cell. <p>Grid cells 
-            containing <b><i>NoData</i></b> values in any of the input images are 
+            neighbourhood. The local neighbourhood is defined as a rectangular area of a 
+            user-specified dimension surrounding each grid cell. Grid cells 
+            containing <b><i>NoData</i></b> values in the input image are 
             assigned the <b><i>NoData</i></b> value in the output raster. The output 
             raster is of the <i>float</i> data type and <i>continuous</i> data scale.</p>
 
@@ -30,7 +30,8 @@
                 demFile = wd + "DEM.dep"<br>
                 outputFile = wd + "output.dep"<br>
                 neighbourhoodSize = "5"<br>
-                args = [demFile, outputFile, neighbourhoodSize]<br>
+                decimalPlaces = "2"<br>
+                args = [demFile, outputFile, neighbourhoodSize, decimalPlaces]<br>
                 pluginHost.runPlugin("DifferenceFromMeanElevation", args, False)<br>
             </code>
         </p>
@@ -41,7 +42,8 @@
                 def demFile = wd + "DEM.dep"<br>
                 def outputFile = wd + "output.dep"<br>
                 def neighbourhoodSize = "5"<br>
-                String[] args = [demFile, outputFile, neighbourhoodSize]<br>
+                def decimalPlaces = "2"<br>
+                String[] args = [demFile, outputFile, neighbourhoodSize, decimalPlaces]<br>
                 pluginHost.runPlugin("DifferenceFromMeanElevation", args, false)<br>
             </code>
         </p>
