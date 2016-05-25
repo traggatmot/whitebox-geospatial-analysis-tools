@@ -189,6 +189,9 @@ public class RemovePolygonNecks implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         /* This tool places the nodes (vertices) from a shapefile of polygons
