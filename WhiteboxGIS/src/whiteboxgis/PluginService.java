@@ -23,7 +23,7 @@ import whitebox.structures.InteroperableGeospatialDataFormat;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public interface PluginService {
     Iterator<WhiteboxPlugin> getPlugins();

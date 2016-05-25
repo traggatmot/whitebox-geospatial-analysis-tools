@@ -34,7 +34,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class StatusBar extends JPanel implements MouseListener {
 

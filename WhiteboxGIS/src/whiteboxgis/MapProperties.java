@@ -42,7 +42,7 @@ import java.util.ResourceBundle;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class MapProperties extends JDialog implements ActionListener, AdjustmentListener, MouseListener, PropertyChangeListener {
 

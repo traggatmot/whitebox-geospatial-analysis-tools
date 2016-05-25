@@ -49,7 +49,7 @@ import whitebox.utilities.FileUtilities;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 @SuppressWarnings("unchecked")
 public class Help extends JDialog implements ActionListener, HyperlinkListener {
