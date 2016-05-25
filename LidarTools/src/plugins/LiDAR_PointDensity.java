@@ -186,6 +186,9 @@ public class LiDAR_PointDensity implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         /* The problem with this algorithm is that the implementation of the

@@ -202,6 +202,9 @@ public class LiDAR_NN_interpolation implements WhiteboxPlugin {
     int numCompletedFiles = 0;
     double maxAbsScanAngle = 999.0;
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
