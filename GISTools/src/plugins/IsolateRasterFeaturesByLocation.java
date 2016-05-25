@@ -16,15 +16,15 @@
  */
 package plugins;
 
-/**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
- */
 import java.util.Date;
 import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
+/**
+ * This tool can be used to either isolate or remove polygon features from a raster image based on their spatial relationship with the features in a second raster data set.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
+ */
 public class IsolateRasterFeaturesByLocation implements WhiteboxPlugin {
     
     private WhiteboxPluginHost myHost = null;

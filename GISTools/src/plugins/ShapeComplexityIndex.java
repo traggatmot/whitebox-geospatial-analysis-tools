@@ -32,7 +32,7 @@ import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool provides a measure of overall polygon shape complexity, or irregularity, for both raster and vector features.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ShapeComplexityIndex implements WhiteboxPlugin {

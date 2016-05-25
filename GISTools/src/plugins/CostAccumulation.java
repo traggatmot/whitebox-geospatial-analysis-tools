@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to calculate the accumulated cost of traveling from the 'source grid cell' to each other grid cell in a raster dataset. The cost-accumulation tool can be used to perform cost-distance or least-cost pathway analyses. 
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class CostAccumulation implements WhiteboxPlugin {

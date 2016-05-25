@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool assigns grid cells in the output image the value of the nearest target cell in the input image, measured by the Euclidean distance (straight-line distance).
  * @author johnlindsay
  */
 public class EuclideanAllocation implements WhiteboxPlugin {

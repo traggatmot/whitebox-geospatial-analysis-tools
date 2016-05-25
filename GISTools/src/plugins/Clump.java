@@ -22,7 +22,7 @@ import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool re-categorizes data in a raster image by grouping cells that form physically discrete, connected areas into unique categories.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Clump implements WhiteboxPlugin {

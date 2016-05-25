@@ -33,7 +33,7 @@ import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to calculate the related circumscribing circle (Mcgarigal et al., 2002) for polygon features.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class RelatedCircumscribingCircle implements WhiteboxPlugin {

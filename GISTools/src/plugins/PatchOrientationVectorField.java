@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool takes a vector shapefile containing polygons, calculates the linearity (i.e., r-squared value) and orientation, and outputs a shapefile of line vectors.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
