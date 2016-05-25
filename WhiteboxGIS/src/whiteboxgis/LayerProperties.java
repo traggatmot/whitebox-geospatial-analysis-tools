@@ -44,7 +44,7 @@ import whitebox.geospatialfiles.shapefile.ShapeTypeDimension;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class LayerProperties extends JDialog implements ActionListener, AdjustmentListener, MouseListener {
 

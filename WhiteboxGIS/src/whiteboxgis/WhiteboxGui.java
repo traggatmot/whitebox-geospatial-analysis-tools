@@ -102,7 +102,7 @@ import whitebox.geospatialfiles.LasLayerInfo;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 @SuppressWarnings("unchecked")
 public class WhiteboxGui extends JFrame implements ThreadListener, ActionListener, WhiteboxPluginHost, Communicator {

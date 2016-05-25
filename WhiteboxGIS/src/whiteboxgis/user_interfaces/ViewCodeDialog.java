@@ -34,7 +34,7 @@ import org.fife.ui.rsyntaxtextarea.*;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ViewCodeDialog extends JDialog implements ActionListener {
 

@@ -25,7 +25,7 @@ import java.net.URLClassLoader;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ClasspathUtils {
 

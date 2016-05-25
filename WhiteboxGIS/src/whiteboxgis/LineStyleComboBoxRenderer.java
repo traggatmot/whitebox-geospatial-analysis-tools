@@ -21,7 +21,7 @@ import javax.swing.*;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 class LineStyleComboBoxRenderer extends JLabel implements ListCellRenderer {
 
