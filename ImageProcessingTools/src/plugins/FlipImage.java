@@ -147,6 +147,9 @@ public class FlipImage implements WhiteboxPlugin {
         return amIActive;
     }
     
+    /**
+     * Used to execute this plugin tool.
+     */
     public void run() {
         amIActive = true;
 
