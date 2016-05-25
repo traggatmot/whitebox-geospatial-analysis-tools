@@ -18,7 +18,7 @@ package whitebox.geospatialfiles.shapefile;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ShapefilePoint implements Comparable<ShapefilePoint> {
     public double x = 0.0;
