@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool is used to generate a flow pointer grid (i.e., flow direction) using the D-infinity (Tarboton, 1997) algorithm.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FlowPointerDinf implements WhiteboxPlugin {

@@ -31,7 +31,7 @@ import whitebox.structures.BoundingBox;
 import whitebox.structures.RowPriorityGridCell;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to decrement the elevation values in a digital elevation model (DEM) along a defined stream network.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

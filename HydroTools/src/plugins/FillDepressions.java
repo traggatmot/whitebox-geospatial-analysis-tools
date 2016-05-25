@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to fill all of the depressions in a digital elevation model (DEM) and to remove the flat areas.
  *
  * @author johnlindsay
  */

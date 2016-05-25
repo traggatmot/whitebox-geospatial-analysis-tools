@@ -38,7 +38,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool will perform a watershedding operation based on a group of specified pour points i.e., outlets or target cells.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to remove pits (single grid cells with no downslope neighbours) from a digital elevation model (DEM).
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class BreachPits implements WhiteboxPlugin {

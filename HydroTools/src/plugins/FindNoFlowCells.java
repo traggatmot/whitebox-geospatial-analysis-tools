@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to find cells with undefined flow, meaning no valid flow direction based on the D8 flow direction algorithm.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FindNoFlowCells implements WhiteboxPlugin {
