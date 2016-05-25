@@ -21,7 +21,7 @@ import javax.swing.filechooser.FileFilter;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ExtensionFileFilter  extends FileFilter {
     

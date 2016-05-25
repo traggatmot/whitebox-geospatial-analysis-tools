@@ -191,6 +191,9 @@ public class LiDAR_Max_interpolation implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

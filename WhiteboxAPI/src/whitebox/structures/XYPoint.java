@@ -18,7 +18,7 @@ package whitebox.structures;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class XYPoint implements Comparable<XYPoint> {
 

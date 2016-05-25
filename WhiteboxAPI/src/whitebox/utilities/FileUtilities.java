@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FileUtilities {
 

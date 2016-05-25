@@ -32,7 +32,7 @@ import whitebox.interfaces.DialogComponent;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class DialogFieldSelector extends JPanel implements ActionListener, DialogComponent,
         PropertyChangeListener {

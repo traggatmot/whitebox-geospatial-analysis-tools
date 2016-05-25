@@ -50,6 +50,9 @@ public class LocateConjugatePrincipalPoint {
         lcpp.run();
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     private void run() {
 
         long startTime = System.nanoTime();

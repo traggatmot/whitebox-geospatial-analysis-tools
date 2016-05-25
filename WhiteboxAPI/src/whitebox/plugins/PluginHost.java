@@ -35,7 +35,7 @@ import whitebox.utilities.FileUtilities;
 
 /**
  * Serves as a basic PluginHost used for running plugin tools outside of the Whitebox GAT user interface.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class PluginHost implements WhiteboxPluginHost {
 

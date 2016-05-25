@@ -26,7 +26,7 @@ import whitebox.structures.BoundingBox;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class PolygonZ implements Geometry {
     //private double[] box = new double[4];
