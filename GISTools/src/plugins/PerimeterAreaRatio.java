@@ -492,6 +492,9 @@ public class PerimeterAreaRatio implements WhiteboxPlugin {
         }
     }
     
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

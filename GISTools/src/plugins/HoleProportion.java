@@ -372,6 +372,9 @@ public class HoleProportion implements WhiteboxPlugin {
         }
     }
     
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         String inputFile = args[0];
