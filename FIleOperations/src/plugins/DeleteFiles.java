@@ -21,7 +21,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool will delete user-specified input raster or vector data sets, including all associated files.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
