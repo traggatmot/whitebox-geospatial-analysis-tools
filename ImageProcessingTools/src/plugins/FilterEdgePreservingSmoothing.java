@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This tool can be used to perform an edge-preserving smoothing filter, or bilateral filter, on a raster image, which can be used to emphasize the longer-range variability in an image, effectively acting to smooth the image, while reducing the edge blurring effect common with other types of smoothing filters.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FilterEdgePreservingSmoothing implements WhiteboxPlugin {
     

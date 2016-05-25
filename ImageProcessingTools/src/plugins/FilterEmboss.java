@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This tool can be used to perform one of eight 3x3 emboss filters on a raster image, the emboss filter is often applied in edge-detection applications.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FilterEmboss implements WhiteboxPlugin {
     

@@ -32,7 +32,7 @@ import whitebox.structures.RowPriorityGridCell;
 
 /**
  *
- * @author johnlindsay
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class LocateConjugatePrincipalPoint {
 

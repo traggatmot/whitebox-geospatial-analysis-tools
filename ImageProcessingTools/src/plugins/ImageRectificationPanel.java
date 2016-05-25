@@ -45,7 +45,7 @@ import java.util.ResourceBundle;
 
 /**
  *
- * @author johnlindsay
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ImageRectificationPanel extends JPanel implements ActionListener,
         ChangeListener, TableModelListener, PropertyChangeListener, MouseListener {
