@@ -27,7 +27,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * Can't find
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

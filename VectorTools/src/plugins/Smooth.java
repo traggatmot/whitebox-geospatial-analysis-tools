@@ -24,7 +24,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.FileUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool smooths a vector coverage of either a polyline or polygon base shape type.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

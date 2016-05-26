@@ -26,7 +26,7 @@ import whitebox.algorithms.MinimumBoundingRectangle;
 import whitebox.algorithms.MinimumBoundingRectangle.MinimizationCriterion;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool delineates the minimum bounding box (MBB) for a group of vectors. 
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

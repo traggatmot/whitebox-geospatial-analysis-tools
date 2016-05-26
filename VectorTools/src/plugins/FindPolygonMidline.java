@@ -32,7 +32,7 @@ import whitebox.utilities.FileUtilities;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * Can't find
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

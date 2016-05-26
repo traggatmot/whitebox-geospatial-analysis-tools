@@ -35,7 +35,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to delineate the Voronoi diagram, sometimes known as Thiessen polygons, associated with a collection of vector points.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

@@ -26,7 +26,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This can be used to identify the centroid point of a vector polyline or polygon feature or a group of vector points.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

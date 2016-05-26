@@ -31,7 +31,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to either isolate or remove vector features from a shapefile based on their spatial relationship with the features in a second vector data set.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

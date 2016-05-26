@@ -32,7 +32,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This uses the Douglas and Peucker (1973) algorithm to simplify vector line or polygon features.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

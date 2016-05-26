@@ -27,7 +27,7 @@ import whitebox.structures.KdTree;
 import whitebox.utilities.AxialData;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * The chain of polygons pattern is a characteristic pattern in which elongated and aligned polygons are arranged end-to-end. 
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

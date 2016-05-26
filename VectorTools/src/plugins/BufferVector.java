@@ -35,7 +35,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to identify an area of interest within a specified distance of features in a vector data set.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

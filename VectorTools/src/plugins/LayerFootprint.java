@@ -26,7 +26,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool creates a vector polygon footprint of the area covered by a raster grid or vector layer.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

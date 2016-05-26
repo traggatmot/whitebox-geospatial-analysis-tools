@@ -29,7 +29,7 @@ import whitebox.utilities.FileUtilities;
 import whitebox.utilities.Topology;
 
 /**
- * Used to clean vector topology, e.g. remove sliver polygons.
+ * This tool can be used to correct the topology of a shapefile such that shared boundaries between neighbouring polygon features are correctly represented.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

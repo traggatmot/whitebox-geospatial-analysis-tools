@@ -39,7 +39,7 @@ import whitebox.utilities.Topology;
 import whitebox.structures.BoundingBox;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * The Clip tool will extract all the features, or parts of features, that overlap with the features of the Clip vector file.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
