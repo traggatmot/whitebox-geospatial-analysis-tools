@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This tool calculates the optimized soil-adjusted vegetation index (OSAVI), as first described by Rondeaux, Steven, and Baret (1996) from a near-infrared (NIR) band image and a red band image.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class OSAVI implements WhiteboxPlugin {
     
@@ -151,6 +151,9 @@ public class OSAVI implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

@@ -26,7 +26,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used on raster or vector file to calculate the fractal dimension of a polygon (measure of polygon shape irregularity and overall complexity)
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

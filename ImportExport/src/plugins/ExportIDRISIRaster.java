@@ -26,7 +26,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.WhiteboxPlugin;
 
 /**
- * Exports a Whitebox Raster to an Idrisi Raster format.
+ * This tool can be used to export Whitebox GAT raster files to IDRISI raster files (*.rdc and *.rst).
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -185,6 +185,9 @@ public class ExportIDRISIRaster implements WhiteboxPlugin, InteropPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

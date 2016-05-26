@@ -31,7 +31,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class AboutWhitebox extends JDialog implements ActionListener {
 

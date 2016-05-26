@@ -46,7 +46,7 @@ import whitebox.structures.ExtensionFileFilter;
 import java.util.ArrayList;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * Principal component analysis (PCA) is a common data reduction technique that is used to reduce the dimensionality of multi-dimensional space. 
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class PrincipalComponentAnalysis implements WhiteboxPlugin {
@@ -172,6 +172,9 @@ public class PrincipalComponentAnalysis implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

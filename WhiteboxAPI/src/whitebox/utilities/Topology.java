@@ -20,7 +20,7 @@ import com.vividsolutions.jts.geom.Coordinate;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Topology {
 

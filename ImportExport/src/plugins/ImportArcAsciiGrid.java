@@ -24,7 +24,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to import an ArcGIS ASCII grid file to a Whitebox GAT raster file.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -183,6 +183,9 @@ public class ImportArcAsciiGrid implements WhiteboxPlugin, InteropPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

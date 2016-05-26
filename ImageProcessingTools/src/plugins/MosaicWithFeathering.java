@@ -26,7 +26,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.StringUtilities;
 
 /**
- *
+ * This tool will create a mosaic from two input images, it is similar in operation to the Mosaic tool, however, this tool is the preferred method of mosaicing images when there is significant overlap between the images.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class MosaicWithFeathering implements WhiteboxPlugin {
@@ -184,6 +184,9 @@ public class MosaicWithFeathering implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

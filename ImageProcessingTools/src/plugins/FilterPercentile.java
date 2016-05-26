@@ -24,8 +24,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This tool performs a percentile filter on a raster image, which assigns each cell in the output grid the percentile (0% - 100%) that the grid cell value is at within the cumulative distribution of values in a moving window centred on each grid cell.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FilterPercentile implements WhiteboxPlugin {
     
@@ -153,6 +153,9 @@ public class FilterPercentile implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

@@ -35,7 +35,7 @@ import whitebox.utilities.BitOps;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * Converts a raster dataset to a shapefile of the Polygon shapetype.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

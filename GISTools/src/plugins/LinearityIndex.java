@@ -26,7 +26,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates the linearity index of polygon features based on a regression analysis.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

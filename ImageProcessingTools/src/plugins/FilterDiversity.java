@@ -24,8 +24,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ *This tool performs a diversity filter on a raster image, grid cells in the output image report the number of different values within neighbourhood surrounding each grid cell in the input image.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FilterDiversity implements WhiteboxPlugin {
     
@@ -153,6 +153,9 @@ public class FilterDiversity implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

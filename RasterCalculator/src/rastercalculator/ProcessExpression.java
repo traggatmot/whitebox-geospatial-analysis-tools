@@ -147,6 +147,9 @@ public class ProcessExpression implements WhiteboxPluginHost, Runnable {
         //throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         try {

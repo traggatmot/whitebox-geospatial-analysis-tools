@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to find cells in a stream network grid that possess parallel flow directions based on an input D8 flow-pointer grid.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -181,6 +181,9 @@ public class FindParallelFlow implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

@@ -191,6 +191,9 @@ public class VisibilityIndex implements WhiteboxPlugin {
     private int numSolvedRows = 0;
     private double stationHeight = 0;
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

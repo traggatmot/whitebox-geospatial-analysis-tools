@@ -32,9 +32,9 @@ import whitebox.structures.BoundingBox;
 import whitebox.structures.XYPoint;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to locate the principal point in an aerial photograph based on four or eight digitized fiducial marks.
  *
- * @author johnlindsay
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class LocatePrincipalPoint implements WhiteboxPlugin {
 
@@ -191,6 +191,9 @@ public class LocatePrincipalPoint implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

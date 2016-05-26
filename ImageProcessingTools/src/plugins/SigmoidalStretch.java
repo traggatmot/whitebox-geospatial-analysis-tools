@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.WhiteboxPlugin;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This tool performs a sigmoidal stretch on a raster image.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class SigmoidalStretch implements WhiteboxPlugin {
     
@@ -151,6 +151,9 @@ public class SigmoidalStretch implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

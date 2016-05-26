@@ -26,7 +26,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to calculate the elevation of each grid cell in a raster above the nearest stream cell, measured along the downslope flowpath.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ElevAboveCreek implements WhiteboxPlugin {

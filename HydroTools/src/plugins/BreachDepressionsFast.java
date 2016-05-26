@@ -26,7 +26,7 @@ import whitebox.structures.BooleanBitArray2D;
 import whitebox.structures.NibbleArray2D;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used as an alternative to Breach Depression, the results will not be as optimal as the solution offered by Breach Depression, however it is considerably faster to run.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -192,6 +192,9 @@ public class BreachDepressionsFast implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

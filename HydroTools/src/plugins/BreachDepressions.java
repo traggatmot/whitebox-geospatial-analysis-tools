@@ -27,7 +27,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.FileUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to pre-process a digital elevation model (DEM) prior to being used for hydrological analysis.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -186,6 +186,9 @@ public class BreachDepressions implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

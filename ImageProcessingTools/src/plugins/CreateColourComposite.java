@@ -23,9 +23,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to create a colour-composite image from three bands of multi-spectral imagery.
  *
- * @author johnlindsay
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class CreateColourComposite implements WhiteboxPlugin {
 
@@ -185,6 +185,9 @@ public class CreateColourComposite implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

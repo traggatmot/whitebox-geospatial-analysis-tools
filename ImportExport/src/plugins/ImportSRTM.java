@@ -27,7 +27,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.InteropPlugin;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to convert Shuttle Radar Topography Mission (SRTM) digital elevation models (DEMs) to Whitebox GAT raster files.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -186,6 +186,9 @@ public class ImportSRTM implements WhiteboxPlugin, InteropPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

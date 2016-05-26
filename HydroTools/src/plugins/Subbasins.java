@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool will identify the catchment areas to each link in a user-specified stream network i.e., the network's sub-basins
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Subbasins implements WhiteboxPlugin {
@@ -154,6 +154,9 @@ public class Subbasins implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

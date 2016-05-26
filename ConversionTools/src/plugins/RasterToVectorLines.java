@@ -29,7 +29,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.BitOps;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool converts a raster dataset containing one or more single-cell wide line networks into a vector shapefile.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

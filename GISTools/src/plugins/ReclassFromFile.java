@@ -24,7 +24,7 @@ import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool creates a new raster image in which the value of each grid cell is determined by the values in an input raster image and a reclass file.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ReclassFromFile implements WhiteboxPlugin {

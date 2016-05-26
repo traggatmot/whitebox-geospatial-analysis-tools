@@ -26,7 +26,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * Converts a raster dataset to a shapefile of the Point shapetype.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

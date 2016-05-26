@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class PaletteChooser extends JDialog implements MouseListener, ActionListener, WindowListener {
     private String paletteDirectory;

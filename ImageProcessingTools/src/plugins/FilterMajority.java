@@ -24,8 +24,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This tool performs a majority (or modal) filter on a raster image, which assigns each cell in the output grid the most commonly occurring value, i.e. mode, in a moving window centred on each grid cell.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FilterMajority implements WhiteboxPlugin {
     
@@ -153,6 +153,9 @@ public class FilterMajority implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

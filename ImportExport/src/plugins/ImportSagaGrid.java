@@ -29,7 +29,7 @@ import whitebox.utilities.BitOps;
 import whitebox.utilities.Unsigned;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to convert SAGA GIS raster grids to Whitebox GAT raster files.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -188,6 +188,9 @@ public class ImportSagaGrid implements WhiteboxPlugin, InteropPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

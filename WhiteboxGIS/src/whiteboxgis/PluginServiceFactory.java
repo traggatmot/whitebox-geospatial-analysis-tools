@@ -21,7 +21,7 @@ import java.io.IOException;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class PluginServiceFactory {
     private static String pluginDir = null;

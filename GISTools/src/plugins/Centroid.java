@@ -21,7 +21,7 @@ import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool computes the centroid of raster polygons.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Centroid implements WhiteboxPlugin {

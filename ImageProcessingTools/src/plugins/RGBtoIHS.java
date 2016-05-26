@@ -23,8 +23,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- *
- * @author johnlindsay
+ * This tool transforms three raster images of multispectral data (red, green, and blue channels) into their equivalent intensity, hue, and saturation (IHS; sometimes HSI or HIS) images.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class RGBtoIHS implements WhiteboxPlugin {
 
@@ -181,6 +181,9 @@ public class RGBtoIHS implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         /*

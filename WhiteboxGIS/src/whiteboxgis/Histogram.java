@@ -41,7 +41,7 @@ import whitebox.utilities.Parallel;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Histogram extends JPanel implements ActionListener, Printable, MouseMotionListener {
 

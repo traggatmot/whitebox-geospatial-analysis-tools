@@ -193,6 +193,9 @@ public class FindPolygonChains implements WhiteboxPlugin {
     KdTree<Integer> pointsTree;
     double neighbourhoodRadius = 1000;
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
 

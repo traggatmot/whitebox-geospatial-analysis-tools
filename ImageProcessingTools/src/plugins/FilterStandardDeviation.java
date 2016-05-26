@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This tool performs a standard deviation filter on a raster image, meaning it calculates the standard deviation within a neighbouring area around each grid cell.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FilterStandardDeviation implements WhiteboxPlugin {
     
@@ -151,6 +151,9 @@ public class FilterStandardDeviation implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

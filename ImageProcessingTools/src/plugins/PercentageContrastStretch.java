@@ -22,7 +22,8 @@ import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool performs a percentage contrast stretch on a raster image, which maps each grid cell value in the input raster image (z) onto a new scale that ranges from a lower-tail clip value (L) to the upper-tail clip value (U), with the user-specified number of tonal values (n), such that:
+zn = (z - L) / (U - L) × n where zn is the output value. 
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class PercentageContrastStretch implements WhiteboxPlugin {
@@ -148,6 +149,9 @@ public class PercentageContrastStretch implements WhiteboxPlugin {
         return amIActive;
     }
     
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

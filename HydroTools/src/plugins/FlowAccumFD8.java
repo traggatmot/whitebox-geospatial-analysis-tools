@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool is used to generate a flow accumulation grid (i.e., contributing area) using the FD8 algorithm (Freeman, 1991).
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -193,6 +193,9 @@ public class FlowAccumFD8 implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

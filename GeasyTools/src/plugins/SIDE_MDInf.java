@@ -24,7 +24,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool is used to compute the side separated contributions to a stream (Grabs et al., 2010) using the MDInf algorithm (Seibert and McGlynn, 2007).
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class SIDE_MDInf implements WhiteboxPlugin {

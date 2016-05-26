@@ -27,7 +27,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool is used to generate a flow accumulation grid (i.e., contributing area) using the MDInf algorithm (Seibert and McGlynn, 2007).
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FlowAccumMDInf implements WhiteboxPlugin {

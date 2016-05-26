@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This image processing tool removes small irregularities (i.e., spurs) on the boundaries of objects in a Boolean raster image.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class RemoveSpurs implements WhiteboxPlugin {
     
@@ -151,6 +151,9 @@ public class RemoveSpurs implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

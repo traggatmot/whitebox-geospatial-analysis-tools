@@ -60,7 +60,7 @@ import whitebox.geospatialfiles.VectorLayerInfo;
 
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class SettingsDialog extends JDialog implements ActionListener, AdjustmentListener, MouseListener {
     

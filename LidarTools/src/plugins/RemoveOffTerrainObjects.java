@@ -26,7 +26,7 @@ import whitebox.structures.KdTree;
 import whitebox.utilities.FileUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to create a bare-earth DEM from a fine-resolution digital surface model.
  * 
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -187,6 +187,9 @@ public class RemoveOffTerrainObjects implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

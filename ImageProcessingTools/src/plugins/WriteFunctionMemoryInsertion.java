@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool performs a write function memory insertion (WFM), which can be used to qualitatively inspect change in any type of registered, multi-date imagery. 
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class WriteFunctionMemoryInsertion implements WhiteboxPlugin {
@@ -149,6 +149,9 @@ public class WriteFunctionMemoryInsertion implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.WhiteboxPlugin;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to reduce colour bias in a colour composite image (Data Type of RGB).
  *
  * @author johnlindsay
  */
@@ -182,6 +182,9 @@ public class BalanceContrastEnhancement implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool reclassifies the values in an input raster file based on an equal-interval scheme, where the user must specify the reclass interval value, the starting value, and optionally, the ending value.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

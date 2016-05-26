@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to map the least-cost pathway connecting each destination grid cell in a cost-distance analysis to a source cell.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class CostPathway implements WhiteboxPlugin {

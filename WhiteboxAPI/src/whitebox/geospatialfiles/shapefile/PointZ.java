@@ -23,7 +23,7 @@ import java.nio.ByteOrder;
 import whitebox.structures.BoundingBox;
 /**
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class PointZ implements Geometry {
     private double x;

@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This tool performs a range filter on a raster image, which assigns each cell in the output grid the difference between the maximum and minimum value in a moving window centred on each grid cell.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FilterRange implements WhiteboxPlugin {
     
@@ -151,6 +151,9 @@ public class FilterRange implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
