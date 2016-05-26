@@ -27,7 +27,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * 
+ * This tool will create an image mosaic from one or more input image files using one of three resampling methods including, nearest neighbour, bilinear interpolation, and cubic convolution.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Mosaic implements WhiteboxPlugin {

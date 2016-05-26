@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.WhiteboxPlugin;
 
 /**
- * This tool can be used to reduce colour bias in a colour composite image (Data Type of RGB) based on the technique described by Liu (1991).
+ * This tool can be used to reduce colour bias in a colour composite image (Data Type of RGB).
  *
  * @author johnlindsay
  */

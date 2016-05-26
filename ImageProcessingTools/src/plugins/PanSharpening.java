@@ -24,7 +24,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * Panchromatic sharpening, or simply pan-sharpening, refers to a range of techniques that can be used to merge finer spatial resolution panchromatic images with coarser spatial resolution multi-spectral images.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class PanSharpening implements WhiteboxPlugin {
