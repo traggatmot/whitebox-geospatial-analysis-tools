@@ -189,7 +189,6 @@ public class CreateNewShapefile implements WhiteboxPlugin {
     public void run() {
         amIActive = true;
 
-        int numFiles;
         ShapeType shapeType;
         if (args.length <= 0) {
             showFeedback("Plugin parameters have not been set.");

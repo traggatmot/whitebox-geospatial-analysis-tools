@@ -188,21 +188,13 @@ public class ArcCos implements WhiteboxPlugin {
     public void run() {
         amIActive = true;
         
-        String inputHeader = null;
-        String outputHeader = null;
-    	
-        if (args.length <= 0) {
-            showFeedback("Plugin parameters have not been set.");
+        if (args.length < 2) {
+            showFeedback("Plugin parameters have not been set properly.");
             return;
         }
         
-        for (int i = 0; i < args.length; i++) {
-            if (i == 0) {
-                inputHeader = args[i];
-            } else if (i == 1) {
-                outputHeader = args[i];
-            }
-        }
+        String inputHeader = args[0];
+        String outputHeader = args[1];
 
         // check to see that the inputHeader and outputHeader are not null.
         if ((inputHeader == null) || (outputHeader == null)) {
@@ -213,8 +205,7 @@ public class ArcCos implements WhiteboxPlugin {
         try {
             int row, col;
             double z;
-            float progress = 0;
-            int numCells = 0;
+            int progress, oldProgress = -1;
             double[] data;
             
             WhiteboxRaster inputFile = new WhiteboxRaster(inputHeader, "r");
@@ -236,9 +227,15 @@ public class ArcCos implements WhiteboxPlugin {
                     }
 
                 }
-                if (cancelOp) { cancelOperation(); return; }
-                progress = (float) (100f * row / (rows - 1));
-                updateProgress((int) progress);
+                progress = (int) (100f * row / (rows - 1));
+                if (progress != oldProgress) {
+                    oldProgress = progress;
+                    updateProgress((int) progress);
+                    if (cancelOp) {
+                        cancelOperation();
+                        return;
+                    }
+                }
             }
 
             outputFile.addMetadataEntry("Created by the "

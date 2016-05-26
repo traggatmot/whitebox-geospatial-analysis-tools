@@ -189,25 +189,17 @@ public class Truncate implements WhiteboxPlugin {
     public void run() {
         amIActive = true;
         
-        String inputHeader = null;
-        String outputHeader = null;
-    	int numDecimalPlaces = 0;
-        if (args.length <= 0) {
-            showFeedback("Plugin parameters have not been set.");
+        int numDecimalPlaces = 0;
+        if (args.length < 3) {
+            showFeedback("Plugin parameters have not been set properly.");
             return;
         }
         
-        for (int i = 0; i < args.length; i++) {
-            if (i == 0) {
-                inputHeader = args[i];
-            } else if (i == 1) {
-                numDecimalPlaces = Integer.parseInt(args[i]);
-                if (numDecimalPlaces < 0) { numDecimalPlaces = 0; }
-            } else if (i == 2) {
-                outputHeader = args[i];
-            }
-        }
-
+        String inputHeader = args[0];
+        numDecimalPlaces = Integer.parseInt(args[1]);
+        if (numDecimalPlaces < 0) { numDecimalPlaces = 0; }
+        String outputHeader = args[2];
+        
         // check to see that the inputHeader and outputHeader are not null.
         if ((inputHeader == null) || (outputHeader == null)) {
             showFeedback("One or more of the input parameters have not been set properly.");
@@ -217,8 +209,7 @@ public class Truncate implements WhiteboxPlugin {
         try {
             int row, col;
             double z;
-            float progress = 0;
-            int numCells = 0;
+            int progress, oldProgress = -1;
             double[] data;
             
             WhiteboxRaster inputFile = new WhiteboxRaster(inputHeader, "r");
@@ -228,7 +219,8 @@ public class Truncate implements WhiteboxPlugin {
             
             double noData = inputFile.getNoDataValue();
             
-            WhiteboxRaster outputFile = new WhiteboxRaster(outputHeader, "rw", inputHeader, WhiteboxRaster.DataType.FLOAT, noData);
+            WhiteboxRaster outputFile = new WhiteboxRaster(outputHeader, "rw", 
+                    inputHeader, WhiteboxRaster.DataType.FLOAT, noData);
             outputFile.setPreferredPalette(inputFile.getPreferredPalette());
             for (row = 0; row < rows; row++) {
                 data = inputFile.getRowValues(row);
@@ -241,9 +233,15 @@ public class Truncate implements WhiteboxPlugin {
                     }
 
                 }
-                if (cancelOp) { cancelOperation(); return; }
-                progress = (float) (100f * row / (rows - 1));
-                updateProgress((int) progress);
+                progress = (int) (100f * row / (rows - 1));
+                if (progress != oldProgress) {
+                    oldProgress = progress;
+                    updateProgress((int) progress);
+                    if (cancelOp) {
+                        cancelOperation();
+                        return;
+                    }
+                }
             }
 
             outputFile.addMetadataEntry("Created by the "

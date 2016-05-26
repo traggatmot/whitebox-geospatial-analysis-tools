@@ -197,7 +197,7 @@ public class Multiply implements WhiteboxPlugin {
         double constant1 = 0;
         double constant2 = 0;
     	
-        if (args.length <= 0) {
+        if (args.length < 3) {
             showFeedback("Plugin parameters have not been set.");
             return;
         }
@@ -233,7 +233,7 @@ public class Multiply implements WhiteboxPlugin {
         try {
             int row, col;
             double z1, z2;
-            float progress = 0;
+            int progress, oldProgress = -1;
             double[] data1;
             double[] data2;
             
@@ -267,12 +267,15 @@ public class Multiply implements WhiteboxPlugin {
                             outputFile.setValue(row, col, noData1);
                         }
                     }
-                    if (cancelOp) {
-                        cancelOperation();
-                        return;
+                    progress = (int) (100f * row / (rows - 1));
+                    if (progress != oldProgress) {
+                        oldProgress = progress;
+                        updateProgress((int) progress);
+                        if (cancelOp) {
+                            cancelOperation();
+                            return;
+                        }
                     }
-                    progress = (float) (100f * row / (rows - 1));
-                    updateProgress((int) progress);
                 }
                 
                 outputFile.addMetadataEntry("Created by the " + 
@@ -302,12 +305,15 @@ public class Multiply implements WhiteboxPlugin {
                             outputFile.setValue(row, col, z1 * constant2);
                         }
                     }
-                    if (cancelOp) {
-                        cancelOperation();
-                        return;
+                    progress = (int) (100f * row / (rows - 1));
+                    if (progress != oldProgress) {
+                        oldProgress = progress;
+                        updateProgress((int) progress);
+                        if (cancelOp) {
+                            cancelOperation();
+                            return;
+                        }
                     }
-                    progress = (float) (100f * row / (rows - 1));
-                    updateProgress((int) progress);
                 }
                 
                 outputFile.addMetadataEntry("Created by the " + 
@@ -336,12 +342,15 @@ public class Multiply implements WhiteboxPlugin {
                             outputFile.setValue(row, col, constant1 * z2);
                         }
                     }
-                    if (cancelOp) {
-                        cancelOperation();
-                        return;
+                    progress = (int) (100f * row / (rows - 1));
+                    if (progress != oldProgress) {
+                        oldProgress = progress;
+                        updateProgress((int) progress);
+                        if (cancelOp) {
+                            cancelOperation();
+                            return;
+                        }
                     }
-                    progress = (float) (100f * row / (rows - 1));
-                    updateProgress((int) progress);
                 }
                 
                 outputFile.addMetadataEntry("Created by the " + 

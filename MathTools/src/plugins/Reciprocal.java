@@ -186,27 +186,16 @@ public class Reciprocal implements WhiteboxPlugin {
     public void run() {
         amIActive = true;
 
-        String inputHeader1 = null;
-        String inputHeader2 = null;
-        String outputHeader = null;
-        
-        if (args.length <= 0) {
-            showFeedback("Plugin parameters have not been set.");
+        if (args.length < 2) {
+            showFeedback("Plugin parameters have not been set properly.");
             return;
         }
 
-        for (int i = 0; i < args.length; i++) {
-            if (i == 0) {
-                inputHeader1 = args[i];
-                File file = new File(inputHeader1);
-                file = null;
-            } else if (i == 1) {
-                outputHeader = args[i];
-            }
-        }
-
+        String inputHeader = args[0];
+                String outputHeader = args[1];
+           
         // check to see that the inputHeader and outputHeader are not null.
-        if ((inputHeader1 == null) || (inputHeader2 == null) || (outputHeader == null)) {
+        if ((inputHeader == null) || (outputHeader == null)) {
             showFeedback("One or more of the input parameters have not been set properly.");
             return;
         }
@@ -214,16 +203,17 @@ public class Reciprocal implements WhiteboxPlugin {
         try {
             int row, col;
             double z1;
-            float progress = 0;
+            int progress, oldProgress = -1;
             double[] data1;
 
-            WhiteboxRaster inputFile1 = new WhiteboxRaster(inputHeader1, "r");
+            WhiteboxRaster inputFile1 = new WhiteboxRaster(inputHeader, "r");
 
             int rows = inputFile1.getNumberRows();
             int cols = inputFile1.getNumberColumns();
             double noData = inputFile1.getNoDataValue();
 
-            WhiteboxRaster outputFile = new WhiteboxRaster(outputHeader, "rw", inputHeader1, WhiteboxRaster.DataType.FLOAT, noData);
+            WhiteboxRaster outputFile = new WhiteboxRaster(outputHeader, "rw", 
+                    inputHeader, WhiteboxRaster.DataType.FLOAT, noData);
             outputFile.setPreferredPalette(inputFile1.getPreferredPalette());
 
             for (row = 0; row < rows; row++) {
@@ -234,12 +224,15 @@ public class Reciprocal implements WhiteboxPlugin {
                         outputFile.setValue(row, col, 1 / z1);
                     }
                 }
-                if (cancelOp) {
-                    cancelOperation();
-                    return;
+                progress = (int) (100f * row / (rows - 1));
+                if (progress != oldProgress) {
+                    oldProgress = progress;
+                    updateProgress((int) progress);
+                    if (cancelOp) {
+                        cancelOperation();
+                        return;
+                    }
                 }
-                progress = (float) (100f * row / (rows - 1));
-                updateProgress((int) progress);
             }
 
             outputFile.addMetadataEntry("Created by the "
