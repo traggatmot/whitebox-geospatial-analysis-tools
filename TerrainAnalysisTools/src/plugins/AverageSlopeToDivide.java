@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates the average slope gradient (i.e., slope steepness in degrees) of the flowpaths that run through each grid cell in an input digital elevation model (DEM) to the upslope divide cells.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to identify ridge cells in a digital elevation model (DEM).
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FindRidges implements WhiteboxPlugin {

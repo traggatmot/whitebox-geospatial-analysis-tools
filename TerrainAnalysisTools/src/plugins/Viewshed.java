@@ -26,7 +26,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to calculate the viewshed (the visible area) from a location (viewing station) or group of locations based on the topography defined by an input digital elevation model (DEM).
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

@@ -27,7 +27,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to calculate the difference in between the elevation of each grid cell in an input DEM and the average elevation in the local neighbourhood.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

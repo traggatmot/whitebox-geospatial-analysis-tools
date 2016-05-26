@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool creates a new raster in which each grid cell is assigned the exposure of the land-surface to a hypothetical wind flux.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

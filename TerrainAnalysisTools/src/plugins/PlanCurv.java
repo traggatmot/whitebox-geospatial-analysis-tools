@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates the plan curvature (i.e., contour curvature), or the rate of change in aspect along a contour line, from a digital elevation model (DEM). 
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

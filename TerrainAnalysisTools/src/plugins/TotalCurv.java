@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates the total curvature, which is the curvature of the surface itself and not the curvature of intersecting lines (e.g., profile and plan curvatures).
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

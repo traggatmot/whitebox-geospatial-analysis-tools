@@ -24,7 +24,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.BitOps;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * Maximum branch length (Bmax) is the longest branch length between a grid cell's flowpath and the flowpaths initiated at each of its neighbours.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

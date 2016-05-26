@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * The topographic ruggedness index (TRI) is a measure of local topographic relief.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

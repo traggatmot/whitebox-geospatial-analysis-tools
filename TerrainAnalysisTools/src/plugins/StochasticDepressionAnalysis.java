@@ -27,7 +27,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to map topographic depressions in a digital elevation model (DEM), taking into account the uncertainty in depression shape resulting from DEM error. 
  *
  * @author John Lindsay email: jlindsay@uoguelph.ca and Beau Ahrens
  */

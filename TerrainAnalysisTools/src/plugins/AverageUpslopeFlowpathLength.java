@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates the average length of the flowpaths that run through each grid cell (in map horizontal units) in a flow pointer grid. 
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

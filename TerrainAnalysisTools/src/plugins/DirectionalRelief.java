@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates the relief for each grid cell in a digital elevation model (DEM) in a specified direction.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

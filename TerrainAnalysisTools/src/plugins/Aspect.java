@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates slope aspect (i.e., slope orientation in degrees) for each grid cell in an input digital elevation model (DEM).
  * 
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

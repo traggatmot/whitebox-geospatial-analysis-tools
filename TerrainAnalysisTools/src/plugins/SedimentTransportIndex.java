@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to calculate the sediment transport index (STI) described by Moore and Burch (1986).
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

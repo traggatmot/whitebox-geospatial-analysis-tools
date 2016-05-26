@@ -29,7 +29,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.BitOps;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * Creates a vector contour coverage from a digital elevation model (DEM).
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
