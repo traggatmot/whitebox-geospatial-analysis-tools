@@ -36,7 +36,7 @@ import whitebox.structures.KdTree;
 import whitebox.structures.BooleanBitArray1D;
 
 /**
- *
+ * Can't find
  * @author Dr. John Lindsay
  */
 public class LiDAR_segmentation implements WhiteboxPlugin {

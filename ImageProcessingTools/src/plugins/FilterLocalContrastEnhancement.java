@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * No help file
+ * Can't find
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

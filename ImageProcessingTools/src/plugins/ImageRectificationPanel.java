@@ -44,7 +44,7 @@ import java.beans.PropertyChangeListener;
 import java.util.ResourceBundle;
 
 /**
- * No help file
+ * Can't find
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ImageRectificationPanel extends JPanel implements ActionListener,

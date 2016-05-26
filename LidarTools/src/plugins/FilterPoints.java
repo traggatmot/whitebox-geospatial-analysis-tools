@@ -43,8 +43,8 @@ import whitebox.structures.BooleanBitArray1D;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- *
- * @author John Lindsay
+ * This tool removes points in a LAS file with scan angles greater than a threshold.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FilterPoints {
 
