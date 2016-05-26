@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to extract channel networks from digital elevation models (DEMs) based on the Johnston and Rosenfeld (1975) method.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ExtractValleysJohnstonAndRosenfeld implements WhiteboxPlugin {
