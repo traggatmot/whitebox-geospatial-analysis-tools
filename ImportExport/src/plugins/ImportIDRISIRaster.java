@@ -38,7 +38,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.InteropPlugin;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to import IDRISI raster files (*.rdc and *.rst) to Whitebox GAT raster files.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

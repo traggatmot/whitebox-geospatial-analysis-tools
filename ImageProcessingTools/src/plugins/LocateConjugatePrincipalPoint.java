@@ -31,8 +31,8 @@ import whitebox.structures.KdTree;
 import whitebox.structures.RowPriorityGridCell;
 
 /**
- *
- * @author johnlindsay
+ * Can't find
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class LocateConjugatePrincipalPoint {
 

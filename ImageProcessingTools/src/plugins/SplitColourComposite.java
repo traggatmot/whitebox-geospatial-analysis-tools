@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This tool can be used to split an RGB (or aRGB) colour-composite image into three separate bands of multi-spectral imagery.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class SplitColourComposite implements WhiteboxPlugin {
     

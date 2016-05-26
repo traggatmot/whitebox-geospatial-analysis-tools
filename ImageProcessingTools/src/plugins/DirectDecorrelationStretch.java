@@ -23,9 +23,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.WhiteboxPlugin;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * The Direct Decorrelation Stretch (DDS) is a simple type of saturation stretch.
  *
- * @author johnlindsay
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class DirectDecorrelationStretch implements WhiteboxPlugin {
 

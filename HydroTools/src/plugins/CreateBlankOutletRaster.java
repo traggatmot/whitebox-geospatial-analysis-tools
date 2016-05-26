@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to create a new raster, filled with NoData values, which possesses the same co-ordinates and demensions (i.e., rows and columns) as an existing base image.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class CreateBlankOutletRaster implements WhiteboxPlugin {

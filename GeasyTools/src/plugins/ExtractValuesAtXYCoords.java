@@ -27,7 +27,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to extract grid values at specified XY-coordinates.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ExtractValuesAtXYCoords implements WhiteboxPlugin {

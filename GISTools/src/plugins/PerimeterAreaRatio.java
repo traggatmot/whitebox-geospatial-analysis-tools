@@ -28,7 +28,7 @@ import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * The perimeter-area ratio is an indicator of polygon shape complexity.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class PerimeterAreaRatio implements WhiteboxPlugin {

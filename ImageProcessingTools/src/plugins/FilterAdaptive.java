@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This tool performs a type of adaptive filter on a raster image, which can be used to reduce the level of random noise (shot noise) in an image.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FilterAdaptive implements WhiteboxPlugin {
     

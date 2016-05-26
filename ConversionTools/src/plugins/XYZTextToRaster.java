@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool will convert an ASCII text file containing X,Y,Z point data into a raster image.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class XYZTextToRaster implements WhiteboxPlugin {

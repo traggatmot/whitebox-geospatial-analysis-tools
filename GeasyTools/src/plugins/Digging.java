@@ -27,7 +27,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool removes creek sinks by digging a flowpath to a lower located cell.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Digging implements WhiteboxPlugin {

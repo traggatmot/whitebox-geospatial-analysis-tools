@@ -33,7 +33,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.InteropPlugin;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to import vector files that were created using the Terrain Analysis System (TAS).
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ImportTASVector implements WhiteboxPlugin, InteropPlugin {

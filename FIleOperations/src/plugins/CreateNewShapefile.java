@@ -23,7 +23,7 @@ import whitebox.geospatialfiles.shapefile.*;
 import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool creates a new blank shapefile.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

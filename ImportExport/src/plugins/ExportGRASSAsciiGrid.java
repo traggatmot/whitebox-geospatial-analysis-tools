@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to export a Whitebox GAT raster file to a GRASS ASCII grid file.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ExportGRASSAsciiGrid implements WhiteboxPlugin, InteropPlugin {

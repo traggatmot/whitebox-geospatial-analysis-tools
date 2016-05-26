@@ -24,7 +24,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to calculate the downslope index described by Hjerdt et al. (2004).
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class DownslopeIndex_Radius implements WhiteboxPlugin {

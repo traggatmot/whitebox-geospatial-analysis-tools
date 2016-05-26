@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool will resample the values from one or more source image files into a destination image file using one of three resampling methods including, nearest neighbour, bilinear interpolation, and cubic convolution.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Resample implements WhiteboxPlugin {

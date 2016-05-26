@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * The Laplacian-of-Gaussian (LoG) is a spatial filter used for edge enhancement and is closely related to the difference-of-Gaussians filter.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FilterLoG implements WhiteboxPlugin {
     

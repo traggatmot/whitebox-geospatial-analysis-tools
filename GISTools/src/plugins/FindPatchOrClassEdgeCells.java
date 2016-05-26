@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool finds all grid cells in a raster image containing categorical data (classes or objects) that are located on the edge of patch or class features.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FindPatchOrClassEdgeCells implements WhiteboxPlugin {

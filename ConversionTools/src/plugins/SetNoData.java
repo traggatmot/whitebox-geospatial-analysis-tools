@@ -21,7 +21,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool will re-assign a user-defined background value in an input raster image the NoData value.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

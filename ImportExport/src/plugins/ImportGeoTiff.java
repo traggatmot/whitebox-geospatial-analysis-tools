@@ -27,7 +27,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.InteropPlugin;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to import GeoTIFF files (*.tif) to Whitebox GAT raster files. 
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

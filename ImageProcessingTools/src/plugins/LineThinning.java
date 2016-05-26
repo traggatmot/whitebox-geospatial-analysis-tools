@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This image processing tool reduces all polygons in a Boolean raster image to their single-cell wide skeletons.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class LineThinning implements WhiteboxPlugin {
     

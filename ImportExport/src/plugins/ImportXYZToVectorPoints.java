@@ -31,7 +31,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.FileUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to import a series of x,y,z points into a vector shapefile of a POINT ShapeType.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ImportXYZToVectorPoints implements WhiteboxPlugin {

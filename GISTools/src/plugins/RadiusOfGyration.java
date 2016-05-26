@@ -22,7 +22,7 @@ import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This can be used to calculate the radius of gyration (RoG) for the polygon features within a raster image.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class RadiusOfGyration implements WhiteboxPlugin {

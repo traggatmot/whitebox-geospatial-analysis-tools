@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool is used to generate a flow pointer grid using the simple D8 (O'Callaghan and Mark, 1984) algorithm.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

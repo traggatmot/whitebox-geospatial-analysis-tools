@@ -38,7 +38,7 @@ import whitebox.structures.BoundingBox;
 import whitebox.structures.RowPriorityGridCell;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to clip one or more rasters to the extent of a vector polygon (shapefile).
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

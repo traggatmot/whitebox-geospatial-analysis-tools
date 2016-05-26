@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.FileUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool will make a copy of a user specified input raster or vector data set, including all associated files.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

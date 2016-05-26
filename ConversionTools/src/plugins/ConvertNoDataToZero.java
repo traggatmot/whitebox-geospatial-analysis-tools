@@ -21,7 +21,7 @@ import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to change the value within the grid cells of a raster file that contain NoData to zero.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ConvertNoDataToZero implements WhiteboxPlugin {

@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool will identify the hillslopes associated with a user-specified stream network.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Hillslopes implements WhiteboxPlugin {

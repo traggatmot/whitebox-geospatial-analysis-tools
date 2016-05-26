@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool performs a weighted summation on multiple input images.
  * @author johnlindsay
  */
 public class WeightedSum implements WhiteboxPlugin {

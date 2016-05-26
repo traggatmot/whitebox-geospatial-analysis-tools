@@ -24,7 +24,7 @@ import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * Can't find
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class StandardDeviationContrastStretch implements WhiteboxPlugin {

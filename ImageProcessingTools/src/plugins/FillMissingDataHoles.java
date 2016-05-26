@@ -24,7 +24,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.structures.KdTree;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to fill in small gaps in an image or digital elevation model (DEM).
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

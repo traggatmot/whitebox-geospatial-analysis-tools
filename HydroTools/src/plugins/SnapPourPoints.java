@@ -31,7 +31,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.StringUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * The Snap Pour Points tool can be used to move the location of pour points (i.e., outlets used in a watershedding operation) to the location coincident with the highest flow accumulation value within a specified distance.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

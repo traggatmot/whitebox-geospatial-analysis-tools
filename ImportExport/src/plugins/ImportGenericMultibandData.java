@@ -27,7 +27,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to import a number of generic multiband image data formats, including band interleaved by line (BIL), band interleaved by pixel (BIP), and band sequential (BSQ), to Whitebox GAT raster file format.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

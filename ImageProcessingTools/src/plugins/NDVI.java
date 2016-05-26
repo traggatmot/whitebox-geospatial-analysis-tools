@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates the normalized difference vegetation index (NDVI) from a near-infrared (NIR) band image and a red band image.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class NDVI implements WhiteboxPlugin {

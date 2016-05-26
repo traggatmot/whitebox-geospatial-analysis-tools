@@ -27,7 +27,7 @@ import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to measure the length of the perimeter of polygon features in a raster or vector layer.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Perimeter implements WhiteboxPlugin {

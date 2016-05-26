@@ -38,7 +38,7 @@ import whitebox.structures.BoundingBox;
 import whitebox.structures.RowPriorityGridCell;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to remove (replace with no-data values) one or more areas defined by a vector polygon (shapefile) from a rasters.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

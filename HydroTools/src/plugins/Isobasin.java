@@ -26,7 +26,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.FileUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to divide a landscape into a group of nearly equal-sized watersheds, known as isobasins.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

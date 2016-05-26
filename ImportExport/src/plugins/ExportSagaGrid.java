@@ -26,7 +26,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.WhiteboxPlugin;
 
 /**
- * Exports a Whitebox Raster to a SAGA GIS raster format.
+ * This tool can be used to export Whitebox GAT raster files to SAGA GIS raster files (*.sgrd and *.sdat).
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

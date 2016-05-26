@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This tool can be used to perform one of four 3x3 line-detection filters on a raster image, which can be used to find one-cell-thick vertical, horizontal, or angled (135-degrees or 45-degrees) lines in an image.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FilterLineDetection implements WhiteboxPlugin {
     

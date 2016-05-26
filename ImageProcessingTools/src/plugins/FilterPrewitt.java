@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This tool performs a 3x3 Prewitt edge-detection filter on a raster image, which is similar to the Sobel filter in that it identifies areas of high slope in the input image through the calculation of slopes in the x and y directions.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FilterPrewitt implements WhiteboxPlugin {
     

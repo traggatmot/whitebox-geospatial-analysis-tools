@@ -507,7 +507,7 @@ public class ToolDialog extends JDialog implements Communicator, ActionListener,
     /**
      * Used to communicate feedback pop-up messages between a plugin tool and
      * the main Whitebox user-interface.
-     *
+     * 
      * @param feedback String containing the text to display.
      */
     @Override

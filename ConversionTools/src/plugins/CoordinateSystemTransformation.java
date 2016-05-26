@@ -48,7 +48,7 @@ import whitebox.utilities.FileUtilities;
 import whitebox.interfaces.ThreadListener;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to convert raster data that is in geographic coordinates (latitude and longitude) into the UTM projected coordinate system or vice versa.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

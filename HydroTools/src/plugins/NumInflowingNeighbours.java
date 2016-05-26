@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates the number of inflowing neighbours for each grid cell in a raster file.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class NumInflowingNeighbours implements WhiteboxPlugin {

@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to calculate the downslope flowpath length from each grid cell in a raster to an outlet cell either at the edge of the grid or at the outlet point of a watershed.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class DownslopeFlowpathLength implements WhiteboxPlugin {

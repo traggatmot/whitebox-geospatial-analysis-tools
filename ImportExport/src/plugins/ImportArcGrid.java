@@ -34,7 +34,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.InteropPlugin;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to import an ArcGIS floating-point grid file into Whitebox GAT.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ImportArcGrid implements WhiteboxPlugin, InteropPlugin {

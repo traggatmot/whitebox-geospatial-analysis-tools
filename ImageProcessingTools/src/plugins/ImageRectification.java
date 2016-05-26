@@ -20,8 +20,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- *
- * @author johnlindsay
+ * This tool is used to perform image-to-map rectification i.e., transform the geometric properties of an image to match that of a projected map, or image-to-image registration.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ImageRectification implements WhiteboxPlugin {
 

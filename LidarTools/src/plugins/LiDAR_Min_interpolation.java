@@ -31,7 +31,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.structures.KdTree;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to interpolate a regular grid raster from a point cloud LiDAR dataset using the minimum interpolation method.
  * 
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
