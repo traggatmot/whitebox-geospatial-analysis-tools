@@ -22,7 +22,7 @@ import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * This tool will measure the edge proportion, i.e. the proportion of grid cells in a polygon that are located along the polygon's boundary, for an input raster image.
+ * This tool will measure the edge proportion i.e., the proportion of grid cells in a polygon that are located along the polygon's boundary, for an input raster image.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class EdgeProportion implements WhiteboxPlugin {

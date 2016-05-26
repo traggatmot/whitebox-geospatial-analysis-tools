@@ -26,7 +26,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * This tool can be used to calculate the fractal dimension (Mcgarigal et al., 2002) for polygons.
+ * This tool can be used on raster or vector file to calculate the fractal dimension of a polygon (measure of polygon shape irregularity and overall complexity)
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

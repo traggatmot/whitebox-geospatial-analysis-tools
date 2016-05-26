@@ -33,7 +33,7 @@ import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * This tool can be used to calculate the related circumscribing circle (Mcgarigal et al., 2002) for polygon features.
+ * This tool can be used on either raster or vector files to calculate the related circumscribing circle (a circle which passes through all vertex features of a polygon).
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class RelatedCircumscribingCircle implements WhiteboxPlugin {

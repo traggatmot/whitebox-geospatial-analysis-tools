@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * This tool can be used to fill all of the depressions in a digital elevation model (DEM) and to remove the flat areas, although the Planchon and Darboux (2001) algorithm is not as efficient as the Wang and Liu algorithm used in the Fill Depressions tool, it is capable of handling very large DEMs.
+ * This tool can be used to fill all of the depressions in a digital elevation model (DEM) and to remove the flat areas and is most suitable for handling very large DEMs.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
