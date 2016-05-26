@@ -31,7 +31,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.WhiteboxPlugin;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to import a Surfer (Golden Software) ASCII grid file (*.grd) to a Whitebox GAT raster file.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ImportSurferAsciiGrid implements WhiteboxPlugin, InteropPlugin {

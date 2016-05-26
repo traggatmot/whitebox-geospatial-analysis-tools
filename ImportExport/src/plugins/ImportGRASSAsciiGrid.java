@@ -32,7 +32,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.utilities.StringUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to import a GRASS ASCII grid file to Whitebox GAT raster file format.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

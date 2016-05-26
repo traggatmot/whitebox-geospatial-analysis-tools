@@ -26,7 +26,7 @@ import com.vividsolutions.jts.io.WKTWriter;
 import whitebox.interfaces.InteropPlugin;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to export a vector shapefile file to an Well-Known Text (WKT) file.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
