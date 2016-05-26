@@ -24,7 +24,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.WhiteboxPlugin;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool alters the cumulative distribution function (CDF) of a raster image to match, as closely as possible, the CDF of a reference image.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

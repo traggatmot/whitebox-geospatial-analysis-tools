@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool converts the values in an input image into cumulative probabilities.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

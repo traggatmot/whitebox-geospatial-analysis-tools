@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool will transform the values in an input raster image into z-scores.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

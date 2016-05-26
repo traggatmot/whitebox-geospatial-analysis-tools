@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * Spatial autocorrelation describes the extent to which a variable is either dispersed or clustered through space.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

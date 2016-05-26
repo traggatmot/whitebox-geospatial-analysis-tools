@@ -25,7 +25,7 @@ import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to estimate the Pearson product-moment correlation coefficient (r) for each pair among a group of attributes associated with the database file of a shapefile. 
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class CorrelationForAttributes implements WhiteboxPlugin {

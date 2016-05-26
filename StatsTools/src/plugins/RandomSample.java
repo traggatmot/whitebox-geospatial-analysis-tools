@@ -26,7 +26,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to create a random sample of grid cells. 
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

@@ -45,7 +45,7 @@ import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to perform a principal component analysis (PCA) on a group of specified attributes from a vector file.
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class PCAForAttributes implements WhiteboxPlugin {

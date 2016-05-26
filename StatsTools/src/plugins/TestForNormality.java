@@ -25,7 +25,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool will perform a Kolmogorov-Smirnov (K-S) test for normality to evaluate whether the frequency distribution of values within a raster image are drawn from a Gaussian (normal) distribution.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
