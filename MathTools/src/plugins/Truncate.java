@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool truncates the values in an input image to the desired number of decimal places.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
