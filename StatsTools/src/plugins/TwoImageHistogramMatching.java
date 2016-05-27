@@ -414,6 +414,10 @@ public class TwoImageHistogramMatching implements WhiteboxPlugin{
         }
     }
     
+    /**
+     * This method is only used for testing.
+     * @param args 
+     */
     // This method is only used during testing.
     public static void main(String[] args) {
 

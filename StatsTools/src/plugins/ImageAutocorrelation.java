@@ -393,6 +393,10 @@ public class ImageAutocorrelation implements WhiteboxPlugin {
         }
     }
 
+    /**
+     * This method is only used for debugging the tool
+     * @param args 
+     */
 // this is only used for debugging the tool
     public static void main(String[] args) {
         ImageAutocorrelation ia = new ImageAutocorrelation();
