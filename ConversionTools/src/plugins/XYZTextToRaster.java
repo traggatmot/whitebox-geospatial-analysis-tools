@@ -126,15 +126,17 @@ public class XYZTextToRaster implements WhiteboxPlugin {
         this.args = args.clone();
     }
     private boolean cancelOp = false;
+    
+    /**
+     * Used to communicate a cancel operation from the Whitebox GUI.
+     * @param cancel Set to true if the plugin should be canceled.
+     */
 
     @Override
     public void setCancelOp(boolean cancel) {
         cancelOp = cancel;
     }
-    /**
-     * Used to communicate a cancel operation from the Whitebox GUI.
-     * @param cancel Set to true if the plugin should be canceled.
-     */
+    
     private void cancelOperation() {
         showFeedback("Operation cancelled.");
         updateProgress("Progress: ", 0);
