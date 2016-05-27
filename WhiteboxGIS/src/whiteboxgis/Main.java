@@ -19,9 +19,9 @@ package whiteboxgis;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.lang.management.*;
-import javax.swing.JFrame;
+//import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
+//import javax.swing.UIManager;
 import java.util.List;
 import java.util.logging.*;
 

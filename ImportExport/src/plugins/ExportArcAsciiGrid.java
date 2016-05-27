@@ -324,7 +324,10 @@ public class ExportArcAsciiGrid implements WhiteboxPlugin, InteropPlugin {
     public String getFileTypeName() {
         return "ArcGIS ASCII Grid";
     }
-    
+    /**
+     * 
+     * @return 
+     */
     @Override 
     public boolean isRasterFormat() {
         return true;
