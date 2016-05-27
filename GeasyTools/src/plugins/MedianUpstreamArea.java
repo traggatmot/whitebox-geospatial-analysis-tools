@@ -464,7 +464,9 @@ public class MedianUpstreamArea implements WhiteboxPlugin {
             }
         }
     }
-
+    /**
+     * Used to return the median of the values in the list. 
+     */
     public Double GetMedian(List<Double> values) {
         // Returns the median of the values in the list
 
