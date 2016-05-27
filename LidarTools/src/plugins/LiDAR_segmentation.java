@@ -611,6 +611,10 @@ public class LiDAR_segmentation implements WhiteboxPlugin {
         }
     }
 
+    /**
+     * This method is only used for debugging the tool.
+     * @param args 
+     */
     //this is only used for debugging the tool
     public static void main(String[] args) {
         LiDAR_segmentation seg = new LiDAR_segmentation();
