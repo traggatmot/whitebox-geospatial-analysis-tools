@@ -433,6 +433,10 @@ public class ExportSagaGrid implements WhiteboxPlugin, InteropPlugin {
         return InteropPlugin.InteropPluginType.exportPlugin;
     }
 
+    /**
+     * This method is only used during testing.
+     * @param args 
+     */
     // This method is only used during testing.
     public static void main(String[] args) {
         args = new String[1];
