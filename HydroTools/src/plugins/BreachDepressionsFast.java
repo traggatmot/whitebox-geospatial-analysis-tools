@@ -739,7 +739,7 @@ public class BreachDepressionsFast implements WhiteboxPlugin {
         }
     }
     /**
-     * This tool is only used for debugging the tool.
+     * This method is only used for debugging the tool.
      */
     // this is only used for debugging the tool
     public static void main(String[] args) {

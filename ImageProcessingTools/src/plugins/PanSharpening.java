@@ -472,6 +472,10 @@ public class PanSharpening implements WhiteboxPlugin {
         }
     }
     
+    /**
+     * Converts RGB colour values to IHS colour values
+     * 
+     */
     public double[] RGBtoIHS(double r, double g, double b) {
         double[] ret = new double[3];
         double i, h, s;
@@ -502,7 +506,10 @@ public class PanSharpening implements WhiteboxPlugin {
         ret[2] = s;
         return ret;
     }
-    
+    /**
+     * Converts IHS colour values to RGB colour values
+     * 
+     */
     public double[] IHStoRGB(double[] ihs) {
         double[] ret = new double[3];
         double i, h, s;
