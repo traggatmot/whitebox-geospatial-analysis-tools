@@ -989,7 +989,9 @@ public class MosaicWithFeathering implements WhiteboxPlugin {
 
     /**
      * Used to determine whether a value is between two thresholds.
-     * 
+     * @param val
+     * @param theshold1
+     * @param theshold2
      * @return A Boolean which is true if the value is between threshold 1 and threshold 2
      */
     // Return true if val is between theshold1 and theshold2.
