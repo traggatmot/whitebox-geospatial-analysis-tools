@@ -997,9 +997,12 @@ public class MosaicWithFeathering implements WhiteboxPlugin {
         return theshold2 > theshold1 ? val > theshold1 && val < theshold2 : val > theshold2 && val < theshold1;
     }
 
+<<<<<<< HEAD
 //    /**
 //     * This method is only used during testing.
 //    */
+=======
+>>>>>>> master
 //    //This method is only used during testing.
 //    public static void main(String[] args) {
 //        try {

@@ -31,7 +31,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
-public class Add implements WhiteboxPlugin, NotifyingThread {
+public class Add implements WhiteboxPlugin { //, NotifyingThread {
     
     private WhiteboxPluginHost myHost = null;
     private String[] args;
@@ -189,28 +189,28 @@ public class Add implements WhiteboxPlugin, NotifyingThread {
         return amIActive;
     }
     
-    private final Set<ThreadListener> listeners = new CopyOnWriteArraySet<ThreadListener>();
+//    private final Set<ThreadListener> listeners = new CopyOnWriteArraySet<ThreadListener>();
+//
+//    @Override
+//    public final void addListener(final ThreadListener listener) {
+//        listeners.add(listener);
+//    }
+//
+//    @Override
+//    public final void removeListener(final ThreadListener listener) {
+//        listeners.remove(listener);
+//    }
+//    
+//    @Override
+//    public final void cancel() {
+//        cancelOp = true;
+//    }
 
-    @Override
-    public final void addListener(final ThreadListener listener) {
-        listeners.add(listener);
-    }
-
-    @Override
-    public final void removeListener(final ThreadListener listener) {
-        listeners.remove(listener);
-    }
-    
-    @Override
-    public final void cancel() {
-        cancelOp = true;
-    }
-
-    private void notifyListenersOfCompletion() {
-        for (ThreadListener listener : listeners) {
-            listener.notifyOfThreadComplete(this);
-        }
-    }
+//    private void notifyListenersOfCompletion() {
+//        for (ThreadListener listener : listeners) {
+//            listener.notifyOfThreadComplete(this);
+//        }
+//    }
 
     /**
      * Used to execute this plugin tool.
@@ -220,16 +220,13 @@ public class Add implements WhiteboxPlugin, NotifyingThread {
         try {
             doRun();
         } finally {
-            notifyListenersOfCompletion();
+            //notifyListenersOfCompletion();
         }
     }
     
     private void doRun() {
         amIActive = true;
         
-        String inputHeader1 = null;
-        String inputHeader2 = null;
-        String outputHeader = null;
         boolean image1Bool = false;
         boolean image2Bool = false;
         double constant1 = 0;
@@ -240,7 +237,11 @@ public class Add implements WhiteboxPlugin, NotifyingThread {
             return;
         }
         
+<<<<<<< HEAD
         inputHeader1 = args[0];
+=======
+        String inputHeader1 = args[0];
+>>>>>>> master
         File file = new File(inputHeader1);
         image1Bool = file.exists();
         if (image1Bool) {
@@ -250,7 +251,11 @@ public class Add implements WhiteboxPlugin, NotifyingThread {
         }
         file = null;
         
+<<<<<<< HEAD
         inputHeader2 = args[1];
+=======
+        String inputHeader2 = args[1];
+>>>>>>> master
         file = new File(inputHeader2);
         image2Bool = file.exists();
         if (image2Bool) {
@@ -260,7 +265,11 @@ public class Add implements WhiteboxPlugin, NotifyingThread {
         }
         file = null;
         
+<<<<<<< HEAD
         outputHeader = args[2];
+=======
+        String outputHeader = args[2];
+>>>>>>> master
         
         // check to see that the inputHeader and outputHeader are not null.
         if ((inputHeader1 == null) || (inputHeader2 == null) || (outputHeader == null)) {
