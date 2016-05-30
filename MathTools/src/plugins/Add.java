@@ -237,11 +237,7 @@ public class Add implements WhiteboxPlugin { //, NotifyingThread {
             return;
         }
         
-<<<<<<< HEAD
-        inputHeader1 = args[0];
-=======
         String inputHeader1 = args[0];
->>>>>>> master
         File file = new File(inputHeader1);
         image1Bool = file.exists();
         if (image1Bool) {
@@ -251,11 +247,7 @@ public class Add implements WhiteboxPlugin { //, NotifyingThread {
         }
         file = null;
         
-<<<<<<< HEAD
-        inputHeader2 = args[1];
-=======
         String inputHeader2 = args[1];
->>>>>>> master
         file = new File(inputHeader2);
         image2Bool = file.exists();
         if (image2Bool) {
@@ -265,11 +257,7 @@ public class Add implements WhiteboxPlugin { //, NotifyingThread {
         }
         file = null;
         
-<<<<<<< HEAD
-        outputHeader = args[2];
-=======
         String outputHeader = args[2];
->>>>>>> master
         
         // check to see that the inputHeader and outputHeader are not null.
         if ((inputHeader1 == null) || (inputHeader2 == null) || (outputHeader == null)) {
