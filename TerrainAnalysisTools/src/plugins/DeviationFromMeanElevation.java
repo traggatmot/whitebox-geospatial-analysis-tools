@@ -346,22 +346,22 @@ public class DeviationFromMeanElevation implements WhiteboxPlugin {
         }
     }
     
-    /**
-     * This method is only used during testing.
-    */
-    // this is only used for testing the tool
-
-    public static void main(String[] args) {
-
-
-        args = new String[3];
-        args[0] = "/Users/ebaradar/Documents/NetBeans 7.3/trunk/WhiteboxGIS/resources/samples/Vermont DEM/Vermont DEM.dep";
-        args[1] = "/Users/ebaradar/Documents/NetBeans 7.3/trunk/WhiteboxGIS/resources/samples/Vermont DEM/testing.dep";
-        args[2] = "990";
-
-        DeviationFromMeanElevation dfme = new DeviationFromMeanElevation();
-        dfme.setArgs(args);
-        dfme.run();
-
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    // this is only used for testing the tool
+//
+//    public static void main(String[] args) {
+//
+//
+//        args = new String[3];
+//        args[0] = "/Users/ebaradar/Documents/NetBeans 7.3/trunk/WhiteboxGIS/resources/samples/Vermont DEM/Vermont DEM.dep";
+//        args[1] = "/Users/ebaradar/Documents/NetBeans 7.3/trunk/WhiteboxGIS/resources/samples/Vermont DEM/testing.dep";
+//        args[2] = "990";
+//
+//        DeviationFromMeanElevation dfme = new DeviationFromMeanElevation();
+//        dfme.setArgs(args);
+//        dfme.run();
+//
+//    }
 }

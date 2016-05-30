@@ -495,38 +495,38 @@ public class BufferVector implements WhiteboxPlugin {
        
     }
     
-    /**
-     * This method is only used during testing.
-    */
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[3];
-        args[0] = "/Users/johnlindsay/Downloads/sample/tmp1.shp";
-        args[1] = "/Users/johnlindsay/Downloads/sample/tmp3.shp";
-//        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/rondeau lakes.shp";
-//        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp1.shp";
-        
-//        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/someLakes.shp";
-//        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp4.shp";
-        
-//        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Body_rmow.shp";
-//        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp2.shp";
-        
-//        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Line_rmow.shp";
-//        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp2.shp";
-        
-//        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/NTDB_roads_rmow.shp";
-//        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp1.shp";
+//    /**
+//     * This method is only used during testing.
+//    */
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[3];
+//        args[0] = "/Users/johnlindsay/Downloads/sample/tmp1.shp";
+//        args[1] = "/Users/johnlindsay/Downloads/sample/tmp3.shp";
+////        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/rondeau lakes.shp";
+////        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp1.shp";
 //        
-        //args[0] = "/Users/johnlindsay/Documents/Data/Marvin-UofG-20111005-Order2133/SWOOP 2010/DEM - Masspoints and Breaklines - 400km_ZIP_UTM17_50cm_XXbands_0bits/20km173400463002010MAPCON/20km17340046300_masspoints.shp";
-        //args[1] = "/Users/johnlindsay/Documents/Data/Marvin-UofG-20111005-Order2133/SWOOP 2010/DEM - Masspoints and Breaklines - 400km_ZIP_UTM17_50cm_XXbands_0bits/20km173400463002010MAPCON/tmp1.shp";
-        //args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp1.shp";
-        //args[0] = "/Users/johnlindsay/Documents/Research/Conference Presentations and Guest Talks/2012 CGU/Data/ontario roads.shp";
-        //args[1] = "/Users/johnlindsay/Documents/Research/Conference Presentations and Guest Talks/2012 CGU/Data/tmp1.shp";
-        args[2] = "0.0";
-        
-        BufferVector bv = new BufferVector();
-        bv.setArgs(args);
-        bv.run();
-    }
+////        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/someLakes.shp";
+////        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp4.shp";
+//        
+////        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Body_rmow.shp";
+////        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp2.shp";
+//        
+////        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Line_rmow.shp";
+////        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp2.shp";
+//        
+////        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/NTDB_roads_rmow.shp";
+////        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp1.shp";
+////        
+//        //args[0] = "/Users/johnlindsay/Documents/Data/Marvin-UofG-20111005-Order2133/SWOOP 2010/DEM - Masspoints and Breaklines - 400km_ZIP_UTM17_50cm_XXbands_0bits/20km173400463002010MAPCON/20km17340046300_masspoints.shp";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/Marvin-UofG-20111005-Order2133/SWOOP 2010/DEM - Masspoints and Breaklines - 400km_ZIP_UTM17_50cm_XXbands_0bits/20km173400463002010MAPCON/tmp1.shp";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp1.shp";
+//        //args[0] = "/Users/johnlindsay/Documents/Research/Conference Presentations and Guest Talks/2012 CGU/Data/ontario roads.shp";
+//        //args[1] = "/Users/johnlindsay/Documents/Research/Conference Presentations and Guest Talks/2012 CGU/Data/tmp1.shp";
+//        args[2] = "0.0";
+//        
+//        BufferVector bv = new BufferVector();
+//        bv.setArgs(args);
+//        bv.run();
+//    }
 }

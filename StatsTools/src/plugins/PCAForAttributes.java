@@ -456,30 +456,30 @@ public class PCAForAttributes implements WhiteboxPlugin {
         }
     }
     
-    /**
-     * This method is only used during testing.
-     * @param args 
-     */
-    // This method is only used during testing.
-    public static void main(String[] args) {
-
-        // vector-based test
-        args = new String[3];
-        /*
-         * specify the input args array as: 
-         * args[0] = shapefile input and input fields string
-         * args[1] = standardized (boolean true or false)
-         * args[2] = number of components to output
-         */
-        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/alllakesutmdissolve.shp;"
-                + "ELONGATION;LINEARITY;COMPLEXITY;AREA;RC_CIRCLE;COMPACT;P-A_RATIO";
-        args[1] = "false";
-        args[2] = "not specified";
-
-        PCAForAttributes pca = new PCAForAttributes();
-        pca.setArgs(args);
-        pca.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//     * @param args 
+//     */
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//
+//        // vector-based test
+//        args = new String[3];
+//        /*
+//         * specify the input args array as: 
+//         * args[0] = shapefile input and input fields string
+//         * args[1] = standardized (boolean true or false)
+//         * args[2] = number of components to output
+//         */
+//        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/alllakesutmdissolve.shp;"
+//                + "ELONGATION;LINEARITY;COMPLEXITY;AREA;RC_CIRCLE;COMPACT;P-A_RATIO";
+//        args[1] = "false";
+//        args[2] = "not specified";
+//
+//        PCAForAttributes pca = new PCAForAttributes();
+//        pca.setArgs(args);
+//        pca.run();
+//    }
     
     public static class PrincipalComponent implements Comparable<PrincipalComponent> {
 

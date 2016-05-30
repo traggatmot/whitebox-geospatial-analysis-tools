@@ -313,28 +313,28 @@ public class CorrelationForAttributes implements WhiteboxPlugin {
         }
     }
     
-    /**
-     * This method is only used during testing.
-     * @param args 
-     */
-    // This method is only used during testing.
-    public static void main(String[] args) {
-
-        // vector-based test
-        args = new String[1];
-        /*
-         * specify the input args array as: 
-         * args[0] = shapefile input 
-         * args[1] = input fields string
-         * args[2] = standardized (boolean true or false)
-         * args[3] = number of components to output
-         */
-        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/alllakesutmdissolve.shp;"
-                + "ELONGATION;LINEARITY;COMPLEXITY;AREA;FRACTAL_D;RC_CIRCLE;COMPACT;P-A_RATIO";
-        
-        CorrelationForAttributes ca = new CorrelationForAttributes();
-        ca.setArgs(args);
-        ca.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//     * @param args 
+//     */
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//
+//        // vector-based test
+//        args = new String[1];
+//        /*
+//         * specify the input args array as: 
+//         * args[0] = shapefile input 
+//         * args[1] = input fields string
+//         * args[2] = standardized (boolean true or false)
+//         * args[3] = number of components to output
+//         */
+//        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/alllakesutmdissolve.shp;"
+//                + "ELONGATION;LINEARITY;COMPLEXITY;AREA;FRACTAL_D;RC_CIRCLE;COMPACT;P-A_RATIO";
+//        
+//        CorrelationForAttributes ca = new CorrelationForAttributes();
+//        ca.setArgs(args);
+//        ca.run();
+//    }
     
 }

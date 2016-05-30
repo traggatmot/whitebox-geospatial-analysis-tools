@@ -393,27 +393,27 @@ public class ImageAutocorrelation implements WhiteboxPlugin {
         }
     }
 
-    /**
-     * This method is only used for debugging the tool
-     * @param args 
-     */
-// this is only used for debugging the tool
-    public static void main(String[] args) {
-        ImageAutocorrelation ia = new ImageAutocorrelation();
-        args = new String[2];
-        //args[0] = "/Users/johnlindsay/Documents/Data/Vermont DEM/Vermont DEM.dep;/Users/johnlindsay/Documents/Data/Change detection/Data/1992 GTA band4.dep";
-
-        args[0] = "/Users/johnlindsay/Documents/Data/Random fields/random1.dep;/Users/johnlindsay/Documents/Data/Random fields/random2.dep;"
-                + "/Users/johnlindsay/Documents/Data/Random fields/random3.dep;/Users/johnlindsay/Documents/Data/Random fields/random4.dep;"
-                + "/Users/johnlindsay/Documents/Data/Random fields/random5.dep;/Users/johnlindsay/Documents/Data/Random fields/random6.dep;"
-                + "/Users/johnlindsay/Documents/Data/Random fields/random7.dep;/Users/johnlindsay/Documents/Data/Random fields/checker board pattern.dep;"
-                + "/Users/johnlindsay/Documents/Data/Random fields/random8.dep";
-
-//        args[0] = "/Users/johnlindsay/Documents/Data/Random fields/random7.dep";
-
-        args[1] = "rook";
-        ia.setArgs(args);
-        ia.run();
-
-    }
+//    /**
+//     * This method is only used for debugging the tool
+//     * @param args 
+//     */
+//// this is only used for debugging the tool
+//    public static void main(String[] args) {
+//        ImageAutocorrelation ia = new ImageAutocorrelation();
+//        args = new String[2];
+//        //args[0] = "/Users/johnlindsay/Documents/Data/Vermont DEM/Vermont DEM.dep;/Users/johnlindsay/Documents/Data/Change detection/Data/1992 GTA band4.dep";
+//
+//        args[0] = "/Users/johnlindsay/Documents/Data/Random fields/random1.dep;/Users/johnlindsay/Documents/Data/Random fields/random2.dep;"
+//                + "/Users/johnlindsay/Documents/Data/Random fields/random3.dep;/Users/johnlindsay/Documents/Data/Random fields/random4.dep;"
+//                + "/Users/johnlindsay/Documents/Data/Random fields/random5.dep;/Users/johnlindsay/Documents/Data/Random fields/random6.dep;"
+//                + "/Users/johnlindsay/Documents/Data/Random fields/random7.dep;/Users/johnlindsay/Documents/Data/Random fields/checker board pattern.dep;"
+//                + "/Users/johnlindsay/Documents/Data/Random fields/random8.dep";
+//
+////        args[0] = "/Users/johnlindsay/Documents/Data/Random fields/random7.dep";
+//
+//        args[1] = "rook";
+//        ia.setArgs(args);
+//        ia.run();
+//
+//    }
 }

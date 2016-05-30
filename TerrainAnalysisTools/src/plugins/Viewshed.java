@@ -715,20 +715,20 @@ public class Viewshed implements WhiteboxPlugin {
         }
     }
 
-    /**
-     * This method is only used during testing.
-    */
-    // this is only used for testing the tool
-    public static void main(String[] args) {
-        Viewshed vs = new Viewshed();
-        args = new String[4];
-        args[0] = "/Users/johnlindsay/Documents/Data/Vermont DEM/Vermont DEM.dep";
-        args[1] = "/Users/johnlindsay/Documents/Data/Vermont DEM/tmp2.dep";
-        args[2] = "/Users/johnlindsay/Documents/Data/Vermont DEM/temp2.dep";
-        args[3] = "2";
-
-        vs.setArgs(args);
-        vs.run();
-
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    // this is only used for testing the tool
+//    public static void main(String[] args) {
+//        Viewshed vs = new Viewshed();
+//        args = new String[4];
+//        args[0] = "/Users/johnlindsay/Documents/Data/Vermont DEM/Vermont DEM.dep";
+//        args[1] = "/Users/johnlindsay/Documents/Data/Vermont DEM/tmp2.dep";
+//        args[2] = "/Users/johnlindsay/Documents/Data/Vermont DEM/temp2.dep";
+//        args[3] = "2";
+//
+//        vs.setArgs(args);
+//        vs.run();
+//
+//    }
 }

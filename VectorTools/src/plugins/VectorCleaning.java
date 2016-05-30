@@ -440,20 +440,20 @@ public class VectorCleaning implements WhiteboxPlugin {
 
     }
 
-    /**
-     * This method is only used during testing.
-    */
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[3];
-        args[0] = "/Users/johnlindsay/Downloads/sample/sample.shp";
-        args[1] = "/Users/johnlindsay/Downloads/sample/tmp1.shp";
-        //args[0] = "/Users/johnlindsay/Documents/Data/WorldMap/world_countries_wgs84_region.shp";
-        //args[1] = "/Users/johnlindsay/Documents/Data/WorldMap/tmp1.shp";
-        args[2] = "0.01";
-
-        VectorCleaning vc = new VectorCleaning();
-        vc.setArgs(args);
-        vc.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[3];
+//        args[0] = "/Users/johnlindsay/Downloads/sample/sample.shp";
+//        args[1] = "/Users/johnlindsay/Downloads/sample/tmp1.shp";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/WorldMap/world_countries_wgs84_region.shp";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/WorldMap/tmp1.shp";
+//        args[2] = "0.01";
+//
+//        VectorCleaning vc = new VectorCleaning();
+//        vc.setArgs(args);
+//        vc.run();
+//    }
 }

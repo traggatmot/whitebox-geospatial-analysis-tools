@@ -390,25 +390,25 @@ public class SimplifyLineOrPolygon implements WhiteboxPlugin {
 
     }
     
-    /**
-     * This method is only used during testing.
-    */
-    //This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[4];
-        //args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/65E UTM.shp";
-        //args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/tmp1.shp";
-        //args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Body_rmow.shp";
-        //args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp4.shp";
-
-        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/alllakesutmdissolve.shp";
-        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp1.shp";
-
-        args[2] = "15";
-        args[3] = "true";
-
-        SimplifyLineOrPolygon slp = new SimplifyLineOrPolygon();
-        slp.setArgs(args);
-        slp.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    //This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[4];
+//        //args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/65E UTM.shp";
+//        //args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/tmp1.shp";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Body_rmow.shp";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp4.shp";
+//
+//        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/alllakesutmdissolve.shp";
+//        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp1.shp";
+//
+//        args[2] = "15";
+//        args[3] = "true";
+//
+//        SimplifyLineOrPolygon slp = new SimplifyLineOrPolygon();
+//        slp.setArgs(args);
+//        slp.run();
+//    }
 }

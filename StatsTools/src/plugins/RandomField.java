@@ -270,18 +270,18 @@ public class RandomField implements WhiteboxPlugin {
         }
     }
 
-    /**
-     * This method is only used during testing.
-     * @param args 
-     */
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[2];
-        args[0] = "/Users/johnlindsay/Documents/Data/Random fields/random1.dep";
-        args[1] = "/Users/johnlindsay/Documents/Data/Random fields/random8.dep";
-        
-        RandomField rf = new RandomField();
-        rf.setArgs(args);
-        rf.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//     * @param args 
+//     */
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[2];
+//        args[0] = "/Users/johnlindsay/Documents/Data/Random fields/random1.dep";
+//        args[1] = "/Users/johnlindsay/Documents/Data/Random fields/random8.dep";
+//        
+//        RandomField rf = new RandomField();
+//        rf.setArgs(args);
+//        rf.run();
+//    }
 }
