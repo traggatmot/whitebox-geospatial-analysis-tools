@@ -364,39 +364,55 @@ public class ImportSRTM implements WhiteboxPlugin, InteropPlugin {
         }
     }
 
+    /**
+     * Used to retrieve the necessary extension.
+     * @return 
+     */
     @Override
     public String[] getExtensions() {
-        return new String[]{"hgt"};
+        return new String[]{ "txt" };
     }
 
+    /**
+     * Used to retrieve the file type.
+     * @return 
+     */
     @Override
     public String getFileTypeName() {
-        return "SRTM DEM";
+        return "ArcGIS ASCII Grid";
     }
-
-    @Override
+    
+    /**
+     * Used to check if the file is raster format.
+     * @return True if it is a rester file.
+     */
+    @Override 
     public boolean isRasterFormat() {
         return true;
     }
     
+    /**
+     * Used to retrieve the interoperable plugin type.
+     * @return 
+     */
     @Override
-    public InteropPluginType getInteropPluginType() {
-        return InteropPluginType.importPlugin;
+    public InteropPlugin.InteropPluginType getInteropPluginType() {
+        return InteropPlugin.InteropPluginType.exportPlugin;
     }
     
-    /**
-     * This method is only used during testing.
-     * @param args 
-     */
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[1];
-        //args[0] = "/Users/johnlindsay/Documents/Data/SRTM/N29W089.hgt";
-        //args[0] = "/Users/johnlindsay/Documents/Data/SRTM/N26W081.hgt";
-        args[0] = "/Users/johnlindsay/Documents/Data/SRTM/S04W063.hgt";
-
-        ImportSRTM isrtm = new ImportSRTM();
-        isrtm.setArgs(args);
-        isrtm.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//     * @param args 
+//     */
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[1];
+//        //args[0] = "/Users/johnlindsay/Documents/Data/SRTM/N29W089.hgt";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/SRTM/N26W081.hgt";
+//        args[0] = "/Users/johnlindsay/Documents/Data/SRTM/S04W063.hgt";
+//
+//        ImportSRTM isrtm = new ImportSRTM();
+//        isrtm.setArgs(args);
+//        isrtm.run();
+//    }
 }

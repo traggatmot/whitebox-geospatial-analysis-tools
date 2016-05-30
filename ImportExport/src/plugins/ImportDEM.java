@@ -485,37 +485,53 @@ public class ImportDEM implements WhiteboxPlugin, InteropPlugin {
         }
     }
 
+    /**
+     * Used to retrieve the necessary extension.
+     * @return 
+     */
     @Override
     public String[] getExtensions() {
-        return new String[]{"dem"};
-    }
-
-    @Override
-    public String getFileTypeName() {
-        return "USGS or CDED DEM";
-    }
-
-    @Override
-    public boolean isRasterFormat() {
-        return true;
-    }
-
-    @Override
-    public InteropPlugin.InteropPluginType getInteropPluginType() {
-        return InteropPlugin.InteropPluginType.importPlugin;
+        return new String[]{ "txt" };
     }
 
     /**
-     * This method is only used during testing.
-     * @param args 
+     * Used to retrieve the file type.
+     * @return 
      */
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[1];
-        args[0] = "/Users/johnlindsay/Documents/Data/CDED DEM/040p_0101_deme.dem";
-
-        ImportDEM id = new ImportDEM();
-        id.setArgs(args);
-        id.run();
+    @Override
+    public String getFileTypeName() {
+        return "ArcGIS ASCII Grid";
     }
+    
+    /**
+     * Used to check if the file is raster format.
+     * @return True if it is a rester file.
+     */
+    @Override 
+    public boolean isRasterFormat() {
+        return true;
+    }
+    
+    /**
+     * Used to retrieve the interoperable plugin type.
+     * @return 
+     */
+    @Override
+    public InteropPlugin.InteropPluginType getInteropPluginType() {
+        return InteropPlugin.InteropPluginType.exportPlugin;
+    }
+
+//    /**
+//     * This method is only used during testing.
+//     * @param args 
+//     */
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[1];
+//        args[0] = "/Users/johnlindsay/Documents/Data/CDED DEM/040p_0101_deme.dem";
+//
+//        ImportDEM id = new ImportDEM();
+//        id.setArgs(args);
+//        id.run();
+//    }
 }
