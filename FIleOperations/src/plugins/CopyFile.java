@@ -262,20 +262,20 @@ public class CopyFile implements WhiteboxPlugin {
 
     }
 
-    /**
-     * This method is only used during testing.
-    */
-     
-    //This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[2];
-        //args[0] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Guelph/hydrology.shp";
-        args[0] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Vermont DEM/Vermont DEM.dep";
-        //args[1] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Guelph/test1.shp";
-        args[1] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Vermont DEM/test2.dep";
-
-        CopyFile cf = new CopyFile();
-        cf.setArgs(args);
-        cf.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//     
+//    //This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[2];
+//        //args[0] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Guelph/hydrology.shp";
+//        args[0] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Vermont DEM/Vermont DEM.dep";
+//        //args[1] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Guelph/test1.shp";
+//        args[1] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Vermont DEM/test2.dep";
+//
+//        CopyFile cf = new CopyFile();
+//        cf.setArgs(args);
+//        cf.run();
+//    }
 }

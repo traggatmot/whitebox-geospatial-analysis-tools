@@ -692,29 +692,29 @@ public class RasterToVectorPolygons implements WhiteboxPlugin {
         }
     }
 
-    /**
-     * This method is only used during testing.
-    */
-    
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[2];
-        //args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp7.dep";
-        //args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp7.shp";
-        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/Waterloo deps.dep";
-        //args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp1.shp";
-        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/ParisGalt deps.dep";
-        //args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/ParisGalt deps.shp";
-        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/landuse.dep";
-        //args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp1.shp";
-        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/STB-EOS_2012_CI_UTM17_30m_v2_clipped.dep";
-        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp2.dep";
-        //args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp1.shp";
-        args[0] = "/Users/jlindsay/Documents/Data/Nile basin/watershed.dep";
-        args[1] = "/Users/jlindsay/Documents/Data/Nile basin/watershed.shp";
-        
-        RasterToVectorPolygons rtvp = new RasterToVectorPolygons();
-        rtvp.setArgs(args);
-        rtvp.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[2];
+//        //args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp7.dep";
+//        //args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp7.shp";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/Waterloo deps.dep";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp1.shp";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/ParisGalt deps.dep";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/ParisGalt deps.shp";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/landuse.dep";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp1.shp";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/STB-EOS_2012_CI_UTM17_30m_v2_clipped.dep";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp2.dep";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp1.shp";
+//        args[0] = "/Users/jlindsay/Documents/Data/Nile basin/watershed.dep";
+//        args[1] = "/Users/jlindsay/Documents/Data/Nile basin/watershed.shp";
+//        
+//        RasterToVectorPolygons rtvp = new RasterToVectorPolygons();
+//        rtvp.setArgs(args);
+//        rtvp.run();
+//    }
 }

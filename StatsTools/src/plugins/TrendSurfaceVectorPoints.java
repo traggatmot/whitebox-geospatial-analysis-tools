@@ -367,6 +367,9 @@ public class TrendSurfaceVectorPoints implements WhiteboxPlugin {
             myHost.pluginComplete();
         }
     }
+    /**
+     * Used to solve the equation.
+     */
     private int numCoefficients = 0;
     private int polyOrder = 1;
     private double[] regressCoefficents;
