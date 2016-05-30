@@ -475,6 +475,9 @@ public class RemovePolygonNecks implements WhiteboxPlugin {
        
     }
     
+    /**
+     * This method is only used during testing.
+    */
      //This method is only used during testing.
     public static void main(String[] args) {
         args = new String[4];
