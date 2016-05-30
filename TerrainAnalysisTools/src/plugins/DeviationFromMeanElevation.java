@@ -345,6 +345,10 @@ public class DeviationFromMeanElevation implements WhiteboxPlugin {
             myHost.pluginComplete();
         }
     }
+    
+    /**
+     * This method is only used during testing.
+    */
     // this is only used for testing the tool
 
     public static void main(String[] args) {
