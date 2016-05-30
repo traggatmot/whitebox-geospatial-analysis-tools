@@ -450,8 +450,8 @@ public class PointDensity implements WhiteboxPlugin {
     
     /**
      * Used to retrieve the number of lines in a file.
-     * @param filename The name of the file
-     * @return The number of lines in the file.
+     * @param filename
+     * @return
      * @throws IOException 
      */
     public int countLinesInFile(String filename) throws IOException {

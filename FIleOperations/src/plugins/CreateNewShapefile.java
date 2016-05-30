@@ -147,7 +147,7 @@ public class CreateNewShapefile implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args An array of string arguments.
+     * @param args
      */
     @Override
     public void setArgs(String[] args) {
