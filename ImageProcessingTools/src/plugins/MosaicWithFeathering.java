@@ -997,42 +997,42 @@ public class MosaicWithFeathering implements WhiteboxPlugin {
         return theshold2 > theshold1 ? val > theshold1 && val < theshold2 : val > theshold2 && val < theshold1;
     }
 
-    /**
-     * This method is only used during testing.
-    */
-    //This method is only used during testing.
-    public static void main(String[] args) {
-        try {
-//            String baseFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/15 adjusted.dep";
-//            String appendFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/16 registered.dep";
-//            String outputFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/tmp6.dep";
-//            String resamplingMethod = "nearest neighbour";
-            
-            String baseFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/16 registered.dep";
-            String appendFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/A19411_15_Blue.dep";
-            String outputFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/tmp3.dep";
-            String resamplingMethod = "nearest neighbour";
-            String performHistoMatch = "true";
-
-//            String baseFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/tmp6.dep";
-//            String appendFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/17 registered.dep";
-//            //String outputFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/final mosaic.dep";
+//    /**
+//     * This method is only used during testing.
+//    */
+//    //This method is only used during testing.
+//    public static void main(String[] args) {
+//        try {
+////            String baseFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/15 adjusted.dep";
+////            String appendFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/16 registered.dep";
+////            String outputFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/tmp6.dep";
+////            String resamplingMethod = "nearest neighbour";
+//            
+//            String baseFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/16 registered.dep";
+//            String appendFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/A19411_15_Blue.dep";
 //            String outputFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/tmp3.dep";
-//            String resamplingMethod = "cubic convolution";
-
-            args = new String[5];
-            args[0] = baseFile;
-            args[1] = appendFile;
-            args[2] = outputFile;
-            args[3] = resamplingMethod;
-            args[4] = performHistoMatch;
-
-            MosaicWithFeathering mwf = new MosaicWithFeathering();
-            mwf.setArgs(args);
-            mwf.run();
-
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-    }
+//            String resamplingMethod = "nearest neighbour";
+//            String performHistoMatch = "true";
+//
+////            String baseFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/tmp6.dep";
+////            String appendFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/17 registered.dep";
+////            //String outputFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/final mosaic.dep";
+////            String outputFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/tmp3.dep";
+////            String resamplingMethod = "cubic convolution";
+//
+//            args = new String[5];
+//            args[0] = baseFile;
+//            args[1] = appendFile;
+//            args[2] = outputFile;
+//            args[3] = resamplingMethod;
+//            args[4] = performHistoMatch;
+//
+//            MosaicWithFeathering mwf = new MosaicWithFeathering();
+//            mwf.setArgs(args);
+//            mwf.run();
+//
+//        } catch (Exception e) {
+//            System.err.println(e.getMessage());
+//        }
+//    }
 }
