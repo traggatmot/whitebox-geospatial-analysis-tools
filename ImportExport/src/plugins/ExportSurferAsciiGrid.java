@@ -319,39 +319,23 @@ public class ExportSurferAsciiGrid implements WhiteboxPlugin, InteropPlugin {
         }
     }
     
-    /**
-     * Used to retrieve the necessary extension.
-     * @return 
-     */
     @Override
     public String[] getExtensions() {
-        return new String[]{ "txt" };
+        return new String[]{"grd"};
     }
 
-    /**
-     * Used to retrieve the file type.
-     * @return 
-     */
     @Override
     public String getFileTypeName() {
-        return "ArcGIS ASCII Grid";
+        return "Surfer ASCII Grid";
     }
-    
-    /**
-     * Used to check if the file is raster format.
-     * @return True if it is a rester file.
-     */
-    @Override 
+
+    @Override
     public boolean isRasterFormat() {
         return true;
     }
-    
-    /**
-     * Used to retrieve the interoperable plugin type.
-     * @return 
-     */
+
     @Override
-    public InteropPlugin.InteropPluginType getInteropPluginType() {
-        return InteropPlugin.InteropPluginType.exportPlugin;
+    public InteropPluginType getInteropPluginType() {
+        return InteropPluginType.exportPlugin;
     }
 }

@@ -591,54 +591,38 @@ public class ImportSagaGrid implements WhiteboxPlugin, InteropPlugin {
         }
     }
 
-    /**
-     * Used to retrieve the necessary extension.
-     * @return 
-     */
     @Override
     public String[] getExtensions() {
-        return new String[]{ "txt" };
+        return new String[]{"sdat"};
     }
 
-    /**
-     * Used to retrieve the file type.
-     * @return 
-     */
     @Override
     public String getFileTypeName() {
-        return "ArcGIS ASCII Grid";
+        return "SAGA Grid";
     }
-    
-    /**
-     * Used to check if the file is raster format.
-     * @return True if it is a rester file.
-     */
-    @Override 
+
+    @Override
     public boolean isRasterFormat() {
         return true;
     }
     
-    /**
-     * Used to retrieve the interoperable plugin type.
-     * @return 
-     */
     @Override
-    public InteropPlugin.InteropPluginType getInteropPluginType() {
-        return InteropPlugin.InteropPluginType.exportPlugin;
+    public InteropPluginType getInteropPluginType() {
+        return InteropPluginType.importPlugin;
     }
 
-//    /**
-//     * This method is only used during testing.
-//     * @param args 
-//     */
-//    // This method is only used during testing.
-//    public static void main(String[] args) {
-//        args = new String[1];
-//        args[0] = "/Users/johnlindsay/Documents/Data/SAGA Grid/TestData.sgrd";
-//        //args[0] = "/Users/johnlindsay/Documents/Data/SAGA Grid/TestData.sdat";
-//
-//        ImportSagaGrid isg = new ImportSagaGrid();
-//        isg.setArgs(args);
-//        isg.run();
-//    }
+    /**
+     * This method is only used during testing.
+     * @param args 
+     */
+    // This method is only used during testing.
+    public static void main(String[] args) {
+        args = new String[1];
+        args[0] = "/Users/johnlindsay/Documents/Data/SAGA Grid/TestData.sgrd";
+        //args[0] = "/Users/johnlindsay/Documents/Data/SAGA Grid/TestData.sdat";
+
+        ImportSagaGrid isg = new ImportSagaGrid();
+        isg.setArgs(args);
+        isg.run();
+    }
 }

@@ -485,53 +485,37 @@ public class ImportDEM implements WhiteboxPlugin, InteropPlugin {
         }
     }
 
-    /**
-     * Used to retrieve the necessary extension.
-     * @return 
-     */
     @Override
     public String[] getExtensions() {
-        return new String[]{ "txt" };
+        return new String[]{"dem"};
     }
 
-    /**
-     * Used to retrieve the file type.
-     * @return 
-     */
     @Override
     public String getFileTypeName() {
-        return "ArcGIS ASCII Grid";
+        return "USGS or CDED DEM";
     }
-    
-    /**
-     * Used to check if the file is raster format.
-     * @return True if it is a rester file.
-     */
-    @Override 
+
+    @Override
     public boolean isRasterFormat() {
         return true;
     }
-    
-    /**
-     * Used to retrieve the interoperable plugin type.
-     * @return 
-     */
+
     @Override
     public InteropPlugin.InteropPluginType getInteropPluginType() {
-        return InteropPlugin.InteropPluginType.exportPlugin;
+        return InteropPlugin.InteropPluginType.importPlugin;
     }
 
-//    /**
-//     * This method is only used during testing.
-//     * @param args 
-//     */
-//    // This method is only used during testing.
-//    public static void main(String[] args) {
-//        args = new String[1];
-//        args[0] = "/Users/johnlindsay/Documents/Data/CDED DEM/040p_0101_deme.dem";
-//
-//        ImportDEM id = new ImportDEM();
-//        id.setArgs(args);
-//        id.run();
-//    }
+    /**
+     * This method is only used during testing.
+     * @param args 
+     */
+    // This method is only used during testing.
+    public static void main(String[] args) {
+        args = new String[1];
+        args[0] = "/Users/johnlindsay/Documents/Data/CDED DEM/040p_0101_deme.dem";
+
+        ImportDEM id = new ImportDEM();
+        id.setArgs(args);
+        id.run();
+    }
 }
