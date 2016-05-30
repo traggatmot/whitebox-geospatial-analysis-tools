@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to reduce the grid resolution of a raster by a user specified amount.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

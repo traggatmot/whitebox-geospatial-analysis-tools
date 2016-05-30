@@ -611,26 +611,30 @@ public class LiDAR_segmentation implements WhiteboxPlugin {
         }
     }
 
-    //this is only used for debugging the tool
-    public static void main(String[] args) {
-        LiDAR_segmentation seg = new LiDAR_segmentation();
-        args = new String[4];
-//        args[0] = "/Users/jlindsay/Documents/Data/Rashaad's Sites/CVC_all.las";
-//        args[1] = "/Users/jlindsay/Documents/Data/Rashaad's Sites/CVC ground points.shp";
-//        args[2] = "15.0"; // degree slope
+//    /**
+//     * This method is only used for debugging the tool.
+//     * @param args 
+//     */
+//    //this is only used for debugging the tool
+//    public static void main(String[] args) {
+//        LiDAR_segmentation seg = new LiDAR_segmentation();
+//        args = new String[4];
+////        args[0] = "/Users/jlindsay/Documents/Data/Rashaad's Sites/CVC_all.las";
+////        args[1] = "/Users/jlindsay/Documents/Data/Rashaad's Sites/CVC ground points.shp";
+////        args[2] = "15.0"; // degree slope
+////        args[3] = "0.25"; // meter search window
+//
+////        args[0] = "/Users/jlindsay/Documents/Data/LAS classified/416_4696.las"; //423_4695.las";
+////        args[1] = "/Users/jlindsay/Documents/Data/LAS classified/416_4696 ground points.shp";
+////        args[2] = "20.0"; // degree slope
+////        args[3] = "2.0"; // meter search window
+//        args[0] = "/Users/johnlindsay/Documents/Data/Rashaads Sites/CVC/CVC_all_Row5_Col6.shp";
+//        args[1] = "/Users/johnlindsay/Documents/Data/Rashaads Sites/CVC/tmp3.shp";
+//        args[2] = "5"; // degree slope
 //        args[3] = "0.25"; // meter search window
-
-//        args[0] = "/Users/jlindsay/Documents/Data/LAS classified/416_4696.las"; //423_4695.las";
-//        args[1] = "/Users/jlindsay/Documents/Data/LAS classified/416_4696 ground points.shp";
-//        args[2] = "20.0"; // degree slope
-//        args[3] = "2.0"; // meter search window
-        args[0] = "/Users/johnlindsay/Documents/Data/Rashaads Sites/CVC/CVC_all_Row5_Col6.shp";
-        args[1] = "/Users/johnlindsay/Documents/Data/Rashaads Sites/CVC/tmp3.shp";
-        args[2] = "5"; // degree slope
-        args[3] = "0.25"; // meter search window
-
-        seg.setArgs(args);
-        seg.run();
-    }
+//
+//        seg.setArgs(args);
+//        seg.run();
+//    }
 
 }

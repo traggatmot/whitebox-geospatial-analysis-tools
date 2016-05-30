@@ -32,7 +32,7 @@ import whitebox.utilities.FileUtilities;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * Can't find
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -460,16 +460,19 @@ public class FindPolygonMidline implements WhiteboxPlugin {
 
     }
 
-    //This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[2];
-        //args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/65E UTM.shp";
-        //args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/tmp1.shp";
-        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Body_rmow.shp";
-        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp4.shp";
-        
-        FindPolygonMidline fpm = new FindPolygonMidline();
-        fpm.setArgs(args);
-        fpm.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    //This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[2];
+//        //args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/65E UTM.shp";
+//        //args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/tmp1.shp";
+//        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Body_rmow.shp";
+//        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp4.shp";
+//        
+//        FindPolygonMidline fpm = new FindPolygonMidline();
+//        fpm.setArgs(args);
+//        fpm.run();
+//    }
 }

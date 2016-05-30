@@ -475,27 +475,31 @@ public class Perimeter implements WhiteboxPlugin {
         }
     }
     
-    // This method is only used during testing.
-    public static void main(String[] args) {
-
-        // vector-based test
-        args = new String[4];
-        /*
-         * specify the input args array as: args[0] = inputFile 
-         * args[1] = outputFile (parameter ignored in the vector algorithm)
-         * args[2] = blnTextOutput (This parameter is ignored in the
-         * vector algorithm...only used in the raster tool) 
-         * args[3] = zeroAsBackground (This parameter is ignored in the vector
-         * algorithm...only used in the raster tool)
-         */
-        args[0] = "/Users/johnlindsay/Documents/Data/Shapefiles/Water_Body_rmow.shp";
-        args[1] = "";
-        args[2] = "false";
-        args[3] = "false";
-
-        Perimeter perimeter = new Perimeter();
-        perimeter.setArgs(args);
-        perimeter.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//
+//        // vector-based test
+//        args = new String[4];
+//        /*
+//         * specify the input args array as: args[0] = inputFile 
+//         * args[1] = outputFile (parameter ignored in the vector algorithm)
+//         * args[2] = blnTextOutput (This parameter is ignored in the
+//         * vector algorithm...only used in the raster tool) 
+//         * args[3] = zeroAsBackground (This parameter is ignored in the vector
+//         * algorithm...only used in the raster tool)
+//         */
+//        args[0] = "/Users/johnlindsay/Documents/Data/Shapefiles/Water_Body_rmow.shp";
+//        args[1] = "";
+//        args[2] = "false";
+//        args[3] = "false";
+//
+//        Perimeter perimeter = new Perimeter();
+//        perimeter.setArgs(args);
+//        perimeter.run();
+//    }
     
 }

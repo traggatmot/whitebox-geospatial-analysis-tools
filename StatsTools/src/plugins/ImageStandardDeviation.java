@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import java.text.DecimalFormat;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to calculate the standard deviation value in a raster image.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

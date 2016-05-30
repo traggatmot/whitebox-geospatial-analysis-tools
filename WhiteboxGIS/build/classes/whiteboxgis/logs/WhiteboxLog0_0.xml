@@ -8626,6 +8626,8 @@ Error in Integer Division</message>
     <message>java.lang.ArithmeticException</message>
   </exception>
 </record>
+<<<<<<< HEAD
+=======
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
@@ -8792,3 +8794,4 @@ WhiteboxGIS.addLayer</message>
     </frame>
   </exception>
 </record>
+>>>>>>> master

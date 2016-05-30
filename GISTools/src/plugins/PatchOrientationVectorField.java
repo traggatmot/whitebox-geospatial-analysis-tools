@@ -637,18 +637,23 @@ public class PatchOrientationVectorField implements WhiteboxPlugin {
             myHost.pluginComplete();
         }
     }
-    //This method is only used during testing.
-
-    public static void main(String[] args) {
-        args = new String[4];
-        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/medium lakes.shp";
-        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/medium lakes pov.shp";
-        args[2] = "1000";
-        args[3] = "true";
-
-
-        PatchOrientationVectorField povf = new PatchOrientationVectorField();
-        povf.setArgs(args);
-        povf.run();
-    }
+    
+//    /**
+//     * This method is only used during testing.
+//    */
+//    
+//    //This method is only used during testing.
+//
+//    public static void main(String[] args) {
+//        args = new String[4];
+//        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/medium lakes.shp";
+//        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/medium lakes pov.shp";
+//        args[2] = "1000";
+//        args[3] = "true";
+//
+//
+//        PatchOrientationVectorField povf = new PatchOrientationVectorField();
+//        povf.setArgs(args);
+//        povf.run();
+//    }
 }

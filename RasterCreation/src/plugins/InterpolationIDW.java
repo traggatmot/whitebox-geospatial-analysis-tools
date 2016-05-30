@@ -28,7 +28,7 @@ import java.io.*;
 import whitebox.structures.XYPoint;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to interpolate a regular grid raster from a ShapeFile of Point ShapeType using the Inverse Distance to a Weight (IDW) interpolation method.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -603,6 +603,12 @@ public class InterpolationIDW implements WhiteboxPlugin {
         }
     }
 
+    /**
+     * Used to retrieve the number of lines in a file.
+     * @param filename
+     * @return
+     * @throws IOException 
+     */
     public int countLinesInFile(String filename) throws IOException {
         InputStream is = new BufferedInputStream(new FileInputStream(filename));
         try {

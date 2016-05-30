@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool simply counts the number of valid grid cells in a raster grid.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

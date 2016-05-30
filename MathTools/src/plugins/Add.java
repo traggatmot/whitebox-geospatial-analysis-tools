@@ -27,7 +27,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool creates a new raster in which each grid cell is equal to the addition of the corresponding grid cells in two input rasters or one input raster and a constant value.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -237,7 +237,11 @@ public class Add implements WhiteboxPlugin { //, NotifyingThread {
             return;
         }
         
+<<<<<<< HEAD
+        inputHeader1 = args[0];
+=======
         String inputHeader1 = args[0];
+>>>>>>> master
         File file = new File(inputHeader1);
         image1Bool = file.exists();
         if (image1Bool) {
@@ -247,7 +251,11 @@ public class Add implements WhiteboxPlugin { //, NotifyingThread {
         }
         file = null;
         
+<<<<<<< HEAD
+        inputHeader2 = args[1];
+=======
         String inputHeader2 = args[1];
+>>>>>>> master
         file = new File(inputHeader2);
         image2Bool = file.exists();
         if (image2Bool) {
@@ -257,7 +265,11 @@ public class Add implements WhiteboxPlugin { //, NotifyingThread {
         }
         file = null;
         
+<<<<<<< HEAD
+        outputHeader = args[2];
+=======
         String outputHeader = args[2];
+>>>>>>> master
         
         // check to see that the inputHeader and outputHeader are not null.
         if ((inputHeader1 == null) || (inputHeader2 == null) || (outputHeader == null)) {

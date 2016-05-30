@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to calculate the downslope index described by Hjerdt et al (2004). 
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -530,18 +530,21 @@ public class DownslopeIndex implements WhiteboxPlugin {
         }
     }
     
-    // this is only used for testing the tool
-    public static void main(String[] args) {
-        args = new String[5];
-        args[0] = "/Users/johnlindsay/Documents/Data/SouthernOnt/tmp10.dep";
-        args[1] = "/Users/johnlindsay/Documents/Data/SouthernOnt/tmp4.dep";
-        args[2] = "/Users/johnlindsay/Documents/Data/SouthernOnt/tmp11.dep";
-        args[3] = "5";
-        args[4] = "distance";
-        
-        DownslopeIndex di = new DownslopeIndex();
-        di.setArgs(args);
-        di.run();
-
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    // this is only used for testing the tool
+//    public static void main(String[] args) {
+//        args = new String[5];
+//        args[0] = "/Users/johnlindsay/Documents/Data/SouthernOnt/tmp10.dep";
+//        args[1] = "/Users/johnlindsay/Documents/Data/SouthernOnt/tmp4.dep";
+//        args[2] = "/Users/johnlindsay/Documents/Data/SouthernOnt/tmp11.dep";
+//        args[3] = "5";
+//        args[4] = "distance";
+//        
+//        DownslopeIndex di = new DownslopeIndex();
+//        di.setArgs(args);
+//        di.run();
+//
+//    }
 }

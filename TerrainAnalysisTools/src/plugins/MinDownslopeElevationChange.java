@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates the minimum elevation drop between each grid cell and its neighbouring cells.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

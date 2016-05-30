@@ -26,7 +26,7 @@ import whitebox.algorithms.MinimumBoundingRectangle;
 import whitebox.algorithms.MinimumBoundingRectangle.MinimizationCriterion;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool delineates the minimum bounding box (MBB) for a group of vectors. 
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -373,16 +373,19 @@ public class MinimumBoundingBox implements WhiteboxPlugin {
 
     }
 
-    //This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[4];
-        args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/depressions no small features.shp";
-        args[1] = "perimeter";
-        args[2] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp2.shp";
-        args[3] = "POLYLINE";
-
-        MinimumBoundingBox mbb = new MinimumBoundingBox();
-        mbb.setArgs(args);
-        mbb.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    //This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[4];
+//        args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/depressions no small features.shp";
+//        args[1] = "perimeter";
+//        args[2] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp2.shp";
+//        args[3] = "POLYLINE";
+//
+//        MinimumBoundingBox mbb = new MinimumBoundingBox();
+//        mbb.setArgs(args);
+//        mbb.run();
+//    }
 }

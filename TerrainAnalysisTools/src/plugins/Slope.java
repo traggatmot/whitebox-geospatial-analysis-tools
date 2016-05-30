@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates slope gradient (i.e., slope steepness in degrees) for each grid cell in an input digital elevation model (DEM).
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

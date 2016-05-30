@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to express the elevation of a grid cell in a digital elevation model (DEM) as a percentage of the relief between the DEM minimum and maximum values.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool will calculate the elevation of each grid cell in a digital elevation model (DEM) above the nearest downslope pit cell or grid edge cell, depending on which is encountered first during the flow-path traverse.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

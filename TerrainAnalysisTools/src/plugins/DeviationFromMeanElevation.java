@@ -27,7 +27,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to calculate the difference between the elevation of each grid cell and the mean elevation of the centering local neighbourhood, normalized by standard deviation.
  *
  * @author Elnaz Baradaran Shokouhi
  */
@@ -345,19 +345,23 @@ public class DeviationFromMeanElevation implements WhiteboxPlugin {
             myHost.pluginComplete();
         }
     }
-    // this is only used for testing the tool
-
-    public static void main(String[] args) {
-
-
-        args = new String[3];
-        args[0] = "/Users/ebaradar/Documents/NetBeans 7.3/trunk/WhiteboxGIS/resources/samples/Vermont DEM/Vermont DEM.dep";
-        args[1] = "/Users/ebaradar/Documents/NetBeans 7.3/trunk/WhiteboxGIS/resources/samples/Vermont DEM/testing.dep";
-        args[2] = "990";
-
-        DeviationFromMeanElevation dfme = new DeviationFromMeanElevation();
-        dfme.setArgs(args);
-        dfme.run();
-
-    }
+    
+//    /**
+//     * This method is only used during testing.
+//    */
+//    // this is only used for testing the tool
+//
+//    public static void main(String[] args) {
+//
+//
+//        args = new String[3];
+//        args[0] = "/Users/ebaradar/Documents/NetBeans 7.3/trunk/WhiteboxGIS/resources/samples/Vermont DEM/Vermont DEM.dep";
+//        args[1] = "/Users/ebaradar/Documents/NetBeans 7.3/trunk/WhiteboxGIS/resources/samples/Vermont DEM/testing.dep";
+//        args[2] = "990";
+//
+//        DeviationFromMeanElevation dfme = new DeviationFromMeanElevation();
+//        dfme.setArgs(args);
+//        dfme.run();
+//
+//    }
 }

@@ -21,7 +21,7 @@ import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * The Crispness Index (C) provides a means of quantifying the crispness, or fuzziness, of a membership probability (MP) image.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

@@ -51,7 +51,7 @@ import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 import whitebox.geospatialfiles.shapefile.attributes.DBFField.DBFDataType;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to interpolate a trend surface from a vector points file. 
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -367,6 +367,9 @@ public class TrendSurfaceVectorPoints implements WhiteboxPlugin {
             myHost.pluginComplete();
         }
     }
+    /**
+     * Used to solve the equation.
+     */
     private int numCoefficients = 0;
     private int polyOrder = 1;
     private double[] regressCoefficents;

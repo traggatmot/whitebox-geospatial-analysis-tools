@@ -26,7 +26,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to a raster image filled with random values drawn from a normal distribution.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -270,14 +270,18 @@ public class RandomField implements WhiteboxPlugin {
         }
     }
 
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[2];
-        args[0] = "/Users/johnlindsay/Documents/Data/Random fields/random1.dep";
-        args[1] = "/Users/johnlindsay/Documents/Data/Random fields/random8.dep";
-        
-        RandomField rf = new RandomField();
-        rf.setArgs(args);
-        rf.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//     * @param args 
+//     */
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[2];
+//        args[0] = "/Users/johnlindsay/Documents/Data/Random fields/random1.dep";
+//        args[1] = "/Users/johnlindsay/Documents/Data/Random fields/random8.dep";
+//        
+//        RandomField rf = new RandomField();
+//        rf.setArgs(args);
+//        rf.run();
+//    }
 }

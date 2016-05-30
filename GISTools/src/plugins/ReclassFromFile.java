@@ -378,6 +378,10 @@ public class ReclassFromFile implements WhiteboxPlugin {
         }
     }
     
+            /**
+             * Used to retrieve the number of lines.
+             */
+            
     public int countLines(String fileName) throws IOException {
         DataInputStream in = null;
         BufferedReader br = null;

@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool assigns grid cells for which the first input raster (or constant value) is greater than the second input raster (or constant) a new value of 1 (True) in the output raster.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

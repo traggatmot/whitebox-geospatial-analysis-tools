@@ -30,7 +30,7 @@ import whitebox.internationalization.WhiteboxInternationalizationTools;
 import whitebox.stats.TwoSampleKSTest;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to compare two images for statistically significant differences by performing either a paired-sample t-test or a two-sample Kolmogorov-Smirnov (K-S) test on the two images..
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

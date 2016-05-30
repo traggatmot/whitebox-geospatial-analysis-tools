@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool is a Boolean operator for which grid cells for which either input raster has a True value are assigned 1 in the output raster, otherwise grid cells are assigned a value of 0.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

@@ -29,7 +29,7 @@ import whitebox.utilities.FileUtilities;
 import whitebox.utilities.Topology;
 
 /**
- * Used to clean vector topology, e.g. remove sliver polygons.
+ * This tool can be used to correct the topology of a shapefile such that shared boundaries between neighbouring polygon features are correctly represented.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -440,17 +440,20 @@ public class VectorCleaning implements WhiteboxPlugin {
 
     }
 
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[3];
-        args[0] = "/Users/johnlindsay/Downloads/sample/sample.shp";
-        args[1] = "/Users/johnlindsay/Downloads/sample/tmp1.shp";
-        //args[0] = "/Users/johnlindsay/Documents/Data/WorldMap/world_countries_wgs84_region.shp";
-        //args[1] = "/Users/johnlindsay/Documents/Data/WorldMap/tmp1.shp";
-        args[2] = "0.01";
-
-        VectorCleaning vc = new VectorCleaning();
-        vc.setArgs(args);
-        vc.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[3];
+//        args[0] = "/Users/johnlindsay/Downloads/sample/sample.shp";
+//        args[1] = "/Users/johnlindsay/Downloads/sample/tmp1.shp";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/WorldMap/world_countries_wgs84_region.shp";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/WorldMap/tmp1.shp";
+//        args[2] = "0.01";
+//
+//        VectorCleaning vc = new VectorCleaning();
+//        vc.setArgs(args);
+//        vc.run();
+//    }
 }

@@ -691,13 +691,17 @@ public class ElongationRatio implements WhiteboxPlugin {
         }
     }
     
-     //This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[1];
-        args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/depressions no small features.shp";
-        
-        ElongationRatio er = new ElongationRatio();
-        er.setArgs(args);
-        er.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    
+//     //This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[1];
+//        args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/depressions no small features.shp";
+//        
+//        ElongationRatio er = new ElongationRatio();
+//        er.setArgs(args);
+//        er.run();
+//    }
 }

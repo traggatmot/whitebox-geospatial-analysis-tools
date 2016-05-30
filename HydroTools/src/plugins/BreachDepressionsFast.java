@@ -738,25 +738,27 @@ public class BreachDepressionsFast implements WhiteboxPlugin {
 //            }
         }
     }
-    
-    // this is only used for debugging the tool
-    public static void main(String[] args) {
-        BreachDepressionsFast bd = new BreachDepressionsFast();
-        args = new String[7];
-        //args[0] = "/Users/johnlindsay/Documents/Research/FastBreaching/data/SRTM1GL/DEM final.dep";
-        //args[1] = "/Users/johnlindsay/Documents/Research/FastBreaching/data/SRTM1GL/tmp13.dep";
-        args[0] = "/Users/johnlindsay/Documents/Research/FastBreaching/data/quebec DEM.dep";
-        args[1] = "/Users/johnlindsay/Documents/Research/FastBreaching/data/tmp2.dep";
-        //args[0] = "/Users/johnlindsay/Documents/Data/RondeauData/DEM smoothed.dep";
-        //args[1] = "/Users/johnlindsay/Documents/Data/RondeauData/tmp2.dep";
-        args[2] = "not specified"; // max breach depth
-        args[3] = "not specified"; // max breach channel length
-        args[4] = "false"; // apply contrained breaching
-        args[5] = "false"; // should the pointer grid be saved?
-        args[6] = "false"; // should the flow accumulation be calculated?
-
-        bd.setArgs(args);
-        bd.run();
-
-    }
+//    /**
+//     * This method is only used for debugging the tool.
+//     */
+//    // this is only used for debugging the tool
+//    public static void main(String[] args) {
+//        BreachDepressionsFast bd = new BreachDepressionsFast();
+//        args = new String[7];
+//        //args[0] = "/Users/johnlindsay/Documents/Research/FastBreaching/data/SRTM1GL/DEM final.dep";
+//        //args[1] = "/Users/johnlindsay/Documents/Research/FastBreaching/data/SRTM1GL/tmp13.dep";
+//        args[0] = "/Users/johnlindsay/Documents/Research/FastBreaching/data/quebec DEM.dep";
+//        args[1] = "/Users/johnlindsay/Documents/Research/FastBreaching/data/tmp2.dep";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/RondeauData/DEM smoothed.dep";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/RondeauData/tmp2.dep";
+//        args[2] = "not specified"; // max breach depth
+//        args[3] = "not specified"; // max breach channel length
+//        args[4] = "false"; // apply contrained breaching
+//        args[5] = "false"; // should the pointer grid be saved?
+//        args[6] = "false"; // should the flow accumulation be calculated?
+//
+//        bd.setArgs(args);
+//        bd.run();
+//
+//    }
 }

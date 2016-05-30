@@ -24,7 +24,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to extract common descriptive statistics associated with the distribution of some underlying Data Raster Image based on area units defined by a Feature Definition Raster Image.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

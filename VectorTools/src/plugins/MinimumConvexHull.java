@@ -34,7 +34,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates the minimum convex hull, or the minimum convex polygon containing all of the points within a set of vector features. 
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

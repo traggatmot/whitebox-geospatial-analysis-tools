@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool rounds the values in an input image.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

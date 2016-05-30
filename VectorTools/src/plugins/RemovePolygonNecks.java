@@ -27,7 +27,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * Can't find
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -475,18 +475,21 @@ public class RemovePolygonNecks implements WhiteboxPlugin {
        
     }
     
-     //This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[4];
-//        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/large lakes no holes.shp";
-//        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp1.shp";
-        args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp1.shp";
-        args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp2.shp";
-        args[2] = "200";
-        args[3] = "3"; // node gap threshold
-
-        RemovePolygonNecks rpn = new RemovePolygonNecks();
-        rpn.setArgs(args);
-        rpn.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//     //This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[4];
+////        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/large lakes no holes.shp";
+////        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp1.shp";
+//        args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp1.shp";
+//        args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp2.shp";
+//        args[2] = "200";
+//        args[3] = "3"; // node gap threshold
+//
+//        RemovePolygonNecks rpn = new RemovePolygonNecks();
+//        rpn.setArgs(args);
+//        rpn.run();
+//    }
 }

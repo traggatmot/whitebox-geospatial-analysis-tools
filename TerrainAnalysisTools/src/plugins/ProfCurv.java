@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates the profile curvature, or the rate of change in slope along a flow line, from a digital elevation model (DEM).
  *
  * @author johnlindsay
  */

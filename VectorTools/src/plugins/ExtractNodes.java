@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool converts vector lines or polygons into points.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -330,14 +330,17 @@ public class ExtractNodes implements WhiteboxPlugin {
        
     }
     
-     //This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[2];
-        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp1.shp";
-        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp3.shp";
-
-        ExtractNodes en = new ExtractNodes();
-        en.setArgs(args);
-        en.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//     //This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[2];
+//        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp1.shp";
+//        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp3.shp";
+//
+//        ExtractNodes en = new ExtractNodes();
+//        en.setArgs(args);
+//        en.run();
+//    }
 }

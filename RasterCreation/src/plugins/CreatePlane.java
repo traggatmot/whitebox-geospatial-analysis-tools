@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to create a new raster with values that are determined by the equation of a simple plane.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

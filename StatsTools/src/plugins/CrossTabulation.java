@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to perform a cross-tabulation on two input raster images containing categorical data such as classes.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

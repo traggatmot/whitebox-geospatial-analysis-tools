@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool creates a new raster in which each grid cell is assigned the distance, in meters, to the nearest topographic obstacle in a specified direction. 
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

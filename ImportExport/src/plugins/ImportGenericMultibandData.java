@@ -1051,6 +1051,10 @@ public class ImportGenericMultibandData implements WhiteboxPlugin, InteropPlugin
         return InteropPluginType.importPlugin;
     }
 
+    /**
+     * This method is only used during testing.
+     * @param args 
+     */
     // This method is only used during testing.
     public static void main(String[] args) {
         args = new String[1];

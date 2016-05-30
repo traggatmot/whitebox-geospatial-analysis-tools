@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool creates a new raster in which each grid cell is equal to negative one times the corresponding grid cell in the input raster.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

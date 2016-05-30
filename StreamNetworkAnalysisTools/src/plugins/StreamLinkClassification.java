@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool identifies all interior and exterior links, and source, link, and sink nodes in a stream network. 
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

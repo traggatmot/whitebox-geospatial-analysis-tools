@@ -25,7 +25,7 @@ import whitebox.structures.KdTree;
 import java.io.*;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to interpolate a regular grid raster from an XYZ points dataset using a nearest-neighbour (NN) interpolation method.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -432,6 +432,12 @@ public class InterpolationNN implements WhiteboxPlugin {
         }
     }
     
+    /**
+     * Used to retrieve the number of lines in a file.
+     * @param filename
+     * @return
+     * @throws IOException 
+     */
     public int countLinesInFile(String filename) throws IOException {
         InputStream is = new BufferedInputStream(new FileInputStream(filename));
         try {

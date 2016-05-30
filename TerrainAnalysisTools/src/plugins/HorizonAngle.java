@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates the horizon angle (Sx) i.e., the maximum slope along a specified azimuth (0-360 degrees) for each grid cell in an input digital elevation model (DEM).
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

@@ -142,6 +142,13 @@ public class FilterLaplacian implements WhiteboxPlugin {
     }
     
     private boolean amIActive = false;
+    
+    /**
+     * Used by the Whitebox GUI to tell if this plugin is still running.
+     *
+     * @return a boolean describing whether or not the plugin is actively being
+     * used.
+     */
     @Override
     public boolean isActive() {
         return amIActive;

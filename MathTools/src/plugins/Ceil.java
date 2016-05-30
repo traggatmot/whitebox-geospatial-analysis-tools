@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool returns the smallest (closest to negative infinity) value that is greater than or equal to the values in a raster.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

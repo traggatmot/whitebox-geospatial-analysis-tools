@@ -24,7 +24,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.WhiteboxPlugin;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool alters the cumulative distribution function (CDF) of a raster image to match, as closely as possible, the CDF of a reference image.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -414,23 +414,27 @@ public class TwoImageHistogramMatching implements WhiteboxPlugin{
         }
     }
     
-    // This method is only used during testing.
-    public static void main(String[] args) {
-
-        // vector-based test
-        args = new String[3];
-        /*
-         * specify the input args array as: 
-         * args[0] = image to be adjusted
-         * args[1] = target image
-         * args[2] = output image
-         */
-        args[0] = "/Users/johnlindsay/Documents/Data/LandsatData/band5_cropped.dep";
-        args[1] = "/Users/johnlindsay/Documents/Data/LandsatData/band1.dep";
-        args[2] = "/Users/johnlindsay/Documents/Data/LandsatData/tmp1.dep";
-
-        TwoImageHistogramMatching tihm = new TwoImageHistogramMatching();
-        tihm.setArgs(args);
-        tihm.run();
-    }
+//    /**
+//     * This method is only used for testing.
+//     * @param args 
+//     */
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//
+//        // vector-based test
+//        args = new String[3];
+//        /*
+//         * specify the input args array as: 
+//         * args[0] = image to be adjusted
+//         * args[1] = target image
+//         * args[2] = output image
+//         */
+//        args[0] = "/Users/johnlindsay/Documents/Data/LandsatData/band5_cropped.dep";
+//        args[1] = "/Users/johnlindsay/Documents/Data/LandsatData/band1.dep";
+//        args[2] = "/Users/johnlindsay/Documents/Data/LandsatData/tmp1.dep";
+//
+//        TwoImageHistogramMatching tihm = new TwoImageHistogramMatching();
+//        tihm.setArgs(args);
+//        tihm.run();
+//    }
 }

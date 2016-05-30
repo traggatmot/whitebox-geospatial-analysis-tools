@@ -27,7 +27,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.FileUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool will convert a shapefile containing polygons to a shapefile containing lines.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

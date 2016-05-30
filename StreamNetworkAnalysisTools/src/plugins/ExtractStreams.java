@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to extract, or map, the likely stream cells from an input flow-accumulation image.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

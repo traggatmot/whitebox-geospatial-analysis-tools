@@ -54,7 +54,7 @@ public class SIDE_MDInf implements WhiteboxPlugin {
     }
     
     /**
-     * Used to retrieve the plugin tool// s name. This is a short, unique name containing no spaces.
+     * Used to retrieve the plugin tool's name. This is a short, unique name containing no spaces.
      * @return String containing plugin name.
      */
     @Override
@@ -62,7 +62,7 @@ public class SIDE_MDInf implements WhiteboxPlugin {
         return "SIDE_MDInf";
     }
     /**
-     * Used to retrieve the plugin tool// s descriptive name. This can be a longer name (containing spaces) and is used in the interface to list the tool.
+     * Used to retrieve the plugin tool's descriptive name. This can be a longer name (containing spaces) and is used in the interface to list the tool.
      * @return String containing the plugin descriptive name.
      */
     @Override

@@ -39,7 +39,7 @@ import whitebox.utilities.Topology;
 import whitebox.structures.BoundingBox;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * The Clip tool will extract all the features, or parts of features, that overlap with the features of the Clip vector file.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
@@ -552,17 +552,20 @@ public class Clip implements WhiteboxPlugin {
         }
     }
 
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[3];
-
-        args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/depressions no small features.shp";
-        args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/final moraines.shp";
-        args[2] = "/Users/johnlindsay/Documents/Data/Beau's Data/deps clipped to moraines2.shp";
-
-        Clip c = new Clip();
-        c.setArgs(args);
-        c.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[3];
+//
+//        args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/depressions no small features.shp";
+//        args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/final moraines.shp";
+//        args[2] = "/Users/johnlindsay/Documents/Data/Beau's Data/deps clipped to moraines2.shp";
+//
+//        Clip c = new Clip();
+//        c.setArgs(args);
+//        c.run();
+//    }
 
 }

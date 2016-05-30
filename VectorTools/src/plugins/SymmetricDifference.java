@@ -39,7 +39,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to isolate all of the features, or parts of features, in two input vectors that do not overlap.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */

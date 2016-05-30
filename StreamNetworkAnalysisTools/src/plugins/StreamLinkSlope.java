@@ -22,7 +22,7 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to measure the average slope gradient of each link in a stream network.
  *
  * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
