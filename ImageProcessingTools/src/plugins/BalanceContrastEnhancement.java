@@ -400,21 +400,21 @@ public class BalanceContrastEnhancement implements WhiteboxPlugin {
         }
     }
     
-    public static void main(String[] args) {
-        try {
-            String input = "/Users/johnlindsay/Documents/Data/Guelph Landsat/321.dep";
-            String output = "/Users/johnlindsay/Documents/Data/Guelph Landsat/321 bce.dep";
-            args = new String[3];
-            args[0] = input;
-            args[1] = output;
-            args[2] = "100";
-            BalanceContrastEnhancement bce = new BalanceContrastEnhancement();
-            bce.setArgs(args);
-            bce.run();
-            
-        } catch (Exception e) {
-            
-        }
-    }
+//    public static void main(String[] args) {
+//        try {
+//            String input = "/Users/johnlindsay/Documents/Data/Guelph Landsat/321.dep";
+//            String output = "/Users/johnlindsay/Documents/Data/Guelph Landsat/321 bce.dep";
+//            args = new String[3];
+//            args[0] = input;
+//            args[1] = output;
+//            args[2] = "100";
+//            BalanceContrastEnhancement bce = new BalanceContrastEnhancement();
+//            bce.setArgs(args);
+//            bce.run();
+//            
+//        } catch (Exception e) {
+//            
+//        }
+//    }
     
 }
