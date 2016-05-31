@@ -318,18 +318,15 @@ public class ImportXYZToVectorPoints implements WhiteboxPlugin {
         }
     }
 
-    /**
-     * This method is only used for debugging the tool
-     * @param args 
-     */
-    // this is only used for debugging the tool
-    public static void main(String[] args) {
-        ImportXYZToVectorPoints ixyz = new ImportXYZToVectorPoints();
-        args = new String[2];
-        args[0] = "/Users/johnlindsay/Documents/Data/Mohawk_sites.txt";
-        args[1] = "true";
-        ixyz.setArgs(args);
-        ixyz.run();
-        
-    }
+
+//    // this is only used for debugging the tool
+//    public static void main(String[] args) {
+//        ImportXYZToVectorPoints ixyz = new ImportXYZToVectorPoints();
+//        args = new String[2];
+//        args[0] = "/Users/johnlindsay/Documents/Data/Mohawk_sites.txt";
+//        args[1] = "true";
+//        ixyz.setArgs(args);
+//        ixyz.run();
+//        
+//    }
 }
