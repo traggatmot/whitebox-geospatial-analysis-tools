@@ -31,9 +31,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to either isolate or remove vector features from a shapefile based on their spatial relationship with the features in a second vector data set.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class IsolateVectorFeaturesByLocation implements WhiteboxPlugin {
     
@@ -156,7 +156,7 @@ public class IsolateVectorFeaturesByLocation implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -193,6 +193,9 @@ public class IsolateVectorFeaturesByLocation implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         
@@ -305,6 +308,7 @@ public class IsolateVectorFeaturesByLocation implements WhiteboxPlugin {
             // set up the output files of the shapefile and the dbf
             outputShapeType = featureShapeType;
             output = new ShapeFile(outputFile, outputShapeType, fields);
+            output.setProjectionStringFromOtherShapefile(featureShape);
             
             // read all of the data geometries into an array
             ArrayList<com.vividsolutions.jts.geom.Geometry> inputGeometryList =

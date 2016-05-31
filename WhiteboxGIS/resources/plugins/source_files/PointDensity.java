@@ -26,9 +26,9 @@ import whitebox.structures.XYPoint;
 import java.io.*;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to interpolate a regular grid raster from an XYZ points dataset where each grid cell contains the point density within a user-specified radius.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class PointDensity implements WhiteboxPlugin {
 
@@ -150,7 +150,7 @@ public class PointDensity implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -185,6 +185,9 @@ public class PointDensity implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         /* The problem with this algorithm is that the implementation of the
@@ -445,6 +448,12 @@ public class PointDensity implements WhiteboxPlugin {
         }
     }
     
+    /**
+     * Used to retrieve the number of lines in a file.
+     * @param filename
+     * @return
+     * @throws IOException 
+     */
     public int countLinesInFile(String filename) throws IOException {
         InputStream is = new BufferedInputStream(new FileInputStream(filename));
         try {

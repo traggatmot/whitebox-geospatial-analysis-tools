@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool will identify the catchment areas of each Horton-Strahler stream order link in a user-specified stream network.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class StrahlerOrderBasins implements WhiteboxPlugin {
     
@@ -122,7 +122,7 @@ public class StrahlerOrderBasins implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -154,6 +154,9 @@ public class StrahlerOrderBasins implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

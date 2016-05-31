@@ -31,9 +31,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.structures.KdTree;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to interpolate a regular grid raster from a point cloud LiDAR dataset using the minimum interpolation method.
  * 
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class LiDAR_Min_interpolation implements WhiteboxPlugin {
 
@@ -156,7 +156,7 @@ public class LiDAR_Min_interpolation implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -191,6 +191,9 @@ public class LiDAR_Min_interpolation implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -240,11 +243,11 @@ public class LiDAR_Min_interpolation implements WhiteboxPlugin {
             return;
         }
         inputFilesString = args[0];
-        suffix = " " + args[1].trim();
+        suffix = args[1].trim();
         whatToInterpolate = args[2].toLowerCase();
         returnNumberToInterpolate = args[3].toLowerCase();
         resolution = Double.parseDouble(args[4]);
-        double circleCircumscrbingGridCell = Math.sqrt(2) * resolution;
+        double circleCircumscrbingGridCell = Math.sqrt(2) * resolution / 2.0; // radius
         excludeNeverClassified = Boolean.parseBoolean(args[5]);
         excludeUnclassified = Boolean.parseBoolean(args[6]);
         excludeBareGround = Boolean.parseBoolean(args[7]);

@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This tool performs a minimum filter on a raster image, which assigns each cell in the output grid the minimum value in a moving window centred on each grid cell.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FilterMinimum implements WhiteboxPlugin {
     
@@ -119,7 +119,7 @@ public class FilterMinimum implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -151,6 +151,9 @@ public class FilterMinimum implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

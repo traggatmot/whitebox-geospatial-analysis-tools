@@ -32,9 +32,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This uses the Douglas and Peucker (1973) algorithm to simplify vector line or polygon features.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class SimplifyLineOrPolygon implements WhiteboxPlugin {
 
@@ -156,7 +156,7 @@ public class SimplifyLineOrPolygon implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -191,6 +191,9 @@ public class SimplifyLineOrPolygon implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         /*
@@ -261,7 +264,8 @@ public class SimplifyLineOrPolygon implements WhiteboxPlugin {
             System.arraycopy(inputFields, 0, fields, 1, numInputFields);
             
             ShapeFile output = new ShapeFile(outputFile, outputShapeType, fields);
-
+            output.setProjectionStringFromOtherShapefile(input);
+            
             numFeatures = input.getNumberOfRecords();
             oneHundredthTotal = numFeatures / 100;
             n = 0;
@@ -386,22 +390,25 @@ public class SimplifyLineOrPolygon implements WhiteboxPlugin {
 
     }
     
-    //This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[4];
-        //args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/65E UTM.shp";
-        //args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/tmp1.shp";
-        //args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Body_rmow.shp";
-        //args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp4.shp";
-
-        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/alllakesutmdissolve.shp";
-        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp1.shp";
-
-        args[2] = "15";
-        args[3] = "true";
-
-        SimplifyLineOrPolygon slp = new SimplifyLineOrPolygon();
-        slp.setArgs(args);
-        slp.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    //This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[4];
+//        //args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/65E UTM.shp";
+//        //args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/tmp1.shp";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Body_rmow.shp";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp4.shp";
+//
+//        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/alllakesutmdissolve.shp";
+//        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp1.shp";
+//
+//        args[2] = "15";
+//        args[3] = "true";
+//
+//        SimplifyLineOrPolygon slp = new SimplifyLineOrPolygon();
+//        slp.setArgs(args);
+//        slp.run();
+//    }
 }

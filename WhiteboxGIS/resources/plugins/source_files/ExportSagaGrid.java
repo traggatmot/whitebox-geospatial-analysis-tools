@@ -26,9 +26,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.WhiteboxPlugin;
 
 /**
- * Exports a Whitebox Raster to a SAGA GIS raster format.
+ * This tool can be used to export Whitebox GAT raster files to SAGA GIS raster files (*.sgrd and *.sdat).
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ExportSagaGrid implements WhiteboxPlugin, InteropPlugin {
 
@@ -150,7 +150,7 @@ public class ExportSagaGrid implements WhiteboxPlugin, InteropPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -185,6 +185,9 @@ public class ExportSagaGrid implements WhiteboxPlugin, InteropPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -410,33 +413,51 @@ public class ExportSagaGrid implements WhiteboxPlugin, InteropPlugin {
 
     }
 
+    /**
+     * Used to retrieve the necessary extensions.
+     * @return String containing the extensions.
+     */
     @Override
     public String[] getExtensions() {
-        return new String[]{"sdat"};
+        return new String[]{ "txt" };
     }
 
+    /**
+     * Used to retrieve the file type name.
+     * @return String containing the file type name.
+     */
     @Override
     public String getFileTypeName() {
-        return "SAGA Grid";
+        return "ArcGIS ASCII Grid";
     }
-
-    @Override
+    
+    /**
+     * Used to check if the file is raster format.
+     * @return Boolean true if file is raster format.
+     */
+    @Override 
     public boolean isRasterFormat() {
         return true;
     }
-
+    
+    /**
+     * Used to retrieve the interoperable plugin type.
+     * @return 
+     */
     @Override
     public InteropPlugin.InteropPluginType getInteropPluginType() {
         return InteropPlugin.InteropPluginType.exportPlugin;
     }
-
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[1];
-        args[0] = "/Users/johnlindsay/Documents/Data/SAGA Grid/TestData2.dep";
-
-        ExportSagaGrid esg = new ExportSagaGrid();
-        esg.setArgs(args);
-        esg.run();
-    }
 }
+
+
+
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[1];
+//        args[0] = "/Users/johnlindsay/Documents/Data/SAGA Grid/TestData2.dep";
+//
+//        ExportSagaGrid esg = new ExportSagaGrid();
+//        esg.setArgs(args);
+//        esg.run();
+//    }

@@ -26,9 +26,9 @@ import whitebox.structures.KdTree;
 import whitebox.utilities.FileUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to create a bare-earth DEM from a fine-resolution digital surface model.
  * 
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class RemoveOffTerrainObjects implements WhiteboxPlugin {
 
@@ -152,7 +152,7 @@ public class RemoveOffTerrainObjects implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -187,6 +187,9 @@ public class RemoveOffTerrainObjects implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -228,7 +231,7 @@ public class RemoveOffTerrainObjects implements WhiteboxPlugin {
             }
             inputFilesString = args[0];
             suffix = args[1];
-            OTOMaxSize = Integer.valueOf(args[2]);
+            OTOMaxSize = (int)(Math.round(Double.valueOf(args[2])));
             int halfOTOMaxSize = OTOMaxSize / 2;
             double[] data = new double[OTOMaxSize + 2];
             minEdgeSlope = Double.valueOf(args[3]);

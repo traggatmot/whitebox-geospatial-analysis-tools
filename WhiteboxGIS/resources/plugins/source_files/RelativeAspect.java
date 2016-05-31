@@ -22,9 +22,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool creates a new raster in which each grid cell is assigned the terrain aspect relative to a user-specified wind direction.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class RelativeAspect implements WhiteboxPlugin {
     
@@ -148,7 +148,7 @@ public class RelativeAspect implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -185,6 +185,9 @@ public class RelativeAspect implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -231,6 +234,15 @@ public class RelativeAspect implements WhiteboxPlugin {
             double noData = DEM.getNoDataValue();
             gridRes = DEM.getCellSizeX();
             eightGridRes = 8 * gridRes;
+            
+            if (DEM.getXYUnits().toLowerCase().contains("deg") || 
+                    DEM.getProjection().toLowerCase().contains("geog")) {
+                // calculate a new z-conversion factor
+                double midLat = (DEM.getNorth() - DEM.getSouth()) / 2.0;
+                if (midLat <= 90 && midLat >= -90) {
+                    zFactor = 1.0 / (113200 * Math.cos(Math.toRadians(midLat)));
+                }
+            }
             
             WhiteboxRaster output = new WhiteboxRaster(outputHeader, "rw", inputHeader, WhiteboxRaster.DataType.FLOAT, noData);
             output.setPreferredPalette("grey.pal");

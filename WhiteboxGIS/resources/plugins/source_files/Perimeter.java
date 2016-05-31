@@ -27,8 +27,8 @@ import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool can be used to measure the length of the perimeter of polygon features in a raster or vector layer.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Perimeter implements WhiteboxPlugin {
 
@@ -124,7 +124,7 @@ public class Perimeter implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -459,6 +459,9 @@ public class Perimeter implements WhiteboxPlugin {
         }
     }
     
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -472,27 +475,31 @@ public class Perimeter implements WhiteboxPlugin {
         }
     }
     
-    // This method is only used during testing.
-    public static void main(String[] args) {
-
-        // vector-based test
-        args = new String[4];
-        /*
-         * specify the input args array as: args[0] = inputFile 
-         * args[1] = outputFile (parameter ignored in the vector algorithm)
-         * args[2] = blnTextOutput (This parameter is ignored in the
-         * vector algorithm...only used in the raster tool) 
-         * args[3] = zeroAsBackground (This parameter is ignored in the vector
-         * algorithm...only used in the raster tool)
-         */
-        args[0] = "/Users/johnlindsay/Documents/Data/Shapefiles/Water_Body_rmow.shp";
-        args[1] = "";
-        args[2] = "false";
-        args[3] = "false";
-
-        Perimeter perimeter = new Perimeter();
-        perimeter.setArgs(args);
-        perimeter.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//
+//        // vector-based test
+//        args = new String[4];
+//        /*
+//         * specify the input args array as: args[0] = inputFile 
+//         * args[1] = outputFile (parameter ignored in the vector algorithm)
+//         * args[2] = blnTextOutput (This parameter is ignored in the
+//         * vector algorithm...only used in the raster tool) 
+//         * args[3] = zeroAsBackground (This parameter is ignored in the vector
+//         * algorithm...only used in the raster tool)
+//         */
+//        args[0] = "/Users/johnlindsay/Documents/Data/Shapefiles/Water_Body_rmow.shp";
+//        args[1] = "";
+//        args[2] = "false";
+//        args[3] = "false";
+//
+//        Perimeter perimeter = new Perimeter();
+//        perimeter.setArgs(args);
+//        perimeter.run();
+//    }
     
 }

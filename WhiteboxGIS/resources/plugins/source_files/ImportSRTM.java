@@ -27,9 +27,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.InteropPlugin;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to convert Shuttle Radar Topography Mission (SRTM) digital elevation models (DEMs) to Whitebox GAT raster files.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ImportSRTM implements WhiteboxPlugin, InteropPlugin {
 
@@ -151,7 +151,7 @@ public class ImportSRTM implements WhiteboxPlugin, InteropPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -186,6 +186,9 @@ public class ImportSRTM implements WhiteboxPlugin, InteropPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -211,10 +214,18 @@ public class ImportSRTM implements WhiteboxPlugin, InteropPlugin {
             showFeedback("One or more of the input parameters have not been set properly.");
             return;
         }
-
+        
         imageFiles = inputFilesString.split(";");
         numImages = imageFiles.length;
-
+        
+        String outDir = (new File(imageFiles[0])).getParentFile().toString();
+        if (args.length > 1) {
+            outDir = args[1];
+        }
+        
+        if (!outDir.endsWith(File.separator)) { outDir = outDir + File.separator;
+        
+        }
         try {
 
             for (i = 0; i < numImages; i++) {
@@ -261,7 +272,7 @@ public class ImportSRTM implements WhiteboxPlugin, InteropPlugin {
                 tmp[0] = charArray[1];
                 tmp[1] = charArray[2];
                 double south = Double.parseDouble(new String(tmp));
-                if (charArray[0] == 'S') {
+                if (charArray[0] == 'S' || charArray[0] == 's') {
                     south = -south;
                 }
                 south = south - (0.5 * cellSize); // coordinate of ll cell edge
@@ -271,7 +282,7 @@ public class ImportSRTM implements WhiteboxPlugin, InteropPlugin {
                 tmp[1] = charArray[5];
                 tmp[2] = charArray[6];
                 double west = Double.parseDouble(new String(tmp));
-                if (charArray[3] == 'W') {
+                if (charArray[3] == 'W' || charArray[3] == 'w') {
                     west = -west;
                 }
                 west = west - (0.5 * cellSize); // coordinate of ll cell edge
@@ -279,7 +290,8 @@ public class ImportSRTM implements WhiteboxPlugin, InteropPlugin {
                 double north = south + 1.0 + cellSize; // coordinate of ur cell edge
                 double east = west + 1.0 + cellSize; // coordinate of ur cell edge
 
-                String whiteboxHeaderFile = imageFiles[i].replace(fileExtension, "dep");
+                //String whiteboxHeaderFile = imageFiles[i].replace(fileExtension, "dep");
+                String whiteboxHeaderFile = outDir + shortFileName + ".dep";
                 if (i == 0) {
                     returnHeaderFile = whiteboxHeaderFile;
                 }
@@ -328,6 +340,9 @@ public class ImportSRTM implements WhiteboxPlugin, InteropPlugin {
                 output.addMetadataEntry("Created by the "
                         + getDescriptiveName() + " tool.");
                 output.addMetadataEntry("Created on " + new Date());
+                output.setXYUnits("degrees");
+                output.setProjection("geographic coordinates");
+                output.setZUnits("metres");
                 output.writeHeaderFile();
                 output.close();
                 
@@ -349,35 +364,53 @@ public class ImportSRTM implements WhiteboxPlugin, InteropPlugin {
         }
     }
 
+    /**
+     * Used to retrieve the necessary extensions.
+     * @return String containing the extensions.
+     */
     @Override
     public String[] getExtensions() {
-        return new String[]{"hgt"};
+        return new String[]{ "txt" };
     }
 
+    /**
+     * Used to retrieve the file type name.
+     * @return String containing the file type name.
+     */
     @Override
     public String getFileTypeName() {
-        return "SRTM DEM";
+        return "ArcGIS ASCII Grid";
     }
-
-    @Override
+    
+    /**
+     * Used to check if the file is raster format.
+     * @return Boolean true if file is raster format.
+     */
+    @Override 
     public boolean isRasterFormat() {
         return true;
     }
     
+    /**
+     * Used to retrieve the interoperable plugin type.
+     * @return 
+     */
     @Override
-    public InteropPluginType getInteropPluginType() {
-        return InteropPluginType.importPlugin;
-    }
-    
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[1];
-        //args[0] = "/Users/johnlindsay/Documents/Data/SRTM/N29W089.hgt";
-        //args[0] = "/Users/johnlindsay/Documents/Data/SRTM/N26W081.hgt";
-        args[0] = "/Users/johnlindsay/Documents/Data/SRTM/S04W063.hgt";
-
-        ImportSRTM isrtm = new ImportSRTM();
-        isrtm.setArgs(args);
-        isrtm.run();
+    public InteropPlugin.InteropPluginType getInteropPluginType() {
+        return InteropPlugin.InteropPluginType.exportPlugin;
     }
 }
+
+    
+
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[1];
+//        //args[0] = "/Users/johnlindsay/Documents/Data/SRTM/N29W089.hgt";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/SRTM/N26W081.hgt";
+//        args[0] = "/Users/johnlindsay/Documents/Data/SRTM/S04W063.hgt";
+//
+//        ImportSRTM isrtm = new ImportSRTM();
+//        isrtm.setArgs(args);
+//        isrtm.run();
+//    }

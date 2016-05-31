@@ -24,8 +24,8 @@ import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool creates a new raster image in which the value of each grid cell is determined by the values in an input raster image and a reclass file.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ReclassFromFile implements WhiteboxPlugin {
 
@@ -112,7 +112,7 @@ public class ReclassFromFile implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -153,6 +153,9 @@ public class ReclassFromFile implements WhiteboxPlugin {
         return amIActive;
     }
     
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -375,6 +378,10 @@ public class ReclassFromFile implements WhiteboxPlugin {
         }
     }
     
+            /**
+             * Used to retrieve the number of lines.
+             */
+            
     public int countLines(String fileName) throws IOException {
         DataInputStream in = null;
         BufferedReader br = null;

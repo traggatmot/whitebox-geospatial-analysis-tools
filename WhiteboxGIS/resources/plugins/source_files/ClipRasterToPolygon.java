@@ -38,9 +38,9 @@ import whitebox.structures.BoundingBox;
 import whitebox.structures.RowPriorityGridCell;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to clip one or more rasters to the extent of a vector polygon (shapefile).
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ClipRasterToPolygon implements WhiteboxPlugin {
 
@@ -162,7 +162,7 @@ public class ClipRasterToPolygon implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -197,6 +197,9 @@ public class ClipRasterToPolygon implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -309,7 +312,9 @@ public class ClipRasterToPolygon implements WhiteboxPlugin {
                     output = new WhiteboxRaster(outputHeader, "rw",
                             inputFiles[k], dataType, noData);
                 }
-
+                
+                output.setPreferredPalette(input.getPreferredPalette());
+                
                 pq.clear();
                 RowPriorityGridCell cell;
                 int numRecords = clip.getNumberOfRecords();

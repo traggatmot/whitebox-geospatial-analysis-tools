@@ -23,9 +23,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates the total curvature, which is the curvature of the surface itself and not the curvature of intersecting lines (e.g., profile and plan curvatures).
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class TotalCurv implements WhiteboxPlugin {
     
@@ -148,7 +148,7 @@ public class TotalCurv implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -185,6 +185,9 @@ public class TotalCurv implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -198,16 +201,10 @@ public class TotalCurv implements WhiteboxPlugin {
             return;
         }
         
-        for (int i = 0; i < args.length; i++) {
-            if (i == 0) {
-                inputHeader = args[i];
-            } else if (i == 1) {
-                outputHeader = args[i];
-            } else if (i == 2) {
-                zConvFactor = Double.parseDouble(args[i]);
-            }
-        }
-
+        inputHeader = args[0];
+        outputHeader = args[1];
+        zConvFactor = Double.parseDouble(args[2]);
+        
         // check to see that the inputHeader and outputHeader are not null.
         if ((inputHeader == null) || (outputHeader == null)) {
             showFeedback("One or more of the input parameters have not been set properly.");
@@ -237,6 +234,15 @@ public class TotalCurv implements WhiteboxPlugin {
             double fourTimesGridResSquared = gridResSquared * 4;
             double curv;
             double noData = inputFile.getNoDataValue();
+            
+            if (inputFile.getXYUnits().toLowerCase().contains("deg") || 
+                    inputFile.getProjection().toLowerCase().contains("geog")) {
+                // calculate a new z-conversion factor
+                double midLat = (inputFile.getNorth() - inputFile.getSouth()) / 2.0;
+                if (midLat <= 90 && midLat >= -90) {
+                    zConvFactor = 1.0 / (113200 * Math.cos(Math.toRadians(midLat)));
+                }
+            }
 
             WhiteboxRaster outputFile = new WhiteboxRaster(outputHeader, "rw", inputHeader, WhiteboxRaster.DataType.FLOAT, noData);
             outputFile.setPreferredPalette("blue_white_red.pal");

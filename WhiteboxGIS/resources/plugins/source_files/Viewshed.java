@@ -26,9 +26,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to calculate the viewshed (the visible area) from a location (viewing station) or group of locations based on the topography defined by an input digital elevation model (DEM).
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Viewshed implements WhiteboxPlugin {
 
@@ -150,7 +150,7 @@ public class Viewshed implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -185,6 +185,9 @@ public class Viewshed implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -712,17 +715,20 @@ public class Viewshed implements WhiteboxPlugin {
         }
     }
 
-    // this is only used for testing the tool
-    public static void main(String[] args) {
-        Viewshed vs = new Viewshed();
-        args = new String[4];
-        args[0] = "/Users/johnlindsay/Documents/Data/Vermont DEM/Vermont DEM.dep";
-        args[1] = "/Users/johnlindsay/Documents/Data/Vermont DEM/tmp2.dep";
-        args[2] = "/Users/johnlindsay/Documents/Data/Vermont DEM/temp2.dep";
-        args[3] = "2";
-
-        vs.setArgs(args);
-        vs.run();
-
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    // this is only used for testing the tool
+//    public static void main(String[] args) {
+//        Viewshed vs = new Viewshed();
+//        args = new String[4];
+//        args[0] = "/Users/johnlindsay/Documents/Data/Vermont DEM/Vermont DEM.dep";
+//        args[1] = "/Users/johnlindsay/Documents/Data/Vermont DEM/tmp2.dep";
+//        args[2] = "/Users/johnlindsay/Documents/Data/Vermont DEM/temp2.dep";
+//        args[3] = "2";
+//
+//        vs.setArgs(args);
+//        vs.run();
+//
+//    }
 }

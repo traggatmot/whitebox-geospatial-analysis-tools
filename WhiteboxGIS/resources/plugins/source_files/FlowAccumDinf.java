@@ -22,9 +22,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool is used to generate a flow accumulation grid (i.e., contributing area) using the D-infinity algorithm (Tarboton, 1997).
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FlowAccumDinf implements WhiteboxPlugin {
 
@@ -36,6 +36,11 @@ public class FlowAccumDinf implements WhiteboxPlugin {
     double noData = -32768;
     int[] dX = new int[]{1, 1, 1, 0, -1, -1, -1, 0};
     int[] dY = new int[]{-1, 0, 1, 1, 1, 0, -1, -1};
+    /*
+       7 8 1
+       6   2
+       5 4 3
+    */
     double gridRes = 1;
     double[] startFD = new double[]{180, 225, 270, 315, 0, 45, 90, 135};
     double[] endFD = new double[]{270, 315, 360, 45, 90, 135, 180, 225};
@@ -156,7 +161,7 @@ public class FlowAccumDinf implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -191,6 +196,9 @@ public class FlowAccumDinf implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -208,31 +216,24 @@ public class FlowAccumDinf implements WhiteboxPlugin {
         String outputType = null;
         double flowDir;
 
-
-        if (args.length <= 0) {
-            showFeedback("Plugin parameters have not been set.");
-            return;
-        }
-
-        for (i = 0; i < args.length; i++) {
-            if (i == 0) {
-                inputHeader = args[i];
-            } else if (i == 1) {
-                outputHeader = args[i];
-            } else if (i == 2) {
-                outputType = args[i].toLowerCase();
-            } else if (i == 3) {
-                logTransform = Boolean.parseBoolean(args[i]);
-            }
-        }
-
-        // check to see that the inputHeader and outputHeader are not null.
-        if ((inputHeader == null) || (outputHeader == null)) {
-            showFeedback("One or more of the input parameters have not been set properly.");
-            return;
-        }
-
         try {
+
+            if (args.length <= 0) {
+                showFeedback("Plugin parameters have not been set.");
+                return;
+            }
+
+            inputHeader = args[0];
+            outputHeader = args[1];
+            outputType = args[2].toLowerCase();
+            logTransform = Boolean.parseBoolean(args[3]);
+
+            // check to see that the inputHeader and outputHeader are not null.
+            if ((inputHeader == null) || (outputHeader == null)) {
+                showFeedback("One or more of the input parameters have not been set properly.");
+                return;
+            }
+
             pointer = new WhiteboxRaster(inputHeader, "r");
             int rows = pointer.getNumberRows();
             int cols = pointer.getNumberColumns();
@@ -364,6 +365,8 @@ public class FlowAccumDinf implements WhiteboxPlugin {
                     progress = (float) (100f * row / (rows - 1));
                     updateProgress("Loop " + loopNum + ":", (int) progress);
                 }
+            } else {
+                output.setNonlinearity(0.2);
             }
 
             output.addMetadataEntry("Created by the "
@@ -389,7 +392,7 @@ public class FlowAccumDinf implements WhiteboxPlugin {
             myHost.pluginComplete();
         }
     }
-    
+
     int currentDepth;
     final int maxDepth = 1000;
 

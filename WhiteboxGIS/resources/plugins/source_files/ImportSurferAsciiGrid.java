@@ -31,8 +31,8 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.WhiteboxPlugin;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool can be used to import a Surfer (Golden Software) ASCII grid file (*.grd) to a Whitebox GAT raster file.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ImportSurferAsciiGrid implements WhiteboxPlugin, InteropPlugin {
 
@@ -127,7 +127,7 @@ public class ImportSurferAsciiGrid implements WhiteboxPlugin, InteropPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -157,6 +157,9 @@ public class ImportSurferAsciiGrid implements WhiteboxPlugin, InteropPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -397,23 +400,40 @@ public class ImportSurferAsciiGrid implements WhiteboxPlugin, InteropPlugin {
         }
     }
     
+    /**
+     * Used to retrieve the necessary extensions.
+     * @return String containing the extensions.
+     */
     @Override
     public String[] getExtensions() {
-        return new String[]{"grd"};
+        return new String[]{ "txt" };
     }
 
+    /**
+     * Used to retrieve the file type name.
+     * @return String containing the file type name.
+     */
     @Override
     public String getFileTypeName() {
-        return "Surfer ASCII Grid";
+        return "ArcGIS ASCII Grid";
     }
-
-    @Override
+    
+    /**
+     * Used to check if the file is raster format.
+     * @return Boolean true if file is raster format.
+     */
+    @Override 
     public boolean isRasterFormat() {
         return true;
     }
-
+    
+    /**
+     * Used to retrieve the interoperable plugin type.
+     * @return 
+     */
     @Override
     public InteropPlugin.InteropPluginType getInteropPluginType() {
-        return InteropPlugin.InteropPluginType.importPlugin;
+        return InteropPlugin.InteropPluginType.exportPlugin;
     }
 }
+

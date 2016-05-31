@@ -15,6 +15,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/* Modified by John Lindsay, April 17, 2014. */
+
 package plugins;
 
 import java.util.Date;
@@ -24,8 +27,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool is used to generate a flow accumulation grid (i.e., contributing area) using the MDInf algorithm (Seibert and McGlynn, 2007).
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FlowAccumMDInf implements WhiteboxPlugin {
     
@@ -141,7 +144,7 @@ public class FlowAccumMDInf implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */ 
     @Override
     public void setArgs(String[] args) {
@@ -173,6 +176,9 @@ public class FlowAccumMDInf implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -199,33 +205,22 @@ public class FlowAccumMDInf implements WhiteboxPlugin {
         
         float progress = 0;
         
-        if (args.length <= 0) {
+        if (args.length == 0) {
             showFeedback("Plugin parameters have not been set.");
             return;
         }
         
-        for (i = 0; i < args.length; i++) {
-            if (i == 0) {
-                demHeader = args[i];
-            } else if (i == 1) {
-                upSlopeHeader = args[i];
-            } else if (i == 2) {
-                creekHeader = args[i];
-            } else if (i == 3) {
-                localInHeader = args[i];
-            } else if (i == 4) {
-                mdInfPower = Double.parseDouble(args[i]);
-            } else if (i == 5) {
-                outputType = args[i].toLowerCase();
-            } else if (i == 6) {
-                logTransform = Boolean.parseBoolean(args[i]);
-            } else if (i == 7) {
-                if (!args[i].toLowerCase().equals("not specified")) {
-                    caThreshold = Double.parseDouble(args[i]);
-                } else {
-                    caThreshold = -9999;
-                }
-            }
+        demHeader = args[0];
+        upSlopeHeader = args[1];
+        creekHeader = args[2];
+        localInHeader = args[3];
+        mdInfPower = Double.parseDouble(args[4]);
+        outputType = args[5].toLowerCase();
+        logTransform = Boolean.parseBoolean(args[6]);
+        if (!args[7].toLowerCase().equals("not specified")) {
+            caThreshold = Double.parseDouble(args[7]);
+        } else {
+            caThreshold = -9999;
         }
         
         // check to see that the inputHeader and outputHeader are not null.
@@ -385,6 +380,8 @@ public class FlowAccumMDInf implements WhiteboxPlugin {
                     progress = (float) (100f * row / (numRows - 1));
                     updateProgress("Loop 4 of 4:", (int) progress);
                 }
+            } else {
+                upSlope.setNonlinearity(0.2);
             }
             
             upSlope.addMetadataEntry("Created by the " + getDescriptiveName() + " tool.");

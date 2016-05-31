@@ -31,9 +31,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.StringUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * The Snap Pour Points tool can be used to move the location of pour points (i.e., outlets used in a watershedding operation) to the location coincident with the highest flow accumulation value within a specified distance.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class SnapPourPoints implements WhiteboxPlugin {
 
@@ -156,7 +156,7 @@ public class SnapPourPoints implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -191,6 +191,9 @@ public class SnapPourPoints implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

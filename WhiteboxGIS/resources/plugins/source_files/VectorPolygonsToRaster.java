@@ -38,9 +38,9 @@ import whitebox.structures.BoundingBox;
 import whitebox.structures.RowPriorityGridCell;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to convert a vector polygons file (shapefile) into a raster grid.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca.
  */
 public class VectorPolygonsToRaster implements WhiteboxPlugin {
 
@@ -162,7 +162,7 @@ public class VectorPolygonsToRaster implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -197,6 +197,9 @@ public class VectorPolygonsToRaster implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -291,7 +294,7 @@ public class VectorPolygonsToRaster implements WhiteboxPlugin {
                     }
                 }
             }
-            
+
             if (assignmentFieldNum < 0) {
                 useRecID = true;
             }
@@ -327,15 +330,15 @@ public class VectorPolygonsToRaster implements WhiteboxPlugin {
             // first sort the records based on their maxY coordinate. This will
             // help reduce the amount of disc IO for larger rasters.
             ArrayList<RecordInfo> myList = new ArrayList<>();
-            
+
             for (ShapeFileRecord record : input.records) {
                 i = record.getRecordNumber();
                 box = getBoundingBoxFromShapefileRecord(record);
                 myList.add(new RecordInfo(box.getMaxY(), i));
             }
-            
+
             Collections.sort(myList);
-            
+
             if (!useRecID) {
                 allRecords = new Object[numRecs][numberOfFields];
                 int a = 0;
@@ -344,16 +347,18 @@ public class VectorPolygonsToRaster implements WhiteboxPlugin {
                     a++;
                 }
             }
-            
+
             long heapSize = Runtime.getRuntime().totalMemory();
-            int flushSize = (int)(heapSize / 32);
+            int flushSize = (int) (heapSize / 32);
             int j, numCellsToWrite;
             PriorityQueue<RowPriorityGridCell> pq = new PriorityQueue<>(flushSize);
             RowPriorityGridCell cell;
             int numRecords = input.getNumberOfRecords();
             int count = 0;
-            int progressCount = (int)(numRecords / 100.0);
-            if (progressCount <= 0) { progressCount = 1; }
+            int progressCount = (int) (numRecords / 100.0);
+            if (progressCount <= 0) {
+                progressCount = 1;
+            }
             ShapeFileRecord record;
             for (RecordInfo ri : myList) {
                 record = input.getRecord(ri.recNumber - 1);
@@ -365,7 +370,7 @@ public class VectorPolygonsToRaster implements WhiteboxPlugin {
                 geometry = getXYFromShapefileRecord(record);
                 numPoints = geometry.length;
                 numParts = partData.length;
-                
+
                 // first do the non-holes.
                 for (part = 0; part < numParts; part++) {
                     if (!partHoleData[part]) {
@@ -405,7 +410,7 @@ public class VectorPolygonsToRaster implements WhiteboxPlugin {
 
                                         // calculate the intersection point
                                         xPrime = (x1 + (rowYCoord - y1) / (y2 - y1) * (x2 - x1));
-                                        edgeList.add(new Integer(output.getColumnFromXCoordinate(xPrime)));
+                                        edgeList.add(output.getColumnFromXCoordinate(xPrime));
                                         foundIntersection = true;
                                     }
                                 }
@@ -484,7 +489,7 @@ public class VectorPolygonsToRaster implements WhiteboxPlugin {
 
                                         // calculate the intersection point
                                         xPrime = (x1 + (rowYCoord - y1) / (y2 - y1) * (x2 - x1));
-                                        edgeList.add(new Integer(output.getColumnFromXCoordinate(xPrime)));
+                                        edgeList.add(output.getColumnFromXCoordinate(xPrime));
                                         foundIntersection = true;
                                     }
                                 }
@@ -548,7 +553,7 @@ public class VectorPolygonsToRaster implements WhiteboxPlugin {
                         }
                     } while (pq.size() > 0);
                 }
-                
+
                 if (cancelOp) {
                     cancelOperation();
                     return;
@@ -559,30 +564,32 @@ public class VectorPolygonsToRaster implements WhiteboxPlugin {
                     updateProgress(progress);
                 }
             }
-            
+
             j = 0;
             numCellsToWrite = pq.size();
-            do {
-                cell = pq.poll();
-                if (cell.z == smallNumber) {
-                    output.setValue(cell.row, cell.col, backgroundValue);
-                } else {
-                    output.setValue(cell.row, cell.col, cell.z);
-                }
-                j++;
-                if (j % 1000 == 0) {
-                    if (cancelOp) {
-                        cancelOperation();
-                        return;
+            if (numCellsToWrite > 0) {
+                do {
+                    cell = pq.poll();
+                    if (cell.z == smallNumber) {
+                        output.setValue(cell.row, cell.col, backgroundValue);
+                    } else {
+                        output.setValue(cell.row, cell.col, cell.z);
                     }
-                    updateProgress("Writing to Output (" + df.format(j) + " of " + df.format(numCellsToWrite) + "):", (int) (j * 100.0 / numCellsToWrite));
-                }
-            } while (pq.size() > 0);
+                    j++;
+                    if (j % 1000 == 0) {
+                        if (cancelOp) {
+                            cancelOperation();
+                            return;
+                        }
+                        updateProgress("Writing to Output (" + df.format(j) + " of " + df.format(numCellsToWrite) + "):", (int) (j * 100.0 / numCellsToWrite));
+                    }
+                } while (pq.size() > 0);
+            }
 
             output.addMetadataEntry("Created by the "
                     + getDescriptiveName() + " tool.");
             output.addMetadataEntry("Created on " + new Date());
-            
+
             output.flush();
             output.close();
 
@@ -609,8 +616,8 @@ public class VectorPolygonsToRaster implements WhiteboxPlugin {
         ShapeType shapeType = record.getShapeType();
         switch (shapeType) {
             case POLYGON:
-                whitebox.geospatialfiles.shapefile.Polygon recPolygon =
-                        (whitebox.geospatialfiles.shapefile.Polygon) (record.getGeometry());
+                whitebox.geospatialfiles.shapefile.Polygon recPolygon
+                        = (whitebox.geospatialfiles.shapefile.Polygon) (record.getGeometry());
                 ret = recPolygon.getPoints();
                 partData = recPolygon.getParts();
                 partHoleData = recPolygon.getPartHoleData();
@@ -642,8 +649,8 @@ public class VectorPolygonsToRaster implements WhiteboxPlugin {
         ShapeType shapeType = record.getShapeType();
         switch (shapeType) {
             case POLYGON:
-                whitebox.geospatialfiles.shapefile.Polygon recPolygon =
-                        (whitebox.geospatialfiles.shapefile.Polygon) (record.getGeometry());
+                whitebox.geospatialfiles.shapefile.Polygon recPolygon
+                        = (whitebox.geospatialfiles.shapefile.Polygon) (record.getGeometry());
                 ret = recPolygon.getBox();
                 break;
             case POLYGONZ:
@@ -666,7 +673,7 @@ public class VectorPolygonsToRaster implements WhiteboxPlugin {
 
         public double maxY;
         public int recNumber;
-        
+
         public RecordInfo(double maxY, int recNumber) {
             this.maxY = maxY;
             this.recNumber = recNumber;

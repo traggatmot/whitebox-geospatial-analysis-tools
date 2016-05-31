@@ -27,9 +27,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to append multiple vectors into a single shapefile.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Append implements WhiteboxPlugin {
     
@@ -152,7 +152,7 @@ public class Append implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -189,6 +189,9 @@ public class Append implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         
@@ -248,6 +251,7 @@ public class Append implements WhiteboxPlugin {
                 if (k == 0) {
                     outputShapeType = shapeType;
                     output = new ShapeFile(outputFile, outputShapeType);
+                    output.setProjectionStringFromOtherShapefile(new ShapeFile(shapefiles[0]));
 
                     DBFField fields[] = new DBFField[3];
 

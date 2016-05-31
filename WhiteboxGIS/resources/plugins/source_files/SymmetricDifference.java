@@ -39,9 +39,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to isolate all of the features, or parts of features, in two input vectors that do not overlap.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class SymmetricDifference implements WhiteboxPlugin {
     
@@ -164,7 +164,7 @@ public class SymmetricDifference implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -201,6 +201,9 @@ public class SymmetricDifference implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         
@@ -383,7 +386,7 @@ public class SymmetricDifference implements WhiteboxPlugin {
             
             // set up the output files of the shapefile and the dbf
             output = new ShapeFile(outputFile, outputShapeType, fields);
-
+            output.setProjectionStringFromOtherShapefile(input1);
 //            String DBFName = output.getDatabaseFile();
 //            writer = new DBFWriter(new File(DBFName));
 //

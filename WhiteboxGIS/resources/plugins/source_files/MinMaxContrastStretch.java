@@ -22,8 +22,9 @@ import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool performs a minimum-maximum contrast stretch on a raster image, which maps each grid cell value in the input raster image (z) onto a new scale that ranges from the user-specified lower-tail clip value (L) to the upper-tail clip value (U), with the specified number of tonal values (n), such that:
+zn = (z - L) / (U - L) × n where zn is the output value.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class MinMaxContrastStretch implements WhiteboxPlugin {
 
@@ -107,7 +108,7 @@ public class MinMaxContrastStretch implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -148,6 +149,9 @@ public class MinMaxContrastStretch implements WhiteboxPlugin {
         return amIActive;
     }
     
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

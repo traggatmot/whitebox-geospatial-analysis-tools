@@ -35,9 +35,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to join the features, or parts of features, in two input vectors.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Union implements WhiteboxPlugin {
     
@@ -160,7 +160,7 @@ public class Union implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -197,6 +197,9 @@ public class Union implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         
@@ -313,6 +316,7 @@ public class Union implements WhiteboxPlugin {
                 fields[0].setDecimalCount(0);
 
                 output = new ShapeFile(outputFile, outputShapeType, fields);
+                output.setProjectionStringFromOtherShapefile(new ShapeFile(shapefiles[0]));
                 
                 int numGeometries = outputGeometry.getNumGeometries();
                 oneHundredthTotal = (int)(numGeometries / 100.0);

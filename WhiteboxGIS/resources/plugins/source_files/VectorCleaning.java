@@ -18,7 +18,6 @@ package plugins;
 
 import com.vividsolutions.jts.operation.overlay.snap.GeometrySnapper;
 import com.vividsolutions.jts.geom.Coordinate;
-import java.io.File;
 import java.util.ArrayList;
 import whitebox.geospatialfiles.ShapeFile;
 import whitebox.geospatialfiles.shapefile.*;
@@ -30,9 +29,9 @@ import whitebox.utilities.FileUtilities;
 import whitebox.utilities.Topology;
 
 /**
- * Used to clean vector topology, e.g. remove sliver polygons.
+ * This tool can be used to correct the topology of a shapefile such that shared boundaries between neighbouring polygon features are correctly represented.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class VectorCleaning implements WhiteboxPlugin {
 
@@ -158,7 +157,7 @@ public class VectorCleaning implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -193,6 +192,9 @@ public class VectorCleaning implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
 
@@ -240,7 +242,8 @@ public class VectorCleaning implements WhiteboxPlugin {
 
             AttributeTable table = input.getAttributeTable();
             ShapeFile output = new ShapeFile(outputFile, shapeType, table.getAllFields());
-            
+            output.setProjectionStringFromOtherShapefile(input);
+	            
             // retrieve the geometries
             ArrayList<com.vividsolutions.jts.geom.Geometry> geoms = new ArrayList<>();
             com.vividsolutions.jts.geom.Geometry[] recJTS = null;
@@ -287,7 +290,7 @@ public class VectorCleaning implements WhiteboxPlugin {
                     return;
                 }
                 n++;
-                
+
             }
 
             // perform the cleaning
@@ -296,13 +299,13 @@ public class VectorCleaning implements WhiteboxPlugin {
             int numGeoms = geoms.size();
             int recNum1, recNum2;
             for (i = 0; i < numGeoms; i++) {
-                recNum1 = (int)geoms.get(i).getUserData() - 1;
+                recNum1 = (int) geoms.get(i).getUserData() - 1;
                 for (j = i + 1; j < numGeoms; j++) {
-                    recNum2 = (int)geoms.get(j).getUserData() - 1;
+                    recNum2 = (int) geoms.get(j).getUserData() - 1;
                     if (boundingBoxes[recNum1].near(boundingBoxes[recNum2], distanceTolerance * 10)) {
-                        com.vividsolutions.jts.geom.Geometry[] geomsResult =
-                                GeometrySnapper.snap(geoms.get(i), geoms.get(j),
-                                distanceTolerance);
+                        com.vividsolutions.jts.geom.Geometry[] geomsResult
+                                = GeometrySnapper.snap(geoms.get(i), geoms.get(j),
+                                        distanceTolerance);
                         geomsResult[0].setUserData(recNum1 + 1);
                         geomsResult[1].setUserData(recNum2 + 1);
                         geoms.set(i, geomsResult[0]);
@@ -319,14 +322,14 @@ public class VectorCleaning implements WhiteboxPlugin {
                     return;
                 }
                 n++;
-                
+
             }
 
             // output the data
             n = 0;
             oldProgress = -1;
             for (com.vividsolutions.jts.geom.Geometry g : geoms) {
-                int recNum = (int)g.getUserData();
+                int recNum = (int) g.getUserData();
                 if (g instanceof com.vividsolutions.jts.geom.Polygon
                         && shapeType.getBaseType() == ShapeType.POLYGON) {
                     com.vividsolutions.jts.geom.Polygon p = (com.vividsolutions.jts.geom.Polygon) g;
@@ -377,36 +380,16 @@ public class VectorCleaning implements WhiteboxPlugin {
                     output.addRecord(wbGeometry, table.getRecord(recNum - 1));
                 } else if (g instanceof com.vividsolutions.jts.geom.LineString
                         && shapeType.getBaseType() == ShapeType.POLYLINE) {
-                    com.vividsolutions.jts.geom.Polygon p = (com.vividsolutions.jts.geom.Polygon) g;
+                    com.vividsolutions.jts.geom.LineString p = (com.vividsolutions.jts.geom.LineString) g;
                     ArrayList<ShapefilePoint> pnts = new ArrayList<>();
 
-                    int[] parts = new int[p.getNumInteriorRing() + 1];
+                    int[] parts = {0}; //new int[p.getNumInteriorRing() + 1];
 
-                    Coordinate[] coords = p.getExteriorRing().getCoordinates();
-                    if (Topology.isClockwisePolygon(coords)) {
-                        for (i = 0; i < coords.length; i++) {
-                            pnts.add(new ShapefilePoint(coords[i].x, coords[i].y));
-                        }
-                    } else {
-                        for (i = coords.length - 1; i >= 0; i--) {
-                            pnts.add(new ShapefilePoint(coords[i].x, coords[i].y));
-                        }
+                    Coordinate[] coords = p.getCoordinates();
+                    for (i = 0; i < coords.length; i++) {
+                        pnts.add(new ShapefilePoint(coords[i].x, coords[i].y));
                     }
-
-                    for (int b = 0; b < p.getNumInteriorRing(); b++) {
-                        parts[b + 1] = pnts.size();
-                        coords = p.getInteriorRingN(b).getCoordinates();
-                        if (Topology.isClockwisePolygon(coords)) {
-                            for (i = coords.length - 1; i >= 0; i--) {
-                                pnts.add(new ShapefilePoint(coords[i].x, coords[i].y));
-                            }
-                        } else {
-                            for (i = 0; i < coords.length; i++) {
-                                pnts.add(new ShapefilePoint(coords[i].x, coords[i].y));
-                            }
-                        }
-                    }
-
+                    
                     PointsList pl = new PointsList(pnts);
 
                     whitebox.geospatialfiles.shapefile.Geometry wbGeometry;
@@ -435,14 +418,13 @@ public class VectorCleaning implements WhiteboxPlugin {
                     return;
                 }
                 n++;
-                
+
             }
 
             output.write();
 
             // returning a header file string displays the image.
             returnData(outputFile);
-
 
         } catch (OutOfMemoryError oe) {
             myHost.showFeedback("An out-of-memory error has occurred during operation.");
@@ -458,17 +440,20 @@ public class VectorCleaning implements WhiteboxPlugin {
 
     }
 
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[3];
-        args[0] = "/Users/johnlindsay/Downloads/sample/sample.shp";
-        args[1] = "/Users/johnlindsay/Downloads/sample/tmp1.shp";
-        //args[0] = "/Users/johnlindsay/Documents/Data/WorldMap/world_countries_wgs84_region.shp";
-        //args[1] = "/Users/johnlindsay/Documents/Data/WorldMap/tmp1.shp";
-        args[2] = "0.01";
-
-        VectorCleaning vc = new VectorCleaning();
-        vc.setArgs(args);
-        vc.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[3];
+//        args[0] = "/Users/johnlindsay/Downloads/sample/sample.shp";
+//        args[1] = "/Users/johnlindsay/Downloads/sample/tmp1.shp";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/WorldMap/world_countries_wgs84_region.shp";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/WorldMap/tmp1.shp";
+//        args[2] = "0.01";
+//
+//        VectorCleaning vc = new VectorCleaning();
+//        vc.setArgs(args);
+//        vc.run();
+//    }
 }

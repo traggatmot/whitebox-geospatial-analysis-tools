@@ -27,9 +27,9 @@ import whitebox.structures.KdTree;
 import whitebox.utilities.AxialData;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * The chain of polygons pattern is a characteristic pattern in which elongated and aligned polygons are arranged end-to-end. 
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FindPolygonChains implements WhiteboxPlugin {
 
@@ -154,7 +154,7 @@ public class FindPolygonChains implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -193,6 +193,9 @@ public class FindPolygonChains implements WhiteboxPlugin {
     KdTree<Integer> pointsTree;
     double neighbourhoodRadius = 1000;
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
 
@@ -276,6 +279,7 @@ public class FindPolygonChains implements WhiteboxPlugin {
             fields[1].setDecimalCount(0);
 
             ShapeFile output = new ShapeFile(outputFile, shapeType, fields);
+            output.setProjectionStringFromOtherShapefile(input);
 
             ShapeFile chainVector = new ShapeFile();
             if (outputChainVector) {
@@ -711,17 +715,20 @@ public class FindPolygonChains implements WhiteboxPlugin {
         return returnVal;
     }
 
-    //This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[5];
-        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/MediumLakes/medium lakes2.shp";
-        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/MediumLakes/tmp7.shp";
-        args[2] = "1000";
-        args[3] = "3";
-        args[4] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/MediumLakes/tmp6.shp";
-
-        FindPolygonChains fps = new FindPolygonChains();
-        fps.setArgs(args);
-        fps.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    //This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[5];
+//        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/MediumLakes/medium lakes2.shp";
+//        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/MediumLakes/tmp7.shp";
+//        args[2] = "1000";
+//        args[3] = "3";
+//        args[4] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/MediumLakes/tmp6.shp";
+//
+//        FindPolygonChains fps = new FindPolygonChains();
+//        fps.setArgs(args);
+//        fps.run();
+//    }
 }
