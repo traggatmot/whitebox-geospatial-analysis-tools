@@ -19,6 +19,7 @@ package plugins;
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
+import java.util.concurrent.atomic.AtomicInteger;
 //import com.vividsolutions.jts.geom.prep.PreparedPolygon;
 //import com.vividsolutions.jts.geom.prep.PreparedGeometryFactory;
 import java.util.concurrent.*;
@@ -38,14 +39,18 @@ import whitebox.utilities.Topology;
 import whitebox.structures.BoundingBox;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * The Clip tool will extract all the features, or parts of features, that overlap with the features of the Clip vector file.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Clip implements WhiteboxPlugin {
 
     private WhiteboxPluginHost myHost = null;
     private String[] args;
+
+    private AtomicInteger numSolutions = new AtomicInteger(0);
+    private AtomicInteger oldProgress = new AtomicInteger(-1);
+    private int numFeatures = 0;
 
     /**
      * Used to retrieve the plugin tool's name. This is a short, unique name
@@ -167,7 +172,7 @@ public class Clip implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -204,15 +209,18 @@ public class Clip implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
 
         amIActive = true;
         try {
             int i, j, progress, oldProgress;
-            whitebox.geospatialfiles.shapefile.Geometry wbGeometry;
+            //whitebox.geospatialfiles.shapefile.Geometry wbGeometry;
             ShapeFileRecord rec;
-            com.vividsolutions.jts.geom.Geometry jtsGeom, outputGeom;
+            com.vividsolutions.jts.geom.Geometry jtsGeom; //, outputGeom;
             com.vividsolutions.jts.geom.Geometry[] geomArray;
             List<com.vividsolutions.jts.geom.Geometry> geomList = new ArrayList<>();
             GeometryFactory factory = new GeometryFactory();
@@ -237,10 +245,11 @@ public class Clip implements WhiteboxPlugin {
                 return;
             }
 
-            int numFeatures = input.getNumberOfRecords();
+            numFeatures = input.getNumberOfRecords();
             AttributeTable table = input.getAttributeTable();
             DBFField[] fields = table.getAllFields();
             ShapeFile output = new ShapeFile(outputFile, shapeType, fields);
+            output.setProjectionStringFromOtherShapefile(input);
 
             int numClipFeatures = clipRegion.getNumberOfRecords();
 
@@ -254,8 +263,13 @@ public class Clip implements WhiteboxPlugin {
                 }
             }
 
-            final com.vividsolutions.jts.geom.Geometry clipGeom = factory.buildGeometry(geomList);
+            com.vividsolutions.jts.geom.Geometry clipGeom = factory.buildGeometry(geomList);
             //final PreparedPolygon clipGeom = (PreparedPolygon)PreparedGeometryFactory.prepare(factory.buildGeometry(geomList));
+            if (!clipGeom.isValid()) {
+                // fix the geometry with a buffer(0) as recommended in JTS docs
+                com.vividsolutions.jts.geom.Geometry jtsGeom2 = clipGeom.buffer(0d);
+                clipGeom = (com.vividsolutions.jts.geom.Geometry) jtsGeom2.clone();
+            }
             ArrayList<DoWork> tasks = new ArrayList<>();
             int numProcessors = Runtime.getRuntime().availableProcessors();
             ExecutorService executor = Executors.newFixedThreadPool(numProcessors);
@@ -361,8 +375,7 @@ public class Clip implements WhiteboxPlugin {
                 }
             }
 
-            updateProgress("Loop 2 running concurrently; please wait...", 0);
-
+            //updateProgress("Loop 2 running concurrently; please wait...", 0);
             List<Future<WorkData>> results = executor.invokeAll(tasks);
             executor.shutdown();
 
@@ -379,12 +392,14 @@ public class Clip implements WhiteboxPlugin {
                 i++;
                 progress = (int) (100f * i / (numFeatures - 1));
                 if (progress != oldProgress) {
-                    updateProgress("Loop 2 of 2:", progress);
+                    updateProgress("Writing Output:", progress);
                     oldProgress = progress;
 
                     // check to see if the user has requested a cancellation
                     if (cancelOp) {
-                        if (!cancelOpMessagePlayed) showFeedback("Operation cancelled");
+                        if (!cancelOpMessagePlayed) {
+                            showFeedback("Operation cancelled");
+                        }
                         return;
                     }
                 }
@@ -447,7 +462,7 @@ public class Clip implements WhiteboxPlugin {
                     for (int a = 0; a < numGeometries; a++) {
                         com.vividsolutions.jts.geom.Geometry gN = outputGeom.getGeometryN(a);
 
-                        if (shapeType == ShapeType.POLYGON) {
+                        if (shapeType == ShapeType.POLYGON && gN instanceof com.vividsolutions.jts.geom.Polygon) {
                             com.vividsolutions.jts.geom.Polygon p = (com.vividsolutions.jts.geom.Polygon) gN;
                             ArrayList<ShapefilePoint> pnts = new ArrayList<>();
 
@@ -480,7 +495,8 @@ public class Clip implements WhiteboxPlugin {
 
                             PointsList pl = new PointsList(pnts);
                             wbGeometry = new whitebox.geospatialfiles.shapefile.Polygon(parts, pl.getPointsArray());
-                        } else if (shapeType == ShapeType.POLYLINE) {
+                            ret.addGeometry(wbGeometry);
+                        } else if (shapeType == ShapeType.POLYLINE && gN instanceof LineString) {
                             LineString ls = (LineString) gN;
                             ArrayList<ShapefilePoint> pnts = new ArrayList<>();
 
@@ -493,15 +509,22 @@ public class Clip implements WhiteboxPlugin {
 
                             PointsList pl = new PointsList(pnts);
                             wbGeometry = new whitebox.geospatialfiles.shapefile.PolyLine(parts, pl.getPointsArray());
-
-                        } else { //if (shapeType == ShapeType.POINT) {
+                            ret.addGeometry(wbGeometry);
+                        } else if (shapeType == ShapeType.POINT && gN instanceof com.vividsolutions.jts.geom.Point) { //if (shapeType == ShapeType.POINT) {
                             com.vividsolutions.jts.geom.Point p = (com.vividsolutions.jts.geom.Point) gN;
                             wbGeometry = new whitebox.geospatialfiles.shapefile.Point(p.getX(), p.getY());
-
+                            ret.addGeometry(wbGeometry);
                         }
-                        ret.addGeometry(wbGeometry);
+
                     }
                 }
+            }
+
+            int solved = numSolutions.incrementAndGet();
+            int progress = (int) (100f * solved / (numFeatures - 1));
+            if (progress > oldProgress.intValue()) {
+                updateProgress("Loop 2 of 2:", progress);
+                oldProgress.set(progress);
             }
             return ret;
         }
@@ -529,17 +552,20 @@ public class Clip implements WhiteboxPlugin {
         }
     }
 
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[3];
-
-        args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/depressions no small features.shp";
-        args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/final moraines.shp";
-        args[2] = "/Users/johnlindsay/Documents/Data/Beau's Data/deps clipped to moraines2.shp";
-
-        Clip c = new Clip();
-        c.setArgs(args);
-        c.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[3];
+//
+//        args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/depressions no small features.shp";
+//        args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/final moraines.shp";
+//        args[2] = "/Users/johnlindsay/Documents/Data/Beau's Data/deps clipped to moraines2.shp";
+//
+//        Clip c = new Clip();
+//        c.setArgs(args);
+//        c.run();
+//    }
 
 }

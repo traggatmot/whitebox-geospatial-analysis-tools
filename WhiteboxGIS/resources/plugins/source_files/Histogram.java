@@ -22,9 +22,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import java.text.DecimalFormat;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to generate histogram data (data about the statistical distribution) of the values in an image.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Histogram implements WhiteboxPlugin {
     
@@ -147,7 +147,7 @@ public class Histogram implements WhiteboxPlugin {
      /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -184,6 +184,9 @@ public class Histogram implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

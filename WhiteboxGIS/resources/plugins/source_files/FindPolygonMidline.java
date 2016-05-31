@@ -32,9 +32,9 @@ import whitebox.utilities.FileUtilities;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * Can't find
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FindPolygonMidline implements WhiteboxPlugin {
 
@@ -156,7 +156,7 @@ public class FindPolygonMidline implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -191,6 +191,9 @@ public class FindPolygonMidline implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         /*
@@ -249,6 +252,7 @@ public class FindPolygonMidline implements WhiteboxPlugin {
             fields[0].setDecimalCount(0);
 
             ShapeFile output = new ShapeFile(outputFile, outputShapeType, fields);
+            output.setProjectionStringFromOtherShapefile(input);
 
             //FileUtilities.copyFile(new File(input.getDatabaseFile()), new File(output.getDatabaseFile()));
 
@@ -456,16 +460,19 @@ public class FindPolygonMidline implements WhiteboxPlugin {
 
     }
 
-    //This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[2];
-        //args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/65E UTM.shp";
-        //args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/tmp1.shp";
-        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Body_rmow.shp";
-        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp4.shp";
-        
-        FindPolygonMidline fpm = new FindPolygonMidline();
-        fpm.setArgs(args);
-        fpm.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    //This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[2];
+//        //args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/65E UTM.shp";
+//        //args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/tmp1.shp";
+//        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Body_rmow.shp";
+//        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp4.shp";
+//        
+//        FindPolygonMidline fpm = new FindPolygonMidline();
+//        fpm.setArgs(args);
+//        fpm.run();
+//    }
 }

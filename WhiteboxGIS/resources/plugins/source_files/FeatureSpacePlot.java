@@ -40,8 +40,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import java.util.ArrayList;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * A feature space plot is similar to a scattergram, it plots the frequency of occurrance of brightness value pairs in the two-dimensional feature space of defined by two images.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FeatureSpacePlot implements WhiteboxPlugin {
     
@@ -137,7 +137,7 @@ public class FeatureSpacePlot implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -169,6 +169,9 @@ public class FeatureSpacePlot implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

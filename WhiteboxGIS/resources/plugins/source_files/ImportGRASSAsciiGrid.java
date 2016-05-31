@@ -29,11 +29,12 @@ import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.InteropPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.WhiteboxPlugin;
+import whitebox.utilities.StringUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to import a GRASS ASCII grid file to Whitebox GAT raster file format.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ImportGRASSAsciiGrid implements WhiteboxPlugin, InteropPlugin {
 
@@ -155,7 +156,7 @@ public class ImportGRASSAsciiGrid implements WhiteboxPlugin, InteropPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -190,6 +191,9 @@ public class ImportGRASSAsciiGrid implements WhiteboxPlugin, InteropPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -348,6 +352,7 @@ public class ImportGRASSAsciiGrid implements WhiteboxPlugin, InteropPlugin {
 
                     // Create the whitebox raster object.
                     WhiteboxRaster wbr = new WhiteboxRaster(whiteboxHeaderFile, "rw");
+                    wbr.reinitialize(whiteboxNoData);
 
                     // Read File Line By Line, this time ingesting the data block
                     // and outputing it to the whitebox raster object.
@@ -385,13 +390,16 @@ public class ImportGRASSAsciiGrid implements WhiteboxPlugin, InteropPlugin {
                         } else {
                             // read the data
                             for (i = 0; i < str.length; i++) {
-                                z = Double.parseDouble(str[i]);
-                                if (z != arcNoData) {
-                                    wbr.setValue(row, col, z);
+                                if (StringUtilities.isNumeric(str[i])) {
+                                    z = Double.parseDouble(str[i]);
+                                    if (z != arcNoData) {
+                                        wbr.setValue(row, col, z);
+                                    } else {
+                                        wbr.setValue(row, col, whiteboxNoData);
+                                    }
                                 } else {
                                     wbr.setValue(row, col, whiteboxNoData);
                                 }
-
                                 col++;
                                 if (col == cols) {
                                     col = 0;
@@ -399,6 +407,7 @@ public class ImportGRASSAsciiGrid implements WhiteboxPlugin, InteropPlugin {
                                     progress = (int) (100f * row / (rows - 1));
                                     updateProgress(progress);
                                 }
+
                             }
                         }
                     }
@@ -436,23 +445,40 @@ public class ImportGRASSAsciiGrid implements WhiteboxPlugin, InteropPlugin {
         }
     }
 
+    /**
+     * Used to retrieve the necessary extensions.
+     * @return String containing the extensions.
+     */
     @Override
     public String[] getExtensions() {
-        return new String[]{"txt", "asc"};
+        return new String[]{ "txt" };
     }
 
+    /**
+     * Used to retrieve the file type name.
+     * @return String containing the file type name.
+     */
     @Override
     public String getFileTypeName() {
-        return "GRASS ASCII Grid";
+        return "ArcGIS ASCII Grid";
     }
-
-    @Override
+    
+    /**
+     * Used to check if the file is raster format.
+     * @return Boolean true if file is raster format.
+     */
+    @Override 
     public boolean isRasterFormat() {
         return true;
     }
-
+    
+    /**
+     * Used to retrieve the interoperable plugin type.
+     * @return 
+     */
     @Override
     public InteropPlugin.InteropPluginType getInteropPluginType() {
-        return InteropPlugin.InteropPluginType.importPlugin;
+        return InteropPlugin.InteropPluginType.exportPlugin;
     }
 }
+

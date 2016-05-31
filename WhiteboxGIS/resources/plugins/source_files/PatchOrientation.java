@@ -28,8 +28,8 @@ import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool calculates the orientation of polygon features based on a regression analysis.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class PatchOrientation implements WhiteboxPlugin {
 
@@ -126,7 +126,7 @@ public class PatchOrientation implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -587,6 +587,9 @@ public class PatchOrientation implements WhiteboxPlugin {
         }
     }
     
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

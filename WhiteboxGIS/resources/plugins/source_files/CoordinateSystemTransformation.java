@@ -48,9 +48,9 @@ import whitebox.utilities.FileUtilities;
 import whitebox.interfaces.ThreadListener;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to convert raster data that is in geographic coordinates (latitude and longitude) into the UTM projected coordinate system or vice versa.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class CoordinateSystemTransformation implements WhiteboxPlugin {
 
@@ -171,7 +171,7 @@ public class CoordinateSystemTransformation implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -210,6 +210,9 @@ public class CoordinateSystemTransformation implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -1792,11 +1795,11 @@ public class CoordinateSystemTransformation implements WhiteboxPlugin {
         }
     }
 
-    public static void main(String[] args) {
-        CoordinateSystemTransformation cst = new CoordinateSystemTransformation();
-        cst.testLaunch();
-
-    }
+//    public static void main(String[] args) {
+//        CoordinateSystemTransformation cst = new CoordinateSystemTransformation();
+//        cst.testLaunch();
+//
+//    }
 
     private void testLaunch() {
         JFrame frame = new JFrame();

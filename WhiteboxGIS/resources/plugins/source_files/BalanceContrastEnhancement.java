@@ -23,7 +23,7 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.interfaces.WhiteboxPlugin;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to reduce colour bias in a colour composite image (Data Type of RGB).
  *
  * @author johnlindsay
  */
@@ -147,7 +147,7 @@ public class BalanceContrastEnhancement implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -182,6 +182,9 @@ public class BalanceContrastEnhancement implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -243,7 +246,6 @@ public class BalanceContrastEnhancement implements WhiteboxPlugin {
             long bSqrTotal = 0;
             
             int L = 0;
-            //int E = 100;
             int H = 255;
             for (row = 0; row < rows; row++) {
                 data = input.getRowValues(row);
@@ -398,21 +400,20 @@ public class BalanceContrastEnhancement implements WhiteboxPlugin {
         }
     }
     
-    public static void main(String[] args) {
-        try {
-            String input = "/Users/johnlindsay/Documents/Data/Guelph Landsat/321.dep";
-            String output = "/Users/johnlindsay/Documents/Data/Guelph Landsat/321 bce.dep";
-            args = new String[3];
-            args[0] = input;
-            args[1] = output;
-            args[2] = "100";
-            BalanceContrastEnhancement bce = new BalanceContrastEnhancement();
-            bce.setArgs(args);
-            bce.run();
-            
-        } catch (Exception e) {
-            
-        }
-    }
-    
+//    public static void main(String[] args) {
+//        try {
+//            String input = "/Users/johnlindsay/Documents/Data/Guelph Landsat/321.dep";
+//            String output = "/Users/johnlindsay/Documents/Data/Guelph Landsat/321 bce.dep";
+//            args = new String[3];
+//            args[0] = input;
+//            args[1] = output;
+//            args[2] = "100";
+//            BalanceContrastEnhancement bce = new BalanceContrastEnhancement();
+//            bce.setArgs(args);
+//            bce.run();
+//            
+//        } catch (Exception e) {
+//            
+//        }
+//    }
 }

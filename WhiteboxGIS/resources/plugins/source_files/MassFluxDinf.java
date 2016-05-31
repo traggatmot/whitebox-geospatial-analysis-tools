@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool can be used to perform a mass flux calculation using DEM-based surface flow-routing techniques.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class MassFluxDinf implements WhiteboxPlugin {
     
@@ -131,7 +131,7 @@ public class MassFluxDinf implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */ 
     @Override
     public void setArgs(String[] args) {
@@ -163,6 +163,9 @@ public class MassFluxDinf implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

@@ -22,9 +22,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to fill all of the depressions in a digital elevation model (DEM) and to remove the flat areas and is most suitable for handling very large DEMs.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FillDepressionsPandD implements WhiteboxPlugin {
 
@@ -147,19 +147,19 @@ public class FillDepressionsPandD implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
         this.args = args.clone();
     }
+    private boolean cancelOp = false;
+    
     /**
      * Used to communicate a cancel operation from the Whitebox GUI.
      *
      * @param cancel Set to true if the plugin should be canceled.
      */
-    private boolean cancelOp = false;
-
     @Override
     public void setCancelOp(boolean cancel) {
         cancelOp = cancel;
@@ -183,6 +183,9 @@ public class FillDepressionsPandD implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

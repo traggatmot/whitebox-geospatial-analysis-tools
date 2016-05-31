@@ -35,9 +35,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to identify an area of interest within a specified distance of features in a vector data set.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class BufferVector implements WhiteboxPlugin {
     
@@ -160,7 +160,7 @@ public class BufferVector implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -197,6 +197,9 @@ public class BufferVector implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         
@@ -241,6 +244,7 @@ public class BufferVector implements WhiteboxPlugin {
             
             // set up the output files of the shapefile and the dbf
             ShapeFile output = new ShapeFile(outputFile, ShapeType.POLYGON);
+            output.setProjectionStringFromOtherShapefile(input);
             
             DBFField fields[] = new DBFField[1];
 
@@ -491,35 +495,38 @@ public class BufferVector implements WhiteboxPlugin {
        
     }
     
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[3];
-        args[0] = "/Users/johnlindsay/Downloads/sample/tmp1.shp";
-        args[1] = "/Users/johnlindsay/Downloads/sample/tmp3.shp";
-//        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/rondeau lakes.shp";
-//        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp1.shp";
-        
-//        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/someLakes.shp";
-//        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp4.shp";
-        
-//        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Body_rmow.shp";
-//        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp2.shp";
-        
-//        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Line_rmow.shp";
-//        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp2.shp";
-        
-//        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/NTDB_roads_rmow.shp";
-//        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp1.shp";
+//    /**
+//     * This method is only used during testing.
+//    */
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[3];
+//        args[0] = "/Users/johnlindsay/Downloads/sample/tmp1.shp";
+//        args[1] = "/Users/johnlindsay/Downloads/sample/tmp3.shp";
+////        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/rondeau lakes.shp";
+////        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp1.shp";
 //        
-        //args[0] = "/Users/johnlindsay/Documents/Data/Marvin-UofG-20111005-Order2133/SWOOP 2010/DEM - Masspoints and Breaklines - 400km_ZIP_UTM17_50cm_XXbands_0bits/20km173400463002010MAPCON/20km17340046300_masspoints.shp";
-        //args[1] = "/Users/johnlindsay/Documents/Data/Marvin-UofG-20111005-Order2133/SWOOP 2010/DEM - Masspoints and Breaklines - 400km_ZIP_UTM17_50cm_XXbands_0bits/20km173400463002010MAPCON/tmp1.shp";
-        //args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp1.shp";
-        //args[0] = "/Users/johnlindsay/Documents/Research/Conference Presentations and Guest Talks/2012 CGU/Data/ontario roads.shp";
-        //args[1] = "/Users/johnlindsay/Documents/Research/Conference Presentations and Guest Talks/2012 CGU/Data/tmp1.shp";
-        args[2] = "0.0";
-        
-        BufferVector bv = new BufferVector();
-        bv.setArgs(args);
-        bv.run();
-    }
+////        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/someLakes.shp";
+////        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp4.shp";
+//        
+////        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Body_rmow.shp";
+////        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp2.shp";
+//        
+////        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/Water_Line_rmow.shp";
+////        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp2.shp";
+//        
+////        args[0] = "/Users/johnlindsay/Documents/Data/ShapeFiles/NTDB_roads_rmow.shp";
+////        args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp1.shp";
+////        
+//        //args[0] = "/Users/johnlindsay/Documents/Data/Marvin-UofG-20111005-Order2133/SWOOP 2010/DEM - Masspoints and Breaklines - 400km_ZIP_UTM17_50cm_XXbands_0bits/20km173400463002010MAPCON/20km17340046300_masspoints.shp";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/Marvin-UofG-20111005-Order2133/SWOOP 2010/DEM - Masspoints and Breaklines - 400km_ZIP_UTM17_50cm_XXbands_0bits/20km173400463002010MAPCON/tmp1.shp";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/ShapeFiles/tmp1.shp";
+//        //args[0] = "/Users/johnlindsay/Documents/Research/Conference Presentations and Guest Talks/2012 CGU/Data/ontario roads.shp";
+//        //args[1] = "/Users/johnlindsay/Documents/Research/Conference Presentations and Guest Talks/2012 CGU/Data/tmp1.shp";
+//        args[2] = "0.0";
+//        
+//        BufferVector bv = new BufferVector();
+//        bv.setArgs(args);
+//        bv.run();
+//    }
 }

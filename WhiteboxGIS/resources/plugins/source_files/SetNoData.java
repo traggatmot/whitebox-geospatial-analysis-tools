@@ -21,9 +21,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool will re-assign a user-defined background value in an input raster image the NoData value.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class SetNoData implements WhiteboxPlugin {
 
@@ -145,18 +145,19 @@ public class SetNoData implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args String array.
      */
     @Override
     public void setArgs(String[] args) {
         this.args = args.clone();
     }
+    private boolean cancelOp = false;
+    
     /**
      * Used to communicate a cancel operation from the Whitebox GUI.
      *
      * @param cancel Set to true if the plugin should be canceled.
      */
-    private boolean cancelOp = false;
 
     @Override
     public void setCancelOp(boolean cancel) {
@@ -180,6 +181,9 @@ public class SetNoData implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

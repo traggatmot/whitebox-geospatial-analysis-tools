@@ -27,9 +27,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.FileUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to pre-process a digital elevation model (DEM) prior to being used for hydrological analysis.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class BreachDepressions implements WhiteboxPlugin {
 
@@ -151,7 +151,7 @@ public class BreachDepressions implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -186,6 +186,9 @@ public class BreachDepressions implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -305,7 +308,7 @@ public class BreachDepressions implements WhiteboxPlugin {
 
             // find all the cells with no downslope neighbours and put them into the queue
             //PriorityQueue<DepGridCell> pq = new PriorityQueue<DepGridCell>((2 * rows + 2 * cols) * 2);
-            ArrayList<DepGridCell> pq2 = new ArrayList<DepGridCell>();
+            ArrayList<DepGridCell> pq2 = new ArrayList<>();
 
             updateProgress("Loop 1 of 2:", -1);
             for (row = 1; row < (rows - 1); row++) {
@@ -403,7 +406,7 @@ public class BreachDepressions implements WhiteboxPlugin {
                     if (atLeastOneSourceCell) {
 
                         PriorityQueue<CostDistCell> activeCellList =
-                                new PriorityQueue<CostDistCell>(maxDist * 4);
+                                new PriorityQueue<>(maxDist * 4);
 
                         // find all the cells that neighbour the target
                         // cells and add them to the activeCellList
@@ -603,29 +606,29 @@ public class BreachDepressions implements WhiteboxPlugin {
 
         @Override
         public int compareTo(DepGridCell cell) {
-            final int BEFORE = -1;
-            final int EQUAL = 0;
-            final int AFTER = 1;
+//            final int BEFORE = -1;
+//            final int EQUAL = 0;
+//            final int AFTER = 1;
 
             if (this.z < cell.z) {
-                return BEFORE;
+                return -1;
             } else if (this.z > cell.z) {
-                return AFTER;
+                return 1;
             }
 
             if (this.row < cell.row) {
-                return BEFORE;
+                return -1;
             } else if (this.row > cell.row) {
-                return AFTER;
+                return 1;
             }
 
             if (this.col < cell.col) {
-                return BEFORE;
+                return -1;
             } else if (this.col > cell.col) {
-                return AFTER;
+                return 1;
             }
 
-            return EQUAL;
+            return 0;
         }
     }
 

@@ -22,9 +22,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to calculate the downslope index described by Hjerdt et al (2004). 
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class DownslopeIndex implements WhiteboxPlugin {
 
@@ -148,7 +148,7 @@ public class DownslopeIndex implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -183,6 +183,9 @@ public class DownslopeIndex implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -236,9 +239,23 @@ public class DownslopeIndex implements WhiteboxPlugin {
                 return;
             }
             double demNoData = dem.getNoDataValue();
+            
+            if (pointer.getXYUnits().toLowerCase().contains("deg") ||
+                    dem.getXYUnits().toLowerCase().contains("deg")) {
+                
+                    double p1 = 111412.84;		// longitude calculation term 1
+                    double p2 = -93.5;			// longitude calculation term 2
+                    double p3 = 0.118;			// longitude calculation term 3
+                    double lat = Math.toRadians((pointer.getNorth() - pointer.getSouth()) / 2.0);
+                    double longlen = (p1 * Math.cos(lat)) + (p2 * Math.cos(3 * lat)) +
+                                                (p3 * Math.cos(5 * lat));
+                    for (int i = 0;i < 8; i++) {
+                        gridLengths[i] = gridLengths[i] * longlen;
+                    }
+            }
 
             WhiteboxRaster output = new WhiteboxRaster(outputHeader, "rw",
-                    pointerHeader, WhiteboxRaster.DataType.FLOAT, -999);
+                    pointerHeader, WhiteboxRaster.DataType.FLOAT, noData);
             output.setPreferredPalette("spectrum.pal");
             output.setDataScale(WhiteboxRaster.DataScale.CONTINUOUS);
 
@@ -512,4 +529,22 @@ public class DownslopeIndex implements WhiteboxPlugin {
             myHost.pluginComplete();
         }
     }
+    
+//    /**
+//     * This method is only used during testing.
+//    */
+//    // this is only used for testing the tool
+//    public static void main(String[] args) {
+//        args = new String[5];
+//        args[0] = "/Users/johnlindsay/Documents/Data/SouthernOnt/tmp10.dep";
+//        args[1] = "/Users/johnlindsay/Documents/Data/SouthernOnt/tmp4.dep";
+//        args[2] = "/Users/johnlindsay/Documents/Data/SouthernOnt/tmp11.dep";
+//        args[3] = "5";
+//        args[4] = "distance";
+//        
+//        DownslopeIndex di = new DownslopeIndex();
+//        di.setArgs(args);
+//        di.run();
+//
+//    }
 }

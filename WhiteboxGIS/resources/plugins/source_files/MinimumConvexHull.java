@@ -34,9 +34,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool calculates the minimum convex hull, or the minimum convex polygon containing all of the points within a set of vector features. 
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class MinimumConvexHull implements WhiteboxPlugin {
     
@@ -159,7 +159,7 @@ public class MinimumConvexHull implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -196,6 +196,9 @@ public class MinimumConvexHull implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         
@@ -241,6 +244,7 @@ public class MinimumConvexHull implements WhiteboxPlugin {
 
             // set up the output files of the shapefile and the dbf
             ShapeFile output = new ShapeFile(outputFile, ShapeType.POLYGON, fields);
+            output.setProjectionStringFromOtherShapefile(input);
             
 //            String DBFName = output.getDatabaseFile();
 //            DBFWriter writer = new DBFWriter(new File(DBFName));

@@ -32,9 +32,9 @@ import whitebox.structures.BoundingBox;
 import whitebox.structures.XYPoint;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to locate the principal point in an aerial photograph based on four or eight digitized fiducial marks.
  *
- * @author johnlindsay
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class LocatePrincipalPoint implements WhiteboxPlugin {
 
@@ -156,7 +156,7 @@ public class LocatePrincipalPoint implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -191,6 +191,9 @@ public class LocatePrincipalPoint implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -704,14 +707,18 @@ public class LocatePrincipalPoint implements WhiteboxPlugin {
         }
     }
 
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[2];
-        //args[0] = "/Users/johnlindsay/Documents/Teaching/GEOG2420/airphotos/Guelph_A19409-82 fiducials2.shp";
-        args[0] = "/Users/johnlindsay/Documents/Teaching/GEOG2420/airphotos/GuelphCampus_C6430-74072-L9_253 fiducials.shp";
-        args[1] = "/Users/johnlindsay/Documents/Teaching/GEOG2420/airphotos/tmp6.shp";
-        LocatePrincipalPoint lpp = new LocatePrincipalPoint();
-        lpp.setArgs(args);
-        lpp.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[2];
+//        //args[0] = "/Users/johnlindsay/Documents/Teaching/GEOG2420/airphotos/Guelph_A19409-82 fiducials2.shp";
+//        args[0] = "/Users/johnlindsay/Documents/Teaching/GEOG2420/airphotos/GuelphCampus_C6430-74072-L9_253 fiducials.shp";
+//        args[1] = "/Users/johnlindsay/Documents/Teaching/GEOG2420/airphotos/tmp6.shp";
+//        LocatePrincipalPoint lpp = new LocatePrincipalPoint();
+//        lpp.setArgs(args);
+//        lpp.run();
+//    }
 }

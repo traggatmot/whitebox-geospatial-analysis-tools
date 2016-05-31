@@ -14,6 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/* Update History: 
+    Fixed problem with writing dbf file May 18, 2016.
+*/
 package plugins;
 
 import java.io.File;
@@ -26,9 +30,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to convert a LAS file, containing LiDAR data, into an equivalent vector shapefile.
  * 
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class LAS2Shapefile implements WhiteboxPlugin {
 
@@ -129,6 +133,8 @@ public class LAS2Shapefile implements WhiteboxPlugin {
         if (myHost != null && ((progress != previousProgress)
                 || (!progressLabel.equals(previousProgressLabel)))) {
             myHost.updateProgress(progressLabel, progress);
+        } else {
+            System.out.println(progressLabel + " " + progress + "%");
         }
         previousProgress = progress;
         previousProgressLabel = progressLabel;
@@ -143,6 +149,8 @@ public class LAS2Shapefile implements WhiteboxPlugin {
     private void updateProgress(int progress) {
         if (myHost != null && progress != previousProgress) {
             myHost.updateProgress(progress);
+        } else {
+            System.out.println("Progress: " + progress + "%");
         }
         previousProgress = progress;
     }
@@ -150,7 +158,7 @@ public class LAS2Shapefile implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -185,6 +193,9 @@ public class LAS2Shapefile implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -193,9 +204,10 @@ public class LAS2Shapefile implements WhiteboxPlugin {
         String[] pointFiles;
         double x, y;
         double z;
+        double gpsTime;
         int intensity;
         byte classValue, numReturns, returnNum, scanAngle;
-        int a, n;
+        int a;
         int progress = 0;
         int numPoints = 0;
 
@@ -224,8 +236,12 @@ public class LAS2Shapefile implements WhiteboxPlugin {
                 
                 LASReader las = new LASReader(pointFiles[j]);
                 
-                long oneHundredthTotal = las.getNumPointRecords() / 100;
-
+                numPointsInFile = las.getNumPointRecords();
+                if (numPointsInFile > 70000000) {
+                    showFeedback("Error: The number of points exceeds the limit on the number of features that a shapefile can contain.");
+                    return;
+                }
+                
                 // create the new shapefile
                 String outputFile = pointFiles[j].replace(".las", ".shp");
                 File file = new File(outputFile);
@@ -235,7 +251,7 @@ public class LAS2Shapefile implements WhiteboxPlugin {
 
                 // set up the output files of the shapefile and the dbf
                 
-                DBFField fields[] = new DBFField[7];
+                DBFField fields[] = new DBFField[8];
 
                 fields[0] = new DBFField();
                 fields[0].setName("FID");
@@ -279,16 +295,22 @@ public class LAS2Shapefile implements WhiteboxPlugin {
                 fields[6].setFieldLength(4);
                 fields[6].setDecimalCount(0);
                 
+                fields[7] = new DBFField();
+                fields[7].setName("GPS_TIME");
+                fields[7].setDataType(DBFField.DBFDataType.NUMERIC);
+                fields[7].setFieldLength(14);
+                fields[7].setDecimalCount(6);
+                
                 ShapeFile output = new ShapeFile(outputFile, ShapeType.POINT, fields);
 
                 progress = (int)((j + 1) * 100d / numPointFiles);
                 updateProgress("Loop " + (j + 1) + " of " + numPointFiles + ":", progress);
                 
-                numPointsInFile = las.getNumPointRecords();
+                
                 // first count how many valid points there are.
                 numPoints = 0;
-                n = 0;
                 progress = 0;
+                int oldProgress = -1;
                 for (a = 0; a < numPointsInFile; a++) {
                     point = las.getPointRecord(a);
                     if (!point.isPointWithheld()) {
@@ -300,30 +322,31 @@ public class LAS2Shapefile implements WhiteboxPlugin {
                         returnNum = point.getReturnNumber();
                         numReturns = point.getNumberOfReturns();
                         scanAngle = point.getScanAngle();
+                        gpsTime = point.getGPSTime();
                         
                         whitebox.geospatialfiles.shapefile.Point wbGeometry = new whitebox.geospatialfiles.shapefile.Point(x, y);
                         
-                        Object[] rowData = new Object[7];
-                        rowData[0] = new Double(numPoints + 1);
-                        rowData[1] = new Double(z);
-                        rowData[2] = new Double(intensity);
-                        rowData[3] = new Double(classValue);
-                        rowData[4] = new Double(returnNum);
-                        rowData[5] = new Double(numReturns);
-                        rowData[6] = new Double(scanAngle);
+                        Object[] rowData = new Object[8];
+                        rowData[0] = (double)numPoints + 1;
+                        rowData[1] = z;
+                        rowData[2] = (double) intensity;
+                        rowData[3] = (double) classValue;
+                        rowData[4] = (double) returnNum;
+                        rowData[5] = (double) numReturns;
+                        rowData[6] = (double) scanAngle;
+                        rowData[7] = gpsTime;
                         
                         output.addRecord(wbGeometry, rowData);
                         
                         numPoints++;
                     }
-                    n++;
-                    if (n >= oneHundredthTotal) {
-                        n = 0;
+                    progress = (int)(100f * a / numPointsInFile);
+                    if (progress != oldProgress) {
+                        oldProgress = progress;
                         if (cancelOp) {
                             cancelOperation();
                             return;
                         }
-                        progress++;
                         updateProgress("Loop " + (j + 1) + " of " + numPointFiles + ":", progress);
                     }
                 }
@@ -332,7 +355,7 @@ public class LAS2Shapefile implements WhiteboxPlugin {
                 
             }
 
-            returnData(pointFiles[0].replace(".las", ".shp"));
+            showFeedback("Operation Complete.");
             
         } catch (OutOfMemoryError oe) {
             myHost.showFeedback("An out-of-memory error has occurred during operation.");
@@ -351,9 +374,8 @@ public class LAS2Shapefile implements WhiteboxPlugin {
 //    public static void main(String[] args) {
 //        LAS2Shapefile L2S = new LAS2Shapefile();
 //        args = new String[1];
-//        args[0] = "/Users/johnlindsay/Documents/Data/Rondeau LiDAR/LAS classified/403_4696.las;/Users/johnlindsay/Documents/Data/Rondeau LiDAR/LAS classified/403_4695.las";
+//        args[0] = "/Users/johnlindsay/Documents/Data/LAS files/423_4693.las";
 //        L2S.setArgs(args);
 //        L2S.run();
-//        
 //    }
 }

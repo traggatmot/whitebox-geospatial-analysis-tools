@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool can be used to find the maximum absolute (non-negative) value in each cell of a grid from a set of input images.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class MaxAbsOverlay implements WhiteboxPlugin {
     
@@ -121,7 +121,7 @@ public class MaxAbsOverlay implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -153,6 +153,9 @@ public class MaxAbsOverlay implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
