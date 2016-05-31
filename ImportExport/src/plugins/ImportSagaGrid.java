@@ -611,18 +611,15 @@ public class ImportSagaGrid implements WhiteboxPlugin, InteropPlugin {
         return InteropPluginType.importPlugin;
     }
 
-    /**
-     * This method is only used during testing.
-     * @param args 
-     */
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[1];
-        args[0] = "/Users/johnlindsay/Documents/Data/SAGA Grid/TestData.sgrd";
-        //args[0] = "/Users/johnlindsay/Documents/Data/SAGA Grid/TestData.sdat";
 
-        ImportSagaGrid isg = new ImportSagaGrid();
-        isg.setArgs(args);
-        isg.run();
-    }
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[1];
+//        args[0] = "/Users/johnlindsay/Documents/Data/SAGA Grid/TestData.sgrd";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/SAGA Grid/TestData.sdat";
+//
+//        ImportSagaGrid isg = new ImportSagaGrid();
+//        isg.setArgs(args);
+//        isg.run();
+//    }
 }

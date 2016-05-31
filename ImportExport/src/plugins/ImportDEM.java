@@ -505,17 +505,14 @@ public class ImportDEM implements WhiteboxPlugin, InteropPlugin {
         return InteropPlugin.InteropPluginType.importPlugin;
     }
 
-    /**
-     * This method is only used during testing.
-     * @param args 
-     */
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[1];
-        args[0] = "/Users/johnlindsay/Documents/Data/CDED DEM/040p_0101_deme.dem";
 
-        ImportDEM id = new ImportDEM();
-        id.setArgs(args);
-        id.run();
-    }
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[1];
+//        args[0] = "/Users/johnlindsay/Documents/Data/CDED DEM/040p_0101_deme.dem";
+//
+//        ImportDEM id = new ImportDEM();
+//        id.setArgs(args);
+//        id.run();
+//    }
 }

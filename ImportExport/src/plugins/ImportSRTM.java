@@ -384,19 +384,16 @@ public class ImportSRTM implements WhiteboxPlugin, InteropPlugin {
         return InteropPluginType.importPlugin;
     }
     
-    /**
-     * This method is only used during testing.
-     * @param args 
-     */
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[1];
-        //args[0] = "/Users/johnlindsay/Documents/Data/SRTM/N29W089.hgt";
-        //args[0] = "/Users/johnlindsay/Documents/Data/SRTM/N26W081.hgt";
-        args[0] = "/Users/johnlindsay/Documents/Data/SRTM/S04W063.hgt";
 
-        ImportSRTM isrtm = new ImportSRTM();
-        isrtm.setArgs(args);
-        isrtm.run();
-    }
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[1];
+//        //args[0] = "/Users/johnlindsay/Documents/Data/SRTM/N29W089.hgt";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/SRTM/N26W081.hgt";
+//        args[0] = "/Users/johnlindsay/Documents/Data/SRTM/S04W063.hgt";
+//
+//        ImportSRTM isrtm = new ImportSRTM();
+//        isrtm.setArgs(args);
+//        isrtm.run();
+//    }
 }

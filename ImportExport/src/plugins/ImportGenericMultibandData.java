@@ -1051,16 +1051,13 @@ public class ImportGenericMultibandData implements WhiteboxPlugin, InteropPlugin
         return InteropPluginType.importPlugin;
     }
 
-    /**
-     * This method is only used during testing.
-     * @param args 
-     */
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[1];
-        args[0] = "/Users/johnlindsay/Documents/Data/MultibandImage/IKONOS_CFBWainwright_MSI_AOI_1.bsq";
-        ImportGenericMultibandData igmd = new ImportGenericMultibandData();
-        igmd.setArgs(args);
-        igmd.run();
-    }
+
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[1];
+//        args[0] = "/Users/johnlindsay/Documents/Data/MultibandImage/IKONOS_CFBWainwright_MSI_AOI_1.bsq";
+//        ImportGenericMultibandData igmd = new ImportGenericMultibandData();
+//        igmd.setArgs(args);
+//        igmd.run();
+//    }
 }

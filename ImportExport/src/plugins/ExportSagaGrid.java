@@ -433,17 +433,14 @@ public class ExportSagaGrid implements WhiteboxPlugin, InteropPlugin {
         return InteropPlugin.InteropPluginType.exportPlugin;
     }
 
-    /**
-     * This method is only used during testing.
-     * @param args 
-     */
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[1];
-        args[0] = "/Users/johnlindsay/Documents/Data/SAGA Grid/TestData2.dep";
 
-        ExportSagaGrid esg = new ExportSagaGrid();
-        esg.setArgs(args);
-        esg.run();
-    }
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[1];
+//        args[0] = "/Users/johnlindsay/Documents/Data/SAGA Grid/TestData2.dep";
+//
+//        ExportSagaGrid esg = new ExportSagaGrid();
+//        esg.setArgs(args);
+//        esg.run();
+//    }
 }
