@@ -26,9 +26,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool creates a vector polygon footprint of the area covered by a raster grid or vector layer.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class LayerFootprint implements WhiteboxPlugin {
 
@@ -150,7 +150,7 @@ public class LayerFootprint implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -185,6 +185,9 @@ public class LayerFootprint implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
 
@@ -243,6 +246,9 @@ public class LayerFootprint implements WhiteboxPlugin {
             fields[0].setDecimalCount(0);
 
             ShapeFile output = new ShapeFile(outputFile, ShapeType.POLYGON, fields);
+            if (inputFile.toLowerCase().endsWith(".shp")) {
+                output.setProjectionStringFromOtherShapefile(new ShapeFile(inputFile));
+            }
 
             int[] parts = {0};
 

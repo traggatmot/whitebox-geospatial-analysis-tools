@@ -27,9 +27,9 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * Can't find
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class RemovePolygonNecks implements WhiteboxPlugin {
     
@@ -152,7 +152,7 @@ public class RemovePolygonNecks implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -189,6 +189,9 @@ public class RemovePolygonNecks implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         /* This tool places the nodes (vertices) from a shapefile of polygons
@@ -255,7 +258,7 @@ public class RemovePolygonNecks implements WhiteboxPlugin {
             fields[0].setDecimalCount(4);
             
             ShapeFile output = new ShapeFile(outputFile, outputShapeType, fields);
-            
+            output.setProjectionStringFromOtherShapefile(input);
             
 //            DBFField[] fieldsPnts = new DBFField[3];
 //            
@@ -472,16 +475,21 @@ public class RemovePolygonNecks implements WhiteboxPlugin {
        
     }
     
-     //This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[4];
-        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/large lakes no holes.shp";
-        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp1.shp";
-        args[2] = "200";
-        args[3] = "3"; // node gap threshold
-
-        RemovePolygonNecks rpn = new RemovePolygonNecks();
-        rpn.setArgs(args);
-        rpn.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//     //This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[4];
+////        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/large lakes no holes.shp";
+////        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp1.shp";
+//        args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp1.shp";
+//        args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp2.shp";
+//        args[2] = "200";
+//        args[3] = "3"; // node gap threshold
+//
+//        RemovePolygonNecks rpn = new RemovePolygonNecks();
+//        rpn.setArgs(args);
+//        rpn.run();
+//    }
 }

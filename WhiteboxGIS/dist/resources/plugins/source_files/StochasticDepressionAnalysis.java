@@ -27,9 +27,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to map topographic depressions in a digital elevation model (DEM), taking into account the uncertainty in depression shape resulting from DEM error. 
  *
- * @author John Lindsay<jlindsay@uoguelph.ca> and Beau Ahrens
+ * @author John Lindsay email: jlindsay@uoguelph.ca and Beau Ahrens
  */
 public class StochasticDepressionAnalysis implements WhiteboxPlugin {
     private WhiteboxRaster outputFile = null;
@@ -156,7 +156,7 @@ public class StochasticDepressionAnalysis implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -193,6 +193,9 @@ public class StochasticDepressionAnalysis implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

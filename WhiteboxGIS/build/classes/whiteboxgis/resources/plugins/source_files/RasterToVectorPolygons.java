@@ -35,9 +35,9 @@ import whitebox.utilities.BitOps;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * Converts a raster dataset to a shapefile of the Polygon shapetype.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class RasterToVectorPolygons implements WhiteboxPlugin {
 
@@ -163,7 +163,7 @@ public class RasterToVectorPolygons implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -198,6 +198,9 @@ public class RasterToVectorPolygons implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
 
@@ -291,6 +294,8 @@ public class RasterToVectorPolygons implements WhiteboxPlugin {
             clump.setOutputHeader(input1.getHeaderFile().replace(".dep", "_clumped.dep"));
             WhiteboxRaster input = clump.run();
             input.isTemporaryFile = true;
+            
+//            WhiteboxRaster input = new WhiteboxRaster(inputFile, "r");
             
             int numRegions = (int)input.getMaximumValue() + 1;
             double[] zValues = new double[numRegions];
@@ -687,23 +692,29 @@ public class RasterToVectorPolygons implements WhiteboxPlugin {
         }
     }
 
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[2];
-        //args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp7.dep";
-        //args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp7.shp";
-        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/Waterloo deps.dep";
-        //args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp1.shp";
-        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/ParisGalt deps.dep";
-        //args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/ParisGalt deps.shp";
-        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/landuse.dep";
-        //args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp1.shp";
-        args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/STB-EOS_2012_CI_UTM17_30m_v2_clipped.dep";
-        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp2.dep";
-        args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp1.shp";
-
-        RasterToVectorPolygons rtvp = new RasterToVectorPolygons();
-        rtvp.setArgs(args);
-        rtvp.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//    
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[2];
+//        //args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp7.dep";
+//        //args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp7.shp";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/Waterloo deps.dep";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp1.shp";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/ParisGalt deps.dep";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/ParisGalt deps.shp";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/landuse.dep";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp1.shp";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/STB-EOS_2012_CI_UTM17_30m_v2_clipped.dep";
+//        //args[0] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp2.dep";
+//        //args[1] = "/Users/johnlindsay/Documents/Data/Beau's Data/tmp1.shp";
+//        args[0] = "/Users/jlindsay/Documents/Data/Nile basin/watershed.dep";
+//        args[1] = "/Users/jlindsay/Documents/Data/Nile basin/watershed.shp";
+//        
+//        RasterToVectorPolygons rtvp = new RasterToVectorPolygons();
+//        rtvp.setArgs(args);
+//        rtvp.run();
+//    }
 }

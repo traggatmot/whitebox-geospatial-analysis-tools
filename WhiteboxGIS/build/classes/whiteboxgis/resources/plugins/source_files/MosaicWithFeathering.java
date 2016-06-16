@@ -26,8 +26,8 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.StringUtilities;
 
 /**
- *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool will create a mosaic from two input images, it is similar in operation to the Mosaic tool, however, this tool is the preferred method of mosaicing images when there is significant overlap between the images.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class MosaicWithFeathering implements WhiteboxPlugin {
 
@@ -149,7 +149,7 @@ public class MosaicWithFeathering implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -184,6 +184,9 @@ public class MosaicWithFeathering implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -193,6 +196,8 @@ public class MosaicWithFeathering implements WhiteboxPlugin {
         int baseCol, baseRow, appendCol, appendRow;
         double x, y, z, zN, zBase, zAppend;
         double w1, w2, dist1, dist2, sumDist;
+        double r1, g1, b1, r2, g2, b2;
+        int r, g, b;
         boolean performHistoMatching = true;
 
 
@@ -233,6 +238,9 @@ public class MosaicWithFeathering implements WhiteboxPlugin {
             
             WhiteboxRaster baseRaster = new WhiteboxRaster(inputBaseHeader, "r");
             WhiteboxRaster appendRaster = new WhiteboxRaster(inputHeader, "r");
+            
+            boolean rgbMode = ((baseRaster.getDataScale() == WhiteboxRasterBase.DataScale.RGB) & 
+                    (appendRaster.getDataScale() == WhiteboxRasterBase.DataScale.RGB));
 
             double cellSizeX = baseRaster.getCellSizeX();
             double cellSizeY = baseRaster.getCellSizeY();
@@ -260,7 +268,7 @@ public class MosaicWithFeathering implements WhiteboxPlugin {
             double appendWest = appendRaster.getWest();
             double appendNSRange = appendNorth - appendSouth;
             double appendEWRange = appendEast - appendWest;
-
+            
             double north, south, east, west;
 
             if (baseNorth > baseSouth) {
@@ -338,6 +346,7 @@ public class MosaicWithFeathering implements WhiteboxPlugin {
                     nRows, nCols, WhiteboxRasterBase.DataScale.CONTINUOUS,
                     WhiteboxRasterBase.DataType.FLOAT, outputNoData, outputNoData);
 
+            if (rgbMode) { destination.setDataScale(WhiteboxRasterBase.DataScale.RGB); }
 
             int nRowsLessOne = nRows - 1;
 
@@ -432,8 +441,22 @@ public class MosaicWithFeathering implements WhiteboxPlugin {
 
                             w1 = Math.pow(dist1, power) / sumDist;
                             w2 = Math.pow(dist2, power) / sumDist;
-
-                            z = w1 * zBase + w2 * zAppend;
+                            
+                            if (!rgbMode) {
+                                z = w1 * zBase + w2 * zAppend;
+                            } else {
+                                r1 = (double)((int)zBase & 0xFF);
+                                g1 = (double)(((int)zBase >> 8) & 0xFF);
+                                b1 = (double)(((int)zBase >> 16) & 0xFF);
+                                r2 = (double)((int)zAppend & 0xFF);
+                                g2 = (double)(((int)zAppend >> 8) & 0xFF);
+                                b2 = (double)(((int)zAppend >> 16) & 0xFF);
+                                
+                                r = (int)((r1 * w1) + (r2 * w2));
+                                g = (int)((g1 * w1) + (g2 * w2));
+                                b = (int)((b1 * w1) + (b2 * w2));
+                                z = (double) ((255 << 24) | (b << 16) | (g << 8) | r);
+                            }
 
                             destination.setValue(row, col, z);
                         }
@@ -964,44 +987,49 @@ public class MosaicWithFeathering implements WhiteboxPlugin {
         Ry.close();
     }
 
+    /**
+     * Used to determine whether a value is between two thresholds.
+     * 
+     * @return A Boolean which is true if the value is between threshold 1 and threshold 2
+     */
     // Return true if val is between theshold1 and theshold2.
     public static boolean isBetween(double val, double theshold1, double theshold2) {
         return theshold2 > theshold1 ? val > theshold1 && val < theshold2 : val > theshold2 && val < theshold1;
     }
 
-    //This method is only used during testing.
-    public static void main(String[] args) {
-        try {
-//            String baseFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/15 adjusted.dep";
-//            String appendFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/16 registered.dep";
-//            String outputFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/tmp6.dep";
-//            String resamplingMethod = "nearest neighbour";
-            
-            String baseFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/16 registered.dep";
-            String appendFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/A19411_15_Blue.dep";
-            String outputFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/tmp3.dep";
-            String resamplingMethod = "nearest neighbour";
-            String performHistoMatch = "true";
-
-//            String baseFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/tmp6.dep";
-//            String appendFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/17 registered.dep";
-//            //String outputFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/final mosaic.dep";
+//    //This method is only used during testing.
+//    public static void main(String[] args) {
+//        try {
+////            String baseFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/15 adjusted.dep";
+////            String appendFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/16 registered.dep";
+////            String outputFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/tmp6.dep";
+////            String resamplingMethod = "nearest neighbour";
+//            
+//            String baseFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/16 registered.dep";
+//            String appendFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/A19411_15_Blue.dep";
 //            String outputFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/tmp3.dep";
-//            String resamplingMethod = "cubic convolution";
-
-            args = new String[5];
-            args[0] = baseFile;
-            args[1] = appendFile;
-            args[2] = outputFile;
-            args[3] = resamplingMethod;
-            args[4] = performHistoMatch;
-
-            MosaicWithFeathering mwf = new MosaicWithFeathering();
-            mwf.setArgs(args);
-            mwf.run();
-
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-    }
+//            String resamplingMethod = "nearest neighbour";
+//            String performHistoMatch = "true";
+//
+////            String baseFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/tmp6.dep";
+////            String appendFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/17 registered.dep";
+////            //String outputFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/final mosaic.dep";
+////            String outputFile = "/Users/johnlindsay/Documents/Data/Guelph Photomosaic/tmp3.dep";
+////            String resamplingMethod = "cubic convolution";
+//
+//            args = new String[5];
+//            args[0] = baseFile;
+//            args[1] = appendFile;
+//            args[2] = outputFile;
+//            args[3] = resamplingMethod;
+//            args[4] = performHistoMatch;
+//
+//            MosaicWithFeathering mwf = new MosaicWithFeathering();
+//            mwf.setArgs(args);
+//            mwf.run();
+//
+//        } catch (Exception e) {
+//            System.err.println(e.getMessage());
+//        }
+//    }
 }

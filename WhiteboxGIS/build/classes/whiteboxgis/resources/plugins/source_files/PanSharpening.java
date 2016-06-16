@@ -24,8 +24,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * Panchromatic sharpening, or simply pan-sharpening, refers to a range of techniques that can be used to merge finer spatial resolution panchromatic images with coarser spatial resolution multi-spectral images.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class PanSharpening implements WhiteboxPlugin {
 
@@ -120,7 +120,7 @@ public class PanSharpening implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -150,6 +150,9 @@ public class PanSharpening implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -469,6 +472,10 @@ public class PanSharpening implements WhiteboxPlugin {
         }
     }
     
+    /**
+     * Converts RGB colour values to IHS colour values
+     * 
+     */
     public double[] RGBtoIHS(double r, double g, double b) {
         double[] ret = new double[3];
         double i, h, s;
@@ -499,7 +506,10 @@ public class PanSharpening implements WhiteboxPlugin {
         ret[2] = s;
         return ret;
     }
-    
+    /**
+     * Converts IHS colour values to RGB colour values
+     * 
+     */
     public double[] IHStoRGB(double[] ihs) {
         double[] ret = new double[3];
         double i, h, s;

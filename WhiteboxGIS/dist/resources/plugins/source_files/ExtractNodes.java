@@ -23,9 +23,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool converts vector lines or polygons into points.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ExtractNodes implements WhiteboxPlugin {
     
@@ -148,7 +148,7 @@ public class ExtractNodes implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -185,6 +185,9 @@ public class ExtractNodes implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         /* This tool places the nodes (vertices) from a shapefile of polygons
@@ -245,6 +248,7 @@ public class ExtractNodes implements WhiteboxPlugin {
             System.arraycopy(inputFields, 0, fields, 1, numInputFields);
 
             ShapeFile output = new ShapeFile(outputFile, outputShapeType, fields);
+            output.setProjectionStringFromOtherShapefile(input);
             
             numFeatures = input.getNumberOfRecords();
             oneHundredthTotal = numFeatures / 100;
@@ -288,7 +292,7 @@ public class ExtractNodes implements WhiteboxPlugin {
                     x = vertices[i][0];
                     y = vertices[i][1];
                     Object[] rowData = new Object[numOutputFields];
-                    rowData[0] = new Double(recordNum - 1);
+                    rowData[0] = (double) recordNum - 1;
                     System.arraycopy(attData, 0, rowData, 1, numInputFields);
                     output.addRecord(new whitebox.geospatialfiles.shapefile.Point(x, y), rowData);
                 }
@@ -326,14 +330,17 @@ public class ExtractNodes implements WhiteboxPlugin {
        
     }
     
-     //This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[2];
-        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp1.shp";
-        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp3.shp";
-
-        ExtractNodes en = new ExtractNodes();
-        en.setArgs(args);
-        en.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//    */
+//     //This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[2];
+//        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp1.shp";
+//        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/tmp3.shp";
+//
+//        ExtractNodes en = new ExtractNodes();
+//        en.setArgs(args);
+//        en.run();
+//    }
 }

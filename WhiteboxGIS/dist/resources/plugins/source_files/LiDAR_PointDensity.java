@@ -27,9 +27,9 @@ import whitebox.structures.KdTree;
 import java.io.*;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to interpolate a regular grid raster from a point cloud LiDAR dataset where each grid cell contains the point density within a user-specified radius.
  * 
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class LiDAR_PointDensity implements WhiteboxPlugin {
 
@@ -151,7 +151,7 @@ public class LiDAR_PointDensity implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -186,6 +186,9 @@ public class LiDAR_PointDensity implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         /* The problem with this algorithm is that the implementation of the
@@ -239,7 +242,7 @@ public class LiDAR_PointDensity implements WhiteboxPlugin {
             return;
         }
         inputFilesString = args[0];
-        suffix = " " + args[1].trim();
+        suffix = args[1].trim();
         returnNumberToInterpolate = args[2].toLowerCase();
         resolution = Double.parseDouble(args[3]);
         excludeNeverClassified = Boolean.parseBoolean(args[4]);

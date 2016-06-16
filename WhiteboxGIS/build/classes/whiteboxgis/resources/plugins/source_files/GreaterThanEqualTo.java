@@ -23,9 +23,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool assigns grid cells for which the first input raster (or constant value) is greater than or equal to the second input raster (or constant) a new value of 1 (True) in the output raster.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class GreaterThanEqualTo implements WhiteboxPlugin {
     
@@ -148,7 +148,7 @@ public class GreaterThanEqualTo implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -185,48 +185,42 @@ public class GreaterThanEqualTo implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
         
-        String inputHeader1 = null;
-        String inputHeader2 = null;
-        String outputHeader = null;
         boolean image1Bool = false;
         boolean image2Bool = false;
         double constant1 = 0;
         double constant2 = 0;
     	
-        if (args.length <= 0) {
-            showFeedback("Plugin parameters have not been set.");
+        if (args.length < 3) {
+            showFeedback("Plugin parameters have not been set properly.");
             return;
         }
         
-        for (int i = 0; i < args.length; i++) {
-            if (i == 0) {
-                inputHeader1 = args[i];
-                File file = new File(inputHeader1);
-                image1Bool = file.exists();
-                if (image1Bool) {
-                    constant1 = -1;
-                } else {
-                    constant1 = Double.parseDouble(file.getName().replace(".dep", ""));
-                }
-                file = null;
-            } else if (i == 1) {
-                inputHeader2 = args[i];
-                File file = new File(inputHeader2);
-                image2Bool = file.exists();
-                if (image2Bool) {
-                    constant2 = -1;
-                } else {
-                    constant2 = Double.parseDouble(file.getName().replace(".dep", ""));
-                }
-                file = null;
-            } else if (i == 2) {
-                outputHeader = args[i];
-            }
+        String inputHeader1 = args[0];
+        File file = new File(inputHeader1);
+        image1Bool = file.exists();
+        if (image1Bool) {
+            constant1 = -1;
+        } else {
+            constant1 = Double.parseDouble(file.getName().replace(".dep", ""));
         }
+        file = null;
+        String inputHeader2 = args[1];
+        file = new File(inputHeader2);
+        image2Bool = file.exists();
+        if (image2Bool) {
+            constant2 = -1;
+        } else {
+            constant2 = Double.parseDouble(file.getName().replace(".dep", ""));
+        }
+        file = null;
+        String outputHeader = args[2];
 
         // check to see that the inputHeader and outputHeader are not null.
         if ((inputHeader1 == null) || (inputHeader2 == null) || (outputHeader == null)) {
@@ -237,7 +231,7 @@ public class GreaterThanEqualTo implements WhiteboxPlugin {
         try {
             int row, col;
             double z1, z2;
-            float progress = 0;
+            int progress, oldProgress = -1;
             double[] data1;
             double[] data2;
             
@@ -247,7 +241,8 @@ public class GreaterThanEqualTo implements WhiteboxPlugin {
 
                 int rows = inputFile1.getNumberRows();
                 int cols = inputFile1.getNumberColumns();
-                double noData = inputFile1.getNoDataValue();
+                double noData1 = inputFile1.getNoDataValue();
+                double noData2 = inputFile2.getNoDataValue();
 
                 // make sure that the input images have the same dimensions.
                 if ((inputFile2.getNumberRows() != rows) || (inputFile2.getNumberColumns() != cols)) {
@@ -256,7 +251,7 @@ public class GreaterThanEqualTo implements WhiteboxPlugin {
                 }
 
                 WhiteboxRaster outputFile = new WhiteboxRaster(outputHeader, "rw", 
-                        inputHeader1, WhiteboxRaster.DataType.INTEGER, noData);
+                        inputHeader1, WhiteboxRaster.DataType.INTEGER, noData1);
                 outputFile.setPreferredPalette("black_white.pal");
 
                 for (row = 0; row < rows; row++) {
@@ -265,20 +260,25 @@ public class GreaterThanEqualTo implements WhiteboxPlugin {
                     for (col = 0; col < cols; col++) {
                         z1 = data1[col];
                         z2 = data2[col];
-                        if ((z1 != noData) && (z2 != noData)) {
+                        if ((z1 != noData1) && (z2 != noData2)) {
                             if (z1 >= z2) {
                                 outputFile.setValue(row, col, 1);
                             } else {
                                 outputFile.setValue(row, col, 0);
                             }
+                        } else {
+                            outputFile.setValue(row, col, noData1);
                         }
                     }
-                    if (cancelOp) {
-                        cancelOperation();
-                        return;
+                    progress = (int) (100f * row / (rows - 1));
+                    if (progress != oldProgress) {
+                        oldProgress = progress;
+                        updateProgress((int) progress);
+                        if (cancelOp) {
+                            cancelOperation();
+                            return;
+                        }
                     }
-                    progress = (float) (100f * row / (rows - 1));
-                    updateProgress((int) progress);
                 }
                 
                 outputFile.addMetadataEntry("Created by the " + 
@@ -313,12 +313,15 @@ public class GreaterThanEqualTo implements WhiteboxPlugin {
                             }
                         }
                     }
-                    if (cancelOp) {
-                        cancelOperation();
-                        return;
+                    progress = (int) (100f * row / (rows - 1));
+                    if (progress != oldProgress) {
+                        oldProgress = progress;
+                        updateProgress((int) progress);
+                        if (cancelOp) {
+                            cancelOperation();
+                            return;
+                        }
                     }
-                    progress = (float) (100f * row / (rows - 1));
-                    updateProgress((int) progress);
                 }
                 
                 outputFile.addMetadataEntry("Created by the " + 
@@ -352,12 +355,15 @@ public class GreaterThanEqualTo implements WhiteboxPlugin {
                             }
                         }
                     }
-                    if (cancelOp) {
-                        cancelOperation();
-                        return;
+                    progress = (int) (100f * row / (rows - 1));
+                    if (progress != oldProgress) {
+                        oldProgress = progress;
+                        updateProgress((int) progress);
+                        if (cancelOp) {
+                            cancelOperation();
+                            return;
+                        }
                     }
-                    progress = (float) (100f * row / (rows - 1));
-                    updateProgress((int) progress);
                 }
                 
                 outputFile.addMetadataEntry("Created by the " + 

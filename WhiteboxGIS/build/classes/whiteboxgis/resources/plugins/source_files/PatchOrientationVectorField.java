@@ -23,9 +23,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool takes a vector shapefile containing polygons, calculates the linearity (i.e., r-squared value) and orientation, and outputs a shapefile of line vectors.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class PatchOrientationVectorField implements WhiteboxPlugin {
 
@@ -146,7 +146,7 @@ public class PatchOrientationVectorField implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -181,6 +181,9 @@ public class PatchOrientationVectorField implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -634,18 +637,23 @@ public class PatchOrientationVectorField implements WhiteboxPlugin {
             myHost.pluginComplete();
         }
     }
-    //This method is only used during testing.
-
-    public static void main(String[] args) {
-        args = new String[4];
-        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/medium lakes.shp";
-        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/medium lakes pov.shp";
-        args[2] = "1000";
-        args[3] = "true";
-
-
-        PatchOrientationVectorField povf = new PatchOrientationVectorField();
-        povf.setArgs(args);
-        povf.run();
-    }
+    
+//    /**
+//     * This method is only used during testing.
+//    */
+//    
+//    //This method is only used during testing.
+//
+//    public static void main(String[] args) {
+//        args = new String[4];
+//        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/medium lakes.shp";
+//        args[1] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/medium lakes pov.shp";
+//        args[2] = "1000";
+//        args[3] = "true";
+//
+//
+//        PatchOrientationVectorField povf = new PatchOrientationVectorField();
+//        povf.setArgs(args);
+//        povf.run();
+//    }
 }

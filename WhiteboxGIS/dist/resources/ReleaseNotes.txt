@@ -56,6 +56,7 @@ Version 3.3.0 (May 2016)
  significant decimal places" input. This allows the integral images to be 
  calculated using longs (instead of doubles) and reduces the likelihood of 
  numerical overflow errors for rasters with greater than two million grid cells.
+-Numerous other bug fixes and enhancements.
 
 Version 3.2.2 (April 12, 2015)
 -LAS files can now be rendered based on the Classification, Scan Angle, and GPS Time

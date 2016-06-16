@@ -51,9 +51,9 @@ import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 import whitebox.geospatialfiles.shapefile.attributes.DBFField.DBFDataType;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to interpolate a trend surface from a vector points file. 
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class TrendSurfaceVectorPoints implements WhiteboxPlugin {
 
@@ -175,7 +175,7 @@ public class TrendSurfaceVectorPoints implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -210,6 +210,9 @@ public class TrendSurfaceVectorPoints implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -364,6 +367,9 @@ public class TrendSurfaceVectorPoints implements WhiteboxPlugin {
             myHost.pluginComplete();
         }
     }
+    /**
+     * Used to solve the equation.
+     */
     private int numCoefficients = 0;
     private int polyOrder = 1;
     private double[] regressCoefficents;
@@ -402,7 +408,7 @@ public class TrendSurfaceVectorPoints implements WhiteboxPlugin {
             //DecompositionSolver solver = new SingularValueDecomposition(coefficients).getSolver();
             DecompositionSolver solver = new QRDecomposition(coefficients).getSolver();
 
-            // do the x-coordinate first
+            // do the z-coordinate
             RealVector constants = new ArrayRealVector(Z, false);
             RealVector solution = solver.solve(constants);
             regressCoefficents = new double[numCoefficients];

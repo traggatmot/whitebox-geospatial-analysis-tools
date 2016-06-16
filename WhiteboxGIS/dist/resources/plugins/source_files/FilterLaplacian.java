@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This tool can be used to perform a Laplacian filter on a raster image, which can be used to emphasize the edges in an image.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FilterLaplacian implements WhiteboxPlugin {
     
@@ -119,7 +119,7 @@ public class FilterLaplacian implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -142,11 +142,21 @@ public class FilterLaplacian implements WhiteboxPlugin {
     }
     
     private boolean amIActive = false;
+    
+    /**
+     * Used by the Whitebox GUI to tell if this plugin is still running.
+     *
+     * @return a boolean describing whether or not the plugin is actively being
+     * used.
+     */
     @Override
     public boolean isActive() {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

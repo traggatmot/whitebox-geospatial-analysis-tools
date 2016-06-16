@@ -35,9 +35,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to isolate all of the features, or parts of features, in two input vectors that overlap.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Intersect implements WhiteboxPlugin {
     
@@ -160,7 +160,7 @@ public class Intersect implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -197,6 +197,9 @@ public class Intersect implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         
@@ -318,6 +321,7 @@ public class Intersect implements WhiteboxPlugin {
                 
                 // set up the output files of the shapefile and the dbf
                 output = new ShapeFile(outputFile, outputShapeType);
+                output.setProjectionStringFromOtherShapefile(new ShapeFile(shapefiles[0]));
 
                 DBFField fields[] = new DBFField[1];
 
@@ -356,7 +360,7 @@ public class Intersect implements WhiteboxPlugin {
 
                         FID++;
                         Object[] rowData = new Object[1];
-                        rowData[0] = new Double(FID);
+                        rowData[0] = (double) FID;
                         writer.addRecord(rowData);
                     } else if (gN instanceof com.vividsolutions.jts.geom.Polygon 
                             && outputShapeType == ShapeType.POLYLINE) {
@@ -396,7 +400,7 @@ public class Intersect implements WhiteboxPlugin {
 
                         FID++;
                         Object[] rowData = new Object[1];
-                        rowData[0] = new Double(FID);
+                        rowData[0] = (double) FID;
                         writer.addRecord(rowData);
                     } else if (gN instanceof com.vividsolutions.jts.geom.Polygon 
                             && outputShapeType == ShapeType.POLYGON) {

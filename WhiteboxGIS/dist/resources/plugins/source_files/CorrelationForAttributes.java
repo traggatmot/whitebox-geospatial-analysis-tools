@@ -25,8 +25,8 @@ import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool can be used to estimate the Pearson product-moment correlation coefficient (r) for each pair among a group of attributes associated with the database file of a shapefile. 
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class CorrelationForAttributes implements WhiteboxPlugin {
 
@@ -62,7 +62,7 @@ public class CorrelationForAttributes implements WhiteboxPlugin {
      */
     @Override
     public String[] getToolbox() {
-        String[] ret = {"StatisticalTools"};
+        String[] ret = {"StatisticalTools", "DatabaseTools"};
         return ret;
     }
     /**
@@ -121,7 +121,7 @@ public class CorrelationForAttributes implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -151,6 +151,9 @@ public class CorrelationForAttributes implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -310,24 +313,28 @@ public class CorrelationForAttributes implements WhiteboxPlugin {
         }
     }
     
-    // This method is only used during testing.
-    public static void main(String[] args) {
-
-        // vector-based test
-        args = new String[1];
-        /*
-         * specify the input args array as: 
-         * args[0] = shapefile input 
-         * args[1] = input fields string
-         * args[2] = standardized (boolean true or false)
-         * args[3] = number of components to output
-         */
-        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/alllakesutmdissolve.shp;"
-                + "ELONGATION;LINEARITY;COMPLEXITY;AREA;FRACTAL_D;RC_CIRCLE;COMPACT;P-A_RATIO";
-        
-        CorrelationForAttributes ca = new CorrelationForAttributes();
-        ca.setArgs(args);
-        ca.run();
-    }
+//    /**
+//     * This method is only used during testing.
+//     * @param args 
+//     */
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//
+//        // vector-based test
+//        args = new String[1];
+//        /*
+//         * specify the input args array as: 
+//         * args[0] = shapefile input 
+//         * args[1] = input fields string
+//         * args[2] = standardized (boolean true or false)
+//         * args[3] = number of components to output
+//         */
+//        args[0] = "/Users/johnlindsay/Documents/Research/Contracts/NRCan 2012/Data/alllakesutmdissolve.shp;"
+//                + "ELONGATION;LINEARITY;COMPLEXITY;AREA;FRACTAL_D;RC_CIRCLE;COMPACT;P-A_RATIO";
+//        
+//        CorrelationForAttributes ca = new CorrelationForAttributes();
+//        ca.setArgs(args);
+//        ca.run();
+//    }
     
 }

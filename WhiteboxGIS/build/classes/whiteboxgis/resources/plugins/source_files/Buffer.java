@@ -22,8 +22,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool can be used to identify an area of interest within a specified distance of features of interest in a raster data set.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Buffer implements WhiteboxPlugin {
     
@@ -119,7 +119,7 @@ public class Buffer implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -151,7 +151,10 @@ public class Buffer implements WhiteboxPlugin {
     public boolean isActive() {
         return amIActive;
     }
-
+    
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

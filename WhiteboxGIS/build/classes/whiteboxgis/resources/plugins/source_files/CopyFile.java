@@ -22,9 +22,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.FileUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool will make a copy of a user specified input raster or vector data set, including all associated files.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class CopyFile implements WhiteboxPlugin {
 
@@ -144,7 +144,7 @@ public class CopyFile implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -179,6 +179,9 @@ public class CopyFile implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -259,16 +262,15 @@ public class CopyFile implements WhiteboxPlugin {
 
     }
 
-    //This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[2];
-        //args[0] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Guelph/hydrology.shp";
-        args[0] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Vermont DEM/Vermont DEM.dep";
-        //args[1] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Guelph/test1.shp";
-        args[1] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Vermont DEM/test2.dep";
-
-        CopyFile cf = new CopyFile();
-        cf.setArgs(args);
-        cf.run();
-    }
+//    public static void main(String[] args) {
+//        args = new String[2];
+//        //args[0] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Guelph/hydrology.shp";
+//        args[0] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Vermont DEM/Vermont DEM.dep";
+//        //args[1] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Guelph/test1.shp";
+//        args[1] = "/Users/jlindsay/Documents/whitebox-geospatial-analysis-tools/WhiteboxGIS/build/classes/whiteboxgis/resources/samples/Vermont DEM/test2.dep";
+//
+//        CopyFile cf = new CopyFile();
+//        cf.setArgs(args);
+//        cf.run();
+//    }
 }

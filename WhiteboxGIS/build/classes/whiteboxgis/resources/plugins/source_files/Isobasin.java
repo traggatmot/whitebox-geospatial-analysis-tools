@@ -26,9 +26,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.FileUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to divide a landscape into a group of nearly equal-sized watersheds, known as isobasins.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Isobasin implements WhiteboxPlugin {
 
@@ -157,7 +157,7 @@ public class Isobasin implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -192,6 +192,9 @@ public class Isobasin implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

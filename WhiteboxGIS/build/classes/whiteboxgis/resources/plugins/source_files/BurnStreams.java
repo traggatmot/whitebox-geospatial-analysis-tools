@@ -31,9 +31,9 @@ import whitebox.structures.BoundingBox;
 import whitebox.structures.RowPriorityGridCell;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to decrement the elevation values in a digital elevation model (DEM) along a defined stream network.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class BurnStreams implements WhiteboxPlugin {
 
@@ -165,7 +165,7 @@ public class BurnStreams implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -200,6 +200,9 @@ public class BurnStreams implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

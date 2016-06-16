@@ -31,8 +31,8 @@ import whitebox.structures.KdTree;
 import whitebox.structures.RowPriorityGridCell;
 
 /**
- *
- * @author johnlindsay
+ * Can't find
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class LocateConjugatePrincipalPoint {
 
@@ -50,6 +50,9 @@ public class LocateConjugatePrincipalPoint {
         lcpp.run();
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     private void run() {
 
         long startTime = System.nanoTime();

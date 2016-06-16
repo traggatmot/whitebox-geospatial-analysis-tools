@@ -31,8 +31,8 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.FileUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool can be used to import a series of x,y,z points into a vector shapefile of a POINT ShapeType.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ImportXYZToVectorPoints implements WhiteboxPlugin {
 
@@ -126,7 +126,7 @@ public class ImportXYZToVectorPoints implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -156,6 +156,9 @@ public class ImportXYZToVectorPoints implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -315,14 +318,15 @@ public class ImportXYZToVectorPoints implements WhiteboxPlugin {
         }
     }
 
-    // this is only used for debugging the tool
-    public static void main(String[] args) {
-        ImportXYZToVectorPoints ixyz = new ImportXYZToVectorPoints();
-        args = new String[2];
-        args[0] = "/Users/johnlindsay/Documents/Data/Mohawk_sites.txt";
-        args[1] = "true";
-        ixyz.setArgs(args);
-        ixyz.run();
-        
-    }
+
+//    // this is only used for debugging the tool
+//    public static void main(String[] args) {
+//        ImportXYZToVectorPoints ixyz = new ImportXYZToVectorPoints();
+//        args = new String[2];
+//        args[0] = "/Users/johnlindsay/Documents/Data/Mohawk_sites.txt";
+//        args[1] = "true";
+//        ixyz.setArgs(args);
+//        ixyz.run();
+//        
+//    }
 }

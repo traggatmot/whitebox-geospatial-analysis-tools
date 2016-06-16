@@ -24,8 +24,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author johnlindsay
+ * This tool performs a median filter on a raster image, which can be used to emphasize the longer-range variability in an image, effectively acting to smooth the image.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FilterMedian implements WhiteboxPlugin {
     
@@ -121,7 +121,7 @@ public class FilterMedian implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -153,6 +153,9 @@ public class FilterMedian implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

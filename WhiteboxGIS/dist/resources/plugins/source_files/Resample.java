@@ -23,8 +23,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool will resample the values from one or more source image files into a destination image file using one of three resampling methods including, nearest neighbour, bilinear interpolation, and cubic convolution.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Resample implements WhiteboxPlugin {
 
@@ -119,7 +119,7 @@ public class Resample implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -149,6 +149,9 @@ public class Resample implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -404,6 +407,11 @@ public class Resample implements WhiteboxPlugin {
         }
     }
 
+    /**
+     * Used to determine whether a value is between two thresholds.
+     * 
+     * @return A Boolean which is true if the value is between threshold 1 and threshold 2
+     */
     // Return true if val is between theshold1 and theshold2.
     public static boolean isBetween(double val, double theshold1, double theshold2) {
         return theshold2 > theshold1 ? val > theshold1 && val < theshold2 : val > theshold2 && val < theshold1;

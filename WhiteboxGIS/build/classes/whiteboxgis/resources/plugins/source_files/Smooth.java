@@ -24,9 +24,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.FileUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool smooths a vector coverage of either a polyline or polygon base shape type.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Smooth implements WhiteboxPlugin {
     
@@ -149,7 +149,7 @@ public class Smooth implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -186,6 +186,9 @@ public class Smooth implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         
@@ -243,6 +246,7 @@ public class Smooth implements WhiteboxPlugin {
             // set up the output files of the shapefile and the dbf
             ShapeFile output = new ShapeFile(outputFile, shapeType);
             FileUtilities.copyFile(new File(input.getDatabaseFile()), new File(output.getDatabaseFile()));
+            output.setProjectionStringFromOtherShapefile(input);
             
             numFeatures = input.getNumberOfRecords();
             featureNum = 0;

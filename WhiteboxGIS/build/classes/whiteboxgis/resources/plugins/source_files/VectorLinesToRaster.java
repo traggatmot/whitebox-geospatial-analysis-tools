@@ -34,9 +34,9 @@ import whitebox.structures.BoundingBox;
 import whitebox.structures.RowPriorityGridCell;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to convert a vector lines or polygon file (shapefile) into a raster grid of lines.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca.
  */
 public class VectorLinesToRaster implements WhiteboxPlugin {
 
@@ -158,7 +158,7 @@ public class VectorLinesToRaster implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -192,7 +192,9 @@ public class VectorLinesToRaster implements WhiteboxPlugin {
     public boolean isActive() {
         return amIActive;
     }
-
+/**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -278,11 +280,12 @@ public class VectorLinesToRaster implements WhiteboxPlugin {
                     assignmentFieldNum = i;
                     if (field.getDataType() == DBFField.DBFDataType.NUMERIC
                             || field.getDataType() == DBFField.DBFDataType.FLOAT) {
-                        if (field.getDecimalCount() == 0) {
-                            dataType = WhiteboxRasterBase.DataType.INTEGER;
-                        } else {
-                            dataType = WhiteboxRasterBase.DataType.FLOAT;
-                        }
+//                        if (field.getDecimalCount() == 0) {
+//                            dataType = WhiteboxRasterBase.DataType.INTEGER;
+//                        } else {
+//                            dataType = WhiteboxRasterBase.DataType.FLOAT;
+//                        }
+                        dataType = WhiteboxRasterBase.DataType.FLOAT;
                     } else {
                         showFeedback("The type of data contained in the field "
                                 + "can not be mapped into grid cells. Choose a "
@@ -322,11 +325,14 @@ public class VectorLinesToRaster implements WhiteboxPlugin {
             } else {
                 output = new WhiteboxRaster(outputHeader, "rw",
                         baseFileHeader, dataType, backgroundValue);
+                if (backgroundValue == noData) {
+                    output.setNoDataValue(noData);
+                }
             }
 
             // first sort the records based on their maxY coordinate. This will
             // help reduce the amount of disc IO for larger rasters.
-            ArrayList<RecordInfo> myList = new ArrayList<RecordInfo>();
+            ArrayList<RecordInfo> myList = new ArrayList<>();
 
             for (ShapeFileRecord record : input.records) {
                 i = record.getRecordNumber();
@@ -348,7 +354,7 @@ public class VectorLinesToRaster implements WhiteboxPlugin {
             long heapSize = Runtime.getRuntime().totalMemory();
             int flushSize = (int)(heapSize / 32);
             int j, numCellsToWrite;
-            PriorityQueue<RowPriorityGridCell> pq = new PriorityQueue<RowPriorityGridCell>(flushSize);
+            PriorityQueue<RowPriorityGridCell> pq = new PriorityQueue<>(flushSize);
             RowPriorityGridCell cell;
             int numRecords = input.getNumberOfRecords();
             int count = 0;

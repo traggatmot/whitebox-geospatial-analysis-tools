@@ -609,6 +609,7 @@ public class LasLayerInfo implements MapLayer {
             for (int i = 0; i < numPointRecords; i++) {
                 bin = (int) ((zData[i] - minimumValue) / binSize);
                 if (bin < 0) { bin = 0; }
+                if (bin > numPaletteEntries) { bin = numPaletteEntries; }
                 histo[bin]++;
             }
             int onePercent = (int) (numPointRecords * 0.01);

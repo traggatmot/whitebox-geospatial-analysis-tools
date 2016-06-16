@@ -39,9 +39,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.Topology;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to isolate the features, or parts of features, in the first input vector that do not overlap with features in a second input vector.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Difference implements WhiteboxPlugin {
     
@@ -164,7 +164,7 @@ public class Difference implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -201,6 +201,9 @@ public class Difference implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         
@@ -368,7 +371,7 @@ public class Difference implements WhiteboxPlugin {
             
             // set up the output files of the shapefile and the dbf
             output = new ShapeFile(outputFile, outputShapeType, fields);
-
+            output.setProjectionStringFromOtherShapefile(input1);
             
             PreparedGeometry[] tests = new PreparedGeometry[g1.getNumGeometries()];
             com.vividsolutions.jts.geom.Geometry[] testGs = new com.vividsolutions.jts.geom.Geometry[g1.getNumGeometries()];

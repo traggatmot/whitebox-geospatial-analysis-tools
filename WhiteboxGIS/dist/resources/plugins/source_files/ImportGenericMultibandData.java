@@ -27,9 +27,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to import a number of generic multiband image data formats, including band interleaved by line (BIL), band interleaved by pixel (BIP), and band sequential (BSQ), to Whitebox GAT raster file format.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class ImportGenericMultibandData implements WhiteboxPlugin, InteropPlugin {
 
@@ -151,7 +151,7 @@ public class ImportGenericMultibandData implements WhiteboxPlugin, InteropPlugin
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -186,6 +186,9 @@ public class ImportGenericMultibandData implements WhiteboxPlugin, InteropPlugin
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -1028,32 +1031,50 @@ public class ImportGenericMultibandData implements WhiteboxPlugin, InteropPlugin
         }
     }
 
+    /**
+     * Used to retrieve the necessary extensions.
+     * @return String containing the extensions.
+     */
     @Override
     public String[] getExtensions() {
-        return new String[]{"bil", "bsq", "bip"};
+        return new String[]{ "txt" };
     }
 
+    /**
+     * Used to retrieve the file type name.
+     * @return String containing the file type name.
+     */
     @Override
     public String getFileTypeName() {
-        return "Generic Multiband Data";
+        return "ArcGIS ASCII Grid";
     }
-
-    @Override
+    
+    /**
+     * Used to check if the file is raster format.
+     * @return Boolean true if file is raster format.
+     */
+    @Override 
     public boolean isRasterFormat() {
         return true;
     }
-
+    
+    /**
+     * Used to retrieve the interoperable plugin type.
+     * @return 
+     */
     @Override
-    public InteropPluginType getInteropPluginType() {
-        return InteropPluginType.importPlugin;
-    }
-
-    // This method is only used during testing.
-    public static void main(String[] args) {
-        args = new String[1];
-        args[0] = "/Users/johnlindsay/Documents/Data/MultibandImage/IKONOS_CFBWainwright_MSI_AOI_1.bsq";
-        ImportGenericMultibandData igmd = new ImportGenericMultibandData();
-        igmd.setArgs(args);
-        igmd.run();
+    public InteropPlugin.InteropPluginType getInteropPluginType() {
+        return InteropPlugin.InteropPluginType.exportPlugin;
     }
 }
+
+
+
+//    // This method is only used during testing.
+//    public static void main(String[] args) {
+//        args = new String[1];
+//        args[0] = "/Users/johnlindsay/Documents/Data/MultibandImage/IKONOS_CFBWainwright_MSI_AOI_1.bsq";
+//        ImportGenericMultibandData igmd = new ImportGenericMultibandData();
+//        igmd.setArgs(args);
+//        igmd.run();
+//    }

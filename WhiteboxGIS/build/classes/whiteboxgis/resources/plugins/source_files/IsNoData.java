@@ -16,16 +16,15 @@
  */
 package plugins;
 
-import java.io.File;
 import java.util.Date;
 import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool can be used to identify areas of NoData values within an image. 
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class IsNoData implements WhiteboxPlugin {
     
@@ -148,7 +147,7 @@ public class IsNoData implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -185,20 +184,20 @@ public class IsNoData implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
         
-        String inputHeader = null;
-        String outputHeader = null;
-    	
-        if (args.length <= 0) {
-            showFeedback("Plugin parameters have not been set.");
+        if (args.length < 2) {
+            showFeedback("Plugin parameters have not been set properly.");
             return;
         }
         
-        inputHeader = args[0];
-        outputHeader = args[1];
+        String inputHeader = args[0];
+        String outputHeader = args[1];
         
         // check to see that the inputHeader and outputHeader are not null.
         if ((inputHeader == null) || (outputHeader == null)) {
@@ -207,13 +206,13 @@ public class IsNoData implements WhiteboxPlugin {
         }
         
         try {
-            if (!inputHeader.contains(".dep") || !inputHeader.contains(File.pathSeparator)) {
+            if (!inputHeader.contains(".dep")) { // || !inputHeader.contains(File.pathSeparator)) {
                 throw new Exception("No input file found");
             }
 
             int row, col;
             double z;
-            float progress = 0;
+            int progress, oldProgress = -1;
             double[] data;
             
             WhiteboxRaster inputFile = new WhiteboxRaster(inputHeader, "r");
@@ -237,9 +236,15 @@ public class IsNoData implements WhiteboxPlugin {
                     }
 
                 }
-                if (cancelOp) { cancelOperation(); return; }
-                progress = (float) (100f * row / (rows - 1));
-                updateProgress((int) progress);
+                progress = (int) (100f * row / (rows - 1));
+                if (progress != oldProgress) {
+                    oldProgress = progress;
+                    updateProgress((int) progress);
+                    if (cancelOp) {
+                        cancelOperation();
+                        return;
+                    }
+                }
             }
 
             outputFile.addMetadataEntry("Created by the "

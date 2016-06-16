@@ -40,17 +40,17 @@ import groovy.time.TimeCategory
 // The following four variables are required for this 
 // script to be integrated into the tool tree panel. 
 // Comment them out if you want to remove the script.
-def name = "FD8FlowAccum"
+def name = "FD8FlowAccum2"
 def descriptiveName = "FD8 Flow Accumulation 2"
 def description = "Calculates the FD8 flow accumulation raster."
 def toolboxes = ["FlowAccum"]
 
-public class FD8FlowAccum implements ActionListener {
+public class FD8FlowAccum2 implements ActionListener {
 	private WhiteboxPluginHost pluginHost
 	private ScriptDialog sd;
 	private String descriptiveName
 
-	public FD8FlowAccum(WhiteboxPluginHost pluginHost, 
+	public FD8FlowAccum2(WhiteboxPluginHost pluginHost, 
 		String[] args, String name, String descriptiveName) {
 		this.pluginHost = pluginHost
 		this.descriptiveName = descriptiveName
@@ -75,7 +75,7 @@ public class FD8FlowAccum implements ActionListener {
 			sd.setSourceFile(scriptFile)
 			
 			// add some components to the dialog
-			sd.addDialogFile("Input DEM Pointer raster", "Input DEM Pointer Raster:", "open", "Raster Files (*.dep), DEP", true, false)
+			sd.addDialogFile("Input DEM raster", "Input DEM Raster:", "open", "Raster Files (*.dep), DEP", true, false)
             sd.addDialogFile("Output file", "Output Raster File:", "save", "Raster Files (*.dep), DEP", true, false)
 			sd.addDialogDataInput("Exponent Parameter", "Exponent Parameter:", "1.1", true, false)
             sd.addDialogDataInput("Threshold for convergent flow (grid cells)", "Flow convergence threshold (grid cells):", "", true, true)
@@ -127,6 +127,7 @@ public class FD8FlowAccum implements ActionListener {
             double gridResY = dem.getCellSizeY();
             double diagGridRes = Math.sqrt(gridResX * gridResX + gridResY * gridResY);
             double[] gridLengths = [diagGridRes, gridResX, diagGridRes, gridResY, diagGridRes, gridResX, diagGridRes, gridResY]
+
 
 			pluginHost.updateProgress("Creating output file:", 0)
 			WhiteboxRaster output = new WhiteboxRaster(outputFile, "rw", inputFile, DataType.FLOAT, 1d)
@@ -319,5 +320,5 @@ public class FD8FlowAccum implements ActionListener {
 if (args == null) {
 	pluginHost.showFeedback("Plugin arguments not set.")
 } else {
-	def tdf = new FD8FlowAccum(pluginHost, args, name, descriptiveName)
+	def tdf = new FD8FlowAccum2(pluginHost, args, name, descriptiveName)
 }

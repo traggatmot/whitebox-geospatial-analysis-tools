@@ -29,8 +29,8 @@ import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tools estimates the area of each category, polygon, or patch in an input image.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Area implements WhiteboxPlugin {
 
@@ -114,7 +114,7 @@ public class Area implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -450,6 +450,9 @@ public class Area implements WhiteboxPlugin {
         }
     }
     
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

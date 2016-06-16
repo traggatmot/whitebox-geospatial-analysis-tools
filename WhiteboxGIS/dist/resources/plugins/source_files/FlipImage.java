@@ -21,8 +21,8 @@ import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool will flip (i.e., reflect) an image either vertically, horizontally, or both.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class FlipImage implements WhiteboxPlugin {
 
@@ -115,7 +115,7 @@ public class FlipImage implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -147,6 +147,9 @@ public class FlipImage implements WhiteboxPlugin {
         return amIActive;
     }
     
+    /**
+     * Used to execute this plugin tool.
+     */
     public void run() {
         amIActive = true;
 

@@ -22,8 +22,8 @@ import whitebox.geospatialfiles.WhiteboxRaster;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool creates a new raster in which the value of each grid cell is determined by an input raster and a collection of user-defined classes.
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Reclass implements WhiteboxPlugin {
 
@@ -110,7 +110,7 @@ public class Reclass implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -151,6 +151,9 @@ public class Reclass implements WhiteboxPlugin {
         return amIActive;
     }
     
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

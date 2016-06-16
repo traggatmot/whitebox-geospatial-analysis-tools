@@ -24,8 +24,8 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool is used to compute the side separated contributions to a stream (Grabs et al., 2010) using the MDInf algorithm (Seibert and McGlynn, 2007).
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class SIDE_MDInf implements WhiteboxPlugin {
 
@@ -54,7 +54,7 @@ public class SIDE_MDInf implements WhiteboxPlugin {
     }
     
     /**
-     * Used to retrieve the plugin tool// s name. This is a short, unique name containing no spaces.
+     * Used to retrieve the plugin tool's name. This is a short, unique name containing no spaces.
      * @return String containing plugin name.
      */
     @Override
@@ -62,7 +62,7 @@ public class SIDE_MDInf implements WhiteboxPlugin {
         return "SIDE_MDInf";
     }
     /**
-     * Used to retrieve the plugin tool// s descriptive name. This can be a longer name (containing spaces) and is used in the interface to list the tool.
+     * Used to retrieve the plugin tool's descriptive name. This can be a longer name (containing spaces) and is used in the interface to list the tool.
      * @return String containing the plugin descriptive name.
      */
     @Override
@@ -143,7 +143,7 @@ public class SIDE_MDInf implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */ 
     @Override
     public void setArgs(String[] args) {
@@ -175,6 +175,9 @@ public class SIDE_MDInf implements WhiteboxPlugin {
         return amIActive;
     }
     
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;

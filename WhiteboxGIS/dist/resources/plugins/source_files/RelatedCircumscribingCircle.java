@@ -33,8 +33,8 @@ import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * This tool can be used on either raster or vector files to calculate the related circumscribing circle (a circle which passes through all vertex features of a polygon).
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class RelatedCircumscribingCircle implements WhiteboxPlugin {
 
@@ -131,7 +131,7 @@ public class RelatedCircumscribingCircle implements WhiteboxPlugin {
     }
     /**
      * Sets the arguments (parameters) used by the plugin.
-     * @param args 
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -493,6 +493,9 @@ public class RelatedCircumscribingCircle implements WhiteboxPlugin {
         }
     }
     
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         String inputFile = args[0];

@@ -22,9 +22,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool creates a new raster in which each grid cell is equal to the tangent of the corresponding grid cell in an input raster.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Tan implements WhiteboxPlugin {
     
@@ -147,7 +147,7 @@ public class Tan implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -184,26 +184,21 @@ public class Tan implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
         
-        String inputHeader = null;
-        String outputHeader = null;
-    	
-        if (args.length <= 0) {
-            showFeedback("Plugin parameters have not been set.");
+        if (args.length < 2) {
+            showFeedback("Plugin parameters have not been set properly.");
             return;
         }
         
-        for (int i = 0; i < args.length; i++) {
-            if (i == 0) {
-                inputHeader = args[i];
-            } else if (i == 1) {
-                outputHeader = args[i];
-            }
-        }
-
+        String inputHeader = args[0];
+        String outputHeader = args[1];
+        
         // check to see that the inputHeader and outputHeader are not null.
         if ((inputHeader == null) || (outputHeader == null)) {
             showFeedback("One or more of the input parameters have not been set properly.");
@@ -213,8 +208,7 @@ public class Tan implements WhiteboxPlugin {
         try {
             int row, col;
             double z;
-            float progress = 0;
-            int numCells = 0;
+            int progress, oldProgress = -1;
             double[] data;
             
             WhiteboxRaster inputFile = new WhiteboxRaster(inputHeader, "r");
@@ -238,12 +232,19 @@ public class Tan implements WhiteboxPlugin {
                     z = data[col];
                     if (z != noData) {
                         outputFile.setValue(row, col, Math.tan(z * multiplier));
+                    } else {
+                        outputFile.setValue(row, col, noData);
                     }
-
                 }
-                if (cancelOp) { cancelOperation(); return; }
-                progress = (float) (100f * row / (rows - 1));
-                updateProgress((int) progress);
+                progress = (int) (100f * row / (rows - 1));
+                if (progress != oldProgress) {
+                    oldProgress = progress;
+                    updateProgress((int) progress);
+                    if (cancelOp) {
+                        cancelOperation();
+                        return;
+                    }
+                }
             }
 
             outputFile.addMetadataEntry("Created by the "

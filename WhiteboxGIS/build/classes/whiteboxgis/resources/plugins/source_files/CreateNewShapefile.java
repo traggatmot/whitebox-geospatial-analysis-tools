@@ -23,9 +23,9 @@ import whitebox.geospatialfiles.shapefile.*;
 import whitebox.geospatialfiles.shapefile.attributes.DBFField;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool creates a new blank shapefile.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class CreateNewShapefile implements WhiteboxPlugin {
 
@@ -181,12 +181,14 @@ public class CreateNewShapefile implements WhiteboxPlugin {
     public boolean isActive() {
         return amIActive;
     }
-
+    
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
 
-        int numFiles;
         ShapeType shapeType;
         if (args.length <= 0) {
             showFeedback("Plugin parameters have not been set.");

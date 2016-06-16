@@ -22,9 +22,9 @@ import whitebox.interfaces.WhiteboxPlugin;
 import whitebox.interfaces.WhiteboxPluginHost;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * This tool performs a hillshade operation on an input digital elevation model (DEM). 
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class Hillshade implements WhiteboxPlugin {
 
@@ -146,7 +146,7 @@ public class Hillshade implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -181,6 +181,9 @@ public class Hillshade implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
@@ -230,7 +233,7 @@ public class Hillshade implements WhiteboxPlugin {
 
             WhiteboxRaster inputFile = new WhiteboxRaster(inputHeader, "r");
             inputFile.isReflectedAtEdges = true;
-
+            
             int rows = inputFile.getNumberRows();
             int cols = inputFile.getNumberColumns();
             gridRes = inputFile.getCellSizeX();
@@ -238,8 +241,17 @@ public class Hillshade implements WhiteboxPlugin {
             //double Rad180 = 180 * degToRad;
             //double Rad90 = 90 * degToRad;
 
-
             double noData = inputFile.getNoDataValue();
+            
+            if (inputFile.getXYUnits().toLowerCase().contains("deg") || 
+                    inputFile.getProjection().toLowerCase().contains("geog")) {
+                // calculate a new z-conversion factor
+                double midLat = (inputFile.getNorth() - inputFile.getSouth()) / 2.0;
+                if (midLat <= 90 && midLat >= -90) {
+                    midLat = Math.toRadians(midLat);
+                    zFactor = 1.0 / (113200 * Math.cos(midLat));
+                }
+            }
 
             WhiteboxRaster outputFile = new WhiteboxRaster(outputHeader, "rw", inputHeader, WhiteboxRaster.DataType.INTEGER, outNoData);
             outputFile.setNoDataValue(outNoData);
@@ -293,10 +305,14 @@ public class Hillshade implements WhiteboxPlugin {
                 updateProgress(progress);
             }
 
-            // trim the display min and max values by 1%
+            // trim the display min and max values by clipPercent
+            double clipPercent = 0.01;
+            if (args.length >= 6) {
+                clipPercent = Double.parseDouble(args[5]) / 100.0;
+            }
             int newMin = 0;
             int newMax = 0;
-            double targetCellNum = numCells * 0.01;
+            double targetCellNum = numCells * clipPercent;
             long sum = 0;
             for (int c = 0; c < 256; c++) {
                 sum += histo[c];

@@ -28,9 +28,9 @@ import whitebox.interfaces.WhiteboxPluginHost;
 import whitebox.utilities.StringUtilities;
 
 /**
- * WhiteboxPlugin is used to define a plugin tool for Whitebox GIS.
+ * The Jenson Snap Pour Points tool can be used to move the location of pour points (i.e., outlets used in a watershedding operation) to the nearest stream grid cell within a specified distance.
  *
- * @author Dr. John Lindsay <jlindsay@uoguelph.ca>
+ * @author Dr. John Lindsay email: jlindsay@uoguelph.ca
  */
 public class JensonSnapPourPoints implements WhiteboxPlugin {
 
@@ -153,7 +153,7 @@ public class JensonSnapPourPoints implements WhiteboxPlugin {
     /**
      * Sets the arguments (parameters) used by the plugin.
      *
-     * @param args
+     * @param args An array of string arguments.
      */
     @Override
     public void setArgs(String[] args) {
@@ -188,6 +188,9 @@ public class JensonSnapPourPoints implements WhiteboxPlugin {
         return amIActive;
     }
 
+    /**
+     * Used to execute this plugin tool.
+     */
     @Override
     public void run() {
         amIActive = true;
