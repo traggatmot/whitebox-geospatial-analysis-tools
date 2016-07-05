@@ -37,7 +37,7 @@ public class XYZPoint implements Comparable<XYZPoint> {
     }
     
     public double getDistance(XYZPoint other) {
-        return Math.sqrt((x - other.x) * (x - other.x) + (y - other.y) * (y - other.y) + (z - other.z) * (z - other.z));
+        return Math.sqrt(getSquareDistance(other));
     }
     
     @Override
