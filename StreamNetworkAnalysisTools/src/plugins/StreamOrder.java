@@ -194,9 +194,6 @@ public class StreamOrder implements WhiteboxPlugin {
     public void run() {
         amIActive = true;
         
-        String streamsHeader = null;
-        String pointerHeader = null;
-        String outputHeader = null;
         int row, col, x, y;
         float progress = 0;
         double z;
@@ -213,15 +210,9 @@ public class StreamOrder implements WhiteboxPlugin {
             return;
         }
         
-        for (i = 0; i < args.length; i++) {
-            if (i == 0) {
-                streamsHeader = args[i];
-            } else if (i == 1) {
-                pointerHeader = args[i];
-            } else if (i == 2) {
-                outputHeader = args[i];
-            }
-        }
+        String streamsHeader = args[0];
+        String pointerHeader = args[1];
+        String outputHeader = args[2];
 
         // check to see that the inputHeader and outputHeader are not null.
         if ((streamsHeader == null) || (pointerHeader == null) || (outputHeader == null)) {
