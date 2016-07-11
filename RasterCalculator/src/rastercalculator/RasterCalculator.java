@@ -470,12 +470,12 @@ public class RasterCalculator extends JDialog implements ActionListener,
                 }
                 if (!expression.contains("]=") && expressionContainsImage 
                         && !isDeleteExpression) {
-                    needToInsertOutputImage = true;
+                    needToInsertOutputImage = false;
                 } else {
                     b = expression.indexOf("]=");
                     c = expression.indexOf("]==");
                     if (b == c && expressionContainsImage && !isDeleteExpression) {//it's an equality operation and not an assignment
-                        needToInsertOutputImage = false;
+                        needToInsertOutputImage = true;
                     }
                 }
                 if (needToInsertOutputImage) {
